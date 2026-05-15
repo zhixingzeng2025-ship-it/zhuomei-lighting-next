@@ -4,6 +4,8 @@ import { LocalizedSolutionsGrid } from "@/components/LocalizedSolutionsGrid";
 
 export const metadata: Metadata = {
   title: "Solutions",
+  description:
+    "Explore lighting solutions for road infrastructure, solar deployment, landscapes, facades, industry and public spaces.",
 };
 
 export const dynamic = "force-static";

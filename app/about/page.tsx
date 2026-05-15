@@ -4,6 +4,8 @@ import { AboutContent } from "@/components/AboutContent";
 
 export const metadata: Metadata = {
   title: "About Us",
+  description:
+    "Learn about ZHUOMEI LIGHTING's engineering-focused outdoor lighting capability, factory background and global project support.",
 };
 
 export const dynamic = "force-static";

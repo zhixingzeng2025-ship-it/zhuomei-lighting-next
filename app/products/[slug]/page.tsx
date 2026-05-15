@@ -12,7 +12,8 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const product = products.find((item) => item.slug === params.slug);
   return {
-    title: product?.name || "Product",
+    title: product?.name ? `${product.name} | ZHUOMEI LIGHTING` : "Product | ZHUOMEI LIGHTING",
+    description: product?.description,
   };
 }
 
@@ -31,8 +32,26 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
       description={product.description}
       image={product.image}
       facts={[
-        { labelKey: "footer.products", value: product.cn },
-        { labelKey: "common.viewProducts", value: product.badge || "Outdoor" },
+        { labelKey: "detail.productType", value: product.badge || "Outdoor" },
+        { labelKey: "detail.applications", value: `${product.applications.length}` },
+      ]}
+      sections={[
+        {
+          titleKey: "detail.overview",
+          description: product.overview,
+        },
+        {
+          titleKey: "detail.keyFeatures",
+          items: product.features,
+        },
+        {
+          titleKey: "detail.applications",
+          items: product.applications,
+        },
+        {
+          titleKey: "detail.specifications",
+          rows: product.specs.map((item) => ({ label: item.label, value: item.value })),
+        },
       ]}
       ctaHref="/contact"
       ctaLabelKey="common.sendInquiry"

@@ -4,6 +4,8 @@ import { LocalizedPageHeader } from "@/components/LocalizedPageHeader";
 
 export const metadata: Metadata = {
   title: "Contact",
+  description:
+    "Get in touch with ZHUOMEI LIGHTING for outdoor lighting inquiries, project quotations and product information.",
 };
 
 export const dynamic = "force-static";

@@ -31,8 +31,8 @@ export function LocalizedSolutionsGrid() {
               </span>
               <h2 className="text-[22px] leading-[1.15] tracking-tighter3 font-semibold">{title}</h2>
               <p className="mt-2 text-sm leading-7 text-white/78">{solution.description}</p>
-              <Link href="/contact" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white/95">
-                {t("common.exploreSolution")}
+              <Link href={`/solutions/${solution.slug}`} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white/95">
+                {t("common.learnMore")}
                 <ArrowRightIcon className="h-4 w-4" />
               </Link>
             </div>

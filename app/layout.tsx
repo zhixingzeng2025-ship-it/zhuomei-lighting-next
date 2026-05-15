@@ -4,14 +4,14 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: {
     default: "ZHUOMEI LIGHTING",
     template: "%s | ZHUOMEI LIGHTING",
   },
-  description:
-    "Professional outdoor lighting solutions for roads, landscapes, buildings and industrial spaces.",
+  description: siteConfig.description,
 };
 
 export default function RootLayout({

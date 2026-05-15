@@ -31,8 +31,8 @@ export function LocalizedProjectsGrid() {
                   <strong className="text-brand-text">{t("common.usedProducts")}:</strong> {project.products}
                 </span>
               </div>
-              <Link href="/contact" className="action-pill w-fit border border-brand-blue/15 bg-brand-blue/8 text-brand-deep hover:bg-brand-blue/12">
-                {t("common.viewCase")}
+              <Link href={`/projects/${project.slug}`} className="action-pill w-fit border border-brand-blue/15 bg-brand-blue/8 text-brand-deep hover:bg-brand-blue/12">
+                {t("common.learnMore")}
                 <ArrowRightIcon className="h-4 w-4" />
               </Link>
             </div>

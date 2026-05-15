@@ -12,7 +12,8 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const project = projects.find((item) => item.slug === params.slug);
   return {
-    title: project?.name || "Project",
+    title: project?.name ? `${project.name} | ZHUOMEI LIGHTING` : "Project | ZHUOMEI LIGHTING",
+    description: project?.overview,
   };
 }
 
@@ -33,6 +34,20 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
       facts={[
         { labelKey: "common.location", value: project.location },
         { labelKey: "common.usedProducts", value: project.products },
+      ]}
+      sections={[
+        {
+          titleKey: "detail.overview",
+          description: project.overview,
+        },
+        {
+          titleKey: "detail.projectHighlights",
+          items: project.highlights,
+        },
+        {
+          titleKey: "detail.projectScope",
+          description: "Commercial streets, plazas, parks and architectural facade environments.",
+        },
       ]}
       ctaHref="/contact"
       ctaLabelKey="common.sendInquiry"

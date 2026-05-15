@@ -4,6 +4,8 @@ import { LocalizedProjectsGrid } from "@/components/LocalizedProjectsGrid";
 
 export const metadata: Metadata = {
   title: "Projects",
+  description:
+    "See selected outdoor lighting project references from road lighting to commercial plazas and architectural facades.",
 };
 
 export const dynamic = "force-static";

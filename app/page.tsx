@@ -8,6 +8,8 @@ import { InquirySection } from "@/components/InquirySection";
 
 export const metadata: Metadata = {
   title: "Outdoor Lighting for Global Projects",
+  description:
+    "Professional outdoor lighting solutions for roads, landscapes, buildings and industrial spaces.",
 };
 
 export const dynamic = "force-static";

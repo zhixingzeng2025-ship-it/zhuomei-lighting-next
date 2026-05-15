@@ -9,6 +9,13 @@ type FactItem = {
   value: string;
 };
 
+type DetailSection = {
+  titleKey: string;
+  description?: string;
+  items?: string[];
+  rows?: Array<{ label: string; value: string }>;
+};
+
 type DetailViewProps = {
   backHref: string;
   backLabelKey: string;
@@ -17,6 +24,7 @@ type DetailViewProps = {
   description: string;
   image: string;
   facts: FactItem[];
+  sections?: DetailSection[];
   ctaHref: string;
   ctaLabelKey: string;
 };
@@ -29,6 +37,7 @@ export function DetailView({
   description,
   image,
   facts,
+  sections = [],
   ctaHref,
   ctaLabelKey,
 }: DetailViewProps) {
@@ -91,6 +100,38 @@ export function DetailView({
             </div>
           </aside>
         </div>
+
+        {sections.length > 0 ? (
+          <div className="grid gap-5 lg:grid-cols-2">
+            {sections.map((section) => (
+              <article key={section.titleKey} className="soft-card p-6 sm:p-7">
+                <p className="eyebrow">{t(section.titleKey)}</p>
+                {section.description ? (
+                  <p className="mt-3 text-sm leading-7 text-brand-muted sm:text-[15px]">{section.description}</p>
+                ) : null}
+                {section.items?.length ? (
+                  <ul className="mt-4 space-y-3">
+                    {section.items.map((item) => (
+                      <li key={item} className="relative pl-5 text-sm leading-7 text-brand-text before:absolute before:left-0 before:top-[0.72em] before:h-2 before:w-2 before:rounded-full before:bg-brand-blue">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                {section.rows?.length ? (
+                  <div className="mt-4 grid gap-3">
+                    {section.rows.map((row) => (
+                      <div key={row.label} className="grid grid-cols-[1fr_auto] gap-4 rounded-[20px] bg-brand-background px-4 py-3">
+                        <span className="text-sm font-medium text-brand-muted">{row.label}</span>
+                        <span className="text-sm font-semibold text-brand-text">{row.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        ) : null}
       </div>
     </section>
   );

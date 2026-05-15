@@ -10,10 +10,11 @@ type ProductCardProps = {
   href?: string;
 };
 
-export function ProductCard({ product, href = "/products" }: ProductCardProps) {
+export function ProductCard({ product, href }: ProductCardProps) {
   const { t } = useLanguage();
   const productKey = productKeyForSlug(product.slug);
   const title = t(`products.${productKey}`) as string;
+  const targetHref = href || `/products/${product.slug}`;
 
   return (
     <article className="soft-card" id={product.slug}>
@@ -30,8 +31,8 @@ export function ProductCard({ product, href = "/products" }: ProductCardProps) {
           {title}
         </h3>
         <p className="text-sm leading-7 text-brand-muted">{product.description}</p>
-        <Link href={href} className="action-pill w-fit border border-brand-blue/15 bg-brand-blue/8 text-brand-deep hover:bg-brand-blue/12">
-          {t("common.viewProducts")}
+        <Link href={targetHref} className="action-pill w-fit border border-brand-blue/15 bg-brand-blue/8 text-brand-deep hover:bg-brand-blue/12">
+          {t("common.learnMore")}
           <ArrowRightIcon className="h-4 w-4" />
         </Link>
       </div>

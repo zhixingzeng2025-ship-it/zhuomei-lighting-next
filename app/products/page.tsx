@@ -5,6 +5,8 @@ import { ProductCard } from "@/components/ProductCard";
 
 export const metadata: Metadata = {
   title: "Products",
+  description:
+    "Browse outdoor lighting products for roads, solar projects, facades, gardens and industrial applications.",
 };
 
 export const dynamic = "force-static";
@@ -23,7 +25,7 @@ export default function ProductsPage() {
 
         <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {products.map((product) => (
-            <ProductCard key={product.slug} product={product} href="/contact" />
+            <ProductCard key={product.slug} product={product} />
           ))}
         </div>
       </div>
