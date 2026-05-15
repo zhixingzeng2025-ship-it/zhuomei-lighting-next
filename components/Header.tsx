@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLanguage } from "@/context/LanguageContext";
 import { siteConfig } from "@/data/site";
 import { products } from "@/data/products";
 import { projects } from "@/data/projects";
@@ -21,21 +22,21 @@ const searchItems: SearchItem[] = [
   ...products.map((item) => ({
     label: item.name,
     subtitle: item.cn,
-    href: "/products",
+    href: `/products#${item.slug}`,
     kind: "Product" as const,
     keywords: [item.name, item.cn, item.description, "product"],
   })),
   ...solutions.map((item) => ({
     label: item.title,
     subtitle: item.description,
-    href: "/solutions",
+    href: `/solutions#${item.slug}`,
     kind: "Solution" as const,
     keywords: [item.title, item.description, "solution"],
   })),
   ...projects.map((item) => ({
     label: item.name,
     subtitle: `${item.location} · ${item.products}`,
-    href: "/projects",
+    href: `/projects#${item.slug}`,
     kind: "Project" as const,
     keywords: [item.name, item.location, item.products, "project"],
   })),
@@ -43,6 +44,7 @@ const searchItems: SearchItem[] = [
 
 export function Header() {
   const pathname = usePathname();
+  const { locale, setLocale, t } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -98,8 +100,12 @@ export function Header() {
     >
       <div className="page-container">
         <div className="flex h-[92px] items-center gap-3">
-          <Link href="/" className="flex min-w-0 items-center gap-3 text-white">
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-brand-blue to-brand-deep text-[13px] font-extrabold tracking-[0.12em] shadow-glass">
+          <Link
+            href="/"
+            aria-label="Go to homepage"
+            className="group flex min-w-0 items-center gap-3 rounded-2xl px-1 py-1 text-white transition hover:opacity-90"
+          >
+            <span className="grid h-12 w-12 flex-none place-items-center rounded-2xl bg-gradient-to-br from-brand-blue to-brand-deep text-[13px] font-extrabold tracking-[0.12em] shadow-glass transition group-hover:scale-[1.02]">
               ZL
             </span>
             <span className="grid min-w-0 gap-0.5">
@@ -128,11 +134,42 @@ export function Header() {
             ].join(" ")}
             aria-label="Primary navigation"
           >
-            {siteConfig.nav.map((item) => (
-              <Link key={item.href} href={item.href} className="nav-link py-3 md:py-0">
-                {item.label}
-              </Link>
-            ))}
+            <MenuItem label={t("menu.products")} href="/products">
+              {products.map((item) => (
+                <SubMenuItem key={item.slug} href={`/products#${item.slug}`}>
+                  <span>{t(`products.${productKeyForSlug(item.slug)}`)}</span>
+                  <span className="block text-[11px] font-normal text-brand-muted">{item.cn}</span>
+                </SubMenuItem>
+              ))}
+            </MenuItem>
+
+            <MenuItem label={t("menu.solutions")} href="/solutions">
+              {solutions.map((item) => (
+                <SubMenuItem key={item.slug} href={`/solutions#${item.slug}`}>
+                  <span>{t(`solutions.${solutionKeyForSlug(item.slug)}`)}</span>
+                  <span className="block text-[11px] font-normal text-brand-muted">{item.description}</span>
+                </SubMenuItem>
+              ))}
+            </MenuItem>
+
+            <MenuItem label={t("menu.projects")} href="/projects">
+              {projects.map((item) => (
+                <SubMenuItem key={item.slug} href={`/projects#${item.slug}`}>
+                  <span>{t(`projects.${projectKeyForSlug(item.slug)}`)}</span>
+                  <span className="block text-[11px] font-normal text-brand-muted">{item.location}</span>
+                </SubMenuItem>
+              ))}
+            </MenuItem>
+
+            <Link href="/about" className="nav-link py-3 md:py-0">
+              {t("menu.about")}
+            </Link>
+            <Link href="/contact" className="nav-link py-3 md:py-0">
+              {t("menu.support")}
+            </Link>
+            <Link href="/contact" className="nav-link py-3 md:py-0">
+              {t("menu.contact")}
+            </Link>
           </nav>
 
           <div className="ml-auto hidden items-center gap-2 md:flex">
@@ -151,27 +188,36 @@ export function Header() {
                 className="inline-flex h-10 items-center gap-1 rounded-full border border-white/10 bg-white/10 px-4 text-sm font-semibold text-white backdrop-blur-xl transition hover:bg-white/15"
                 onClick={() => setLangOpen((value) => !value)}
               >
-                EN
+                {locale.toUpperCase()}
                 <ChevronDownIcon />
               </button>
 
               {langOpen ? (
                 <div className="absolute right-0 top-[calc(100%+10px)] min-w-44 rounded-[20px] border border-white/10 bg-[#071128]/96 p-2 shadow-card">
-                  <button className="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-white/85 hover:bg-white/8">
+                  <button
+                    className="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-white/85 hover:bg-white/8"
+                    onClick={() => setLocale("en")}
+                  >
                     English
                   </button>
                   <button
-                    className="block w-full cursor-not-allowed rounded-2xl px-4 py-3 text-left text-sm font-semibold text-white/40"
-                    disabled
+                    className="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-white/85 hover:bg-white/8"
+                    onClick={() => setLocale("zh")}
                   >
-                    中文 coming soon
+                    中文
+                  </button>
+                  <button
+                    className="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-white/85 hover:bg-white/8"
+                    onClick={() => setLocale("ru")}
+                  >
+                    Русский
                   </button>
                 </div>
               ) : null}
             </div>
 
             <Link href="/contact" className="action-pill bg-gradient-to-r from-brand-blue to-[#77bfff] text-white shadow-[0_16px_34px_rgba(45,140,255,0.28)]">
-              Quick Inquiry
+              {t("common.quickInquiry")}
             </Link>
           </div>
         </div>
@@ -188,7 +234,7 @@ export function Header() {
           <div className="search-panel">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="eyebrow">Search</p>
+                <p className="eyebrow">{t("common.search")}</p>
                 <h3 className="text-[26px] font-semibold tracking-tighter2 text-brand-text">
                   Search products, solutions and projects
                 </h3>
@@ -250,5 +296,89 @@ export function Header() {
         </div>
       ) : null}
     </header>
+  );
+}
+
+function productKeyForSlug(slug: string) {
+  const map: Record<string, string> = {
+    "street-light": "streetLight",
+    "solar-street-light": "solarStreetLight",
+    "flood-light": "floodLight",
+    "solar-flood-light": "solarFloodLight",
+    "solar-garden-light": "solarGardenLight",
+    "high-bay-light": "highBayLight",
+    "moisture-proof-lamps": "moistureProof",
+    "wall-washer-light": "wallWasher",
+    "linear-light": "linearLight",
+    "projector-light": "projectorLight",
+    "point-light-source": "pointLight",
+  };
+  return map[slug] || "streetLight";
+}
+
+function solutionKeyForSlug(slug: string) {
+  const map: Record<string, string> = {
+    "road-street-lighting": "roadStreet",
+    "solar-lighting": "solar",
+    "landscape-lighting": "landscape",
+    "building-facade-lighting": "facade",
+    "industrial-lighting": "industrial",
+    "garden-park-lighting": "gardenPark",
+    "stadium-area-lighting": "stadiumArea",
+    "urban-public-lighting": "urbanPublic",
+  };
+  return map[slug] || "roadStreet";
+}
+
+function projectKeyForSlug(slug: string) {
+  const map: Record<string, string> = {
+    "road-lighting-dubai": "road",
+    "commercial-plaza-riyadh": "plaza",
+    "landscape-park-singapore": "landscape",
+    "building-facade-london": "facade",
+  };
+  return map[slug] || "road";
+}
+
+function MenuItem({
+  label,
+  href,
+  children,
+}: {
+  label: string;
+  href: string;
+  children?: React.ReactNode;
+}) {
+  const hasChildren = Boolean(children);
+
+  return (
+    <div className="group relative">
+      <Link href={href} className="nav-link flex items-center gap-1 py-3 md:py-0">
+        {label}
+        {hasChildren ? <ChevronDownIcon className="h-4 w-4" /> : null}
+      </Link>
+      {hasChildren ? (
+        <div className="absolute left-0 top-[calc(100%+12px)] hidden min-w-[320px] rounded-[22px] border border-white/10 bg-[#071128]/96 p-2 shadow-card group-hover:block group-focus-within:block">
+          <div className="grid max-h-[52vh] gap-1 overflow-auto pr-1">{children}</div>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function SubMenuItem({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      className="rounded-2xl px-4 py-3 text-left text-sm text-white/88 transition hover:bg-white/8 hover:text-white"
+    >
+      {children}
+    </Link>
   );
 }

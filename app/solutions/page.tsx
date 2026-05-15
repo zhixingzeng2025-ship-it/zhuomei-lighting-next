@@ -26,6 +26,7 @@ export default function SolutionsPage() {
           {solutions.map((solution) => (
             <article
               key={solution.slug}
+              id={solution.slug}
               className="group relative min-h-[320px] overflow-hidden rounded-[28px] bg-brand-navy shadow-card"
             >
               <img src={solution.image} alt={solution.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" />

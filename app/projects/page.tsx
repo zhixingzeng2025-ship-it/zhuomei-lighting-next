@@ -24,7 +24,7 @@ export default function ProjectsPage() {
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {projects.map((project) => (
-            <article key={project.slug} className="soft-card">
+            <article key={project.slug} id={project.slug} className="soft-card">
               <div className="relative aspect-[4/3] overflow-hidden bg-[#eef4fb]">
                 <img src={project.image} alt={project.name} className="h-full w-full object-cover" />
               </div>

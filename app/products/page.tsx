@@ -24,7 +24,7 @@ export default function ProductsPage() {
 
         <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {products.map((product) => (
-            <article key={product.slug} className="soft-card">
+            <article key={product.slug} id={product.slug} className="soft-card">
               <div className="relative aspect-[4/3] overflow-hidden bg-[#eef4fb]">
                 <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
               </div>

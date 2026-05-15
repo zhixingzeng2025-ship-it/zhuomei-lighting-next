@@ -3,6 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   title: {
@@ -21,10 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-brand-background text-brand-text">
-        <Header />
-        <main className="relative pt-[92px]">{children}</main>
-        <Footer />
-        <FloatingContact />
+        <LanguageProvider>
+          <Header />
+          <main className="relative pt-[92px]">{children}</main>
+          <Footer />
+          <FloatingContact />
+        </LanguageProvider>
       </body>
     </html>
   );
