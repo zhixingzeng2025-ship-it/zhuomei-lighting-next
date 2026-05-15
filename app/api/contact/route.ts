@@ -44,10 +44,17 @@ export async function POST(request: Request) {
       );
     }
 
-    return NextResponse.json(
-      payload && Object.keys(payload).length > 0 ? payload : { success: true },
-      { status: 200 }
-    );
+    if (payload && Object.keys(payload).length > 0) {
+      return NextResponse.json(
+        {
+          success: payload.success ?? true,
+          ...payload,
+        },
+        { status: 200 }
+      );
+    }
+
+    return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
     console.error("Failed to send inquiry", error);
     return NextResponse.json(

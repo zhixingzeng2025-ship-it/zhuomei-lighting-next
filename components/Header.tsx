@@ -8,6 +8,7 @@ import { siteConfig } from "@/data/site";
 import { products } from "@/data/products";
 import { projects } from "@/data/projects";
 import { solutions } from "@/data/solutions";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ArrowRightIcon, ChevronDownIcon, CloseIcon, MenuIcon, SearchIcon } from "./Icons";
 
 type SearchItem = {
@@ -20,10 +21,9 @@ type SearchItem = {
 
 export function Header() {
   const pathname = usePathname();
-  const { locale, setLocale, t } = useLanguage();
+  const { t } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [langOpen, setLangOpen] = useState(false);
   const [query, setQuery] = useState("");
   const searchPanelRef = useRef<HTMLDivElement>(null);
 
@@ -85,7 +85,6 @@ export function Header() {
       if (event.key === "Escape") {
         setSearchOpen(false);
         setMenuOpen(false);
-        setLangOpen(false);
       }
     };
     window.addEventListener("keydown", onKeyDown);
@@ -95,7 +94,6 @@ export function Header() {
   useEffect(() => {
     setMenuOpen(false);
     setSearchOpen(false);
-    setLangOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -203,39 +201,7 @@ export function Header() {
               <SearchIcon />
             </button>
 
-            <div className="relative">
-              <button
-                type="button"
-                className="inline-flex h-10 items-center gap-1 rounded-full border border-white/10 bg-white/10 px-4 text-sm font-semibold text-white backdrop-blur-xl transition hover:bg-white/15"
-                onClick={() => setLangOpen((value) => !value)}
-              >
-                {locale.toUpperCase()}
-                <ChevronDownIcon />
-              </button>
-
-              {langOpen ? (
-                <div className="absolute right-0 top-[calc(100%+10px)] min-w-44 rounded-[20px] border border-white/10 bg-[#071128]/96 p-2 shadow-card">
-                  <button
-                    className="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-white/85 hover:bg-white/8"
-                    onClick={() => setLocale("en")}
-                  >
-                    English
-                  </button>
-                  <button
-                    className="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-white/85 hover:bg-white/8"
-                    onClick={() => setLocale("zh")}
-                  >
-                    中文
-                  </button>
-                  <button
-                    className="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-white/85 hover:bg-white/8"
-                    onClick={() => setLocale("ru")}
-                  >
-                    Русский
-                  </button>
-                </div>
-              ) : null}
-            </div>
+            <LanguageSwitcher />
 
             <Link href="/contact" className="action-pill bg-gradient-to-r from-brand-blue to-[#77bfff] text-white shadow-[0_16px_34px_rgba(45,140,255,0.28)]">
               {t("common.quickInquiry")}
@@ -379,7 +345,7 @@ function MenuItem({
         {hasChildren ? <ChevronDownIcon className="h-4 w-4" /> : null}
       </Link>
       {hasChildren ? (
-        <div className="absolute left-0 top-[calc(100%+12px)] z-50 min-w-[320px] rounded-[22px] border border-white/10 bg-[#071128] p-2 shadow-card opacity-0 invisible translate-y-2 pointer-events-none transition-[opacity,transform,visibility] duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
+        <div className="absolute left-0 top-[calc(100%+12px)] z-50 min-w-[320px] rounded-[22px] border border-white/10 bg-[#071128] p-2 shadow-card opacity-0 invisible translate-y-2 pointer-events-none transition-[opacity,transform,visibility] duration-150 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
           <div className="grid max-h-[52vh] gap-1 overflow-auto pr-1">{children}</div>
         </div>
       ) : null}

@@ -56,10 +56,13 @@ export default function InquiryForm({
       });
 
       const result = await res.json().catch(() => ({} as Record<string, unknown>));
-      const ok = Boolean((result as { ok?: boolean }).ok) || res.ok;
+      const ok =
+        Boolean((result as { success?: boolean }).success) ||
+        Boolean((result as { ok?: boolean }).ok) ||
+        res.ok;
 
       if (!ok) {
-        throw new Error((result as { message?: string }).message || "提交失败");
+        throw new Error((result as { message?: string; error?: string }).message || (result as { error?: string }).error || "提交失败");
       }
 
       setStatus("success");
