@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
@@ -18,30 +18,6 @@ type SearchItem = {
   keywords: string[];
 };
 
-const searchItems: SearchItem[] = [
-  ...products.map((item) => ({
-    label: item.name,
-    subtitle: item.cn,
-    href: `/products#${item.slug}`,
-    kind: "Product" as const,
-    keywords: [item.name, item.cn, item.description, "product"],
-  })),
-  ...solutions.map((item) => ({
-    label: item.title,
-    subtitle: item.description,
-    href: `/solutions#${item.slug}`,
-    kind: "Solution" as const,
-    keywords: [item.title, item.description, "solution"],
-  })),
-  ...projects.map((item) => ({
-    label: item.name,
-    subtitle: `${item.location} · ${item.products}`,
-    href: `/projects#${item.slug}`,
-    kind: "Project" as const,
-    keywords: [item.name, item.location, item.products, "project"],
-  })),
-];
-
 export function Header() {
   const pathname = usePathname();
   const { locale, setLocale, t } = useLanguage();
@@ -49,6 +25,42 @@ export function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const searchPanelRef = useRef<HTMLDivElement>(null);
+
+  const searchItems = useMemo<SearchItem[]>(() => {
+    return [
+      ...products.map((item) => {
+        const label = t(`products.${productKeyForSlug(item.slug)}`) as string;
+        return {
+          label,
+          subtitle: item.description,
+          href: `/products#${item.slug}`,
+          kind: "Product" as const,
+          keywords: [label, item.name, item.cn, item.description, "product"],
+        };
+      }),
+      ...solutions.map((item) => {
+        const label = t(`solutions.${solutionKeyForSlug(item.slug)}`) as string;
+        return {
+          label,
+          subtitle: item.description,
+          href: `/solutions#${item.slug}`,
+          kind: "Solution" as const,
+          keywords: [label, item.title, item.description, "solution"],
+        };
+      }),
+      ...projects.map((item) => {
+        const label = t(`projects.${projectKeyForSlug(item.slug)}`) as string;
+        return {
+          label,
+          subtitle: `${item.location} · ${item.products}`,
+          href: `/projects#${item.slug}`,
+          kind: "Project" as const,
+          keywords: [label, item.name, item.location, item.products, "project"],
+        };
+      }),
+    ];
+  }, [t]);
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -91,6 +103,18 @@ export function Header() {
     return () => {
       document.body.style.overflow = "";
     };
+  }, [searchOpen]);
+
+  useEffect(() => {
+    if (!searchOpen) return;
+    const onMouseDown = (event: MouseEvent) => {
+      const target = event.target as Node;
+      if (searchPanelRef.current && !searchPanelRef.current.contains(target)) {
+        setSearchOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onMouseDown);
+    return () => document.removeEventListener("mousedown", onMouseDown);
   }, [searchOpen]);
 
   return (
@@ -138,7 +162,6 @@ export function Header() {
               {products.map((item) => (
                 <SubMenuItem key={item.slug} href={`/products#${item.slug}`}>
                   <span>{t(`products.${productKeyForSlug(item.slug)}`)}</span>
-                  <span className="block text-[11px] font-normal text-brand-muted">{item.cn}</span>
                 </SubMenuItem>
               ))}
             </MenuItem>
@@ -147,7 +170,6 @@ export function Header() {
               {solutions.map((item) => (
                 <SubMenuItem key={item.slug} href={`/solutions#${item.slug}`}>
                   <span>{t(`solutions.${solutionKeyForSlug(item.slug)}`)}</span>
-                  <span className="block text-[11px] font-normal text-brand-muted">{item.description}</span>
                 </SubMenuItem>
               ))}
             </MenuItem>
@@ -156,7 +178,6 @@ export function Header() {
               {projects.map((item) => (
                 <SubMenuItem key={item.slug} href={`/projects#${item.slug}`}>
                   <span>{t(`projects.${projectKeyForSlug(item.slug)}`)}</span>
-                  <span className="block text-[11px] font-normal text-brand-muted">{item.location}</span>
                 </SubMenuItem>
               ))}
             </MenuItem>
@@ -231,7 +252,7 @@ export function Header() {
             aria-label="Close search"
             onClick={() => setSearchOpen(false)}
           />
-          <div className="search-panel">
+          <div ref={searchPanelRef} className="search-panel">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="eyebrow">{t("common.search")}</p>
@@ -358,7 +379,7 @@ function MenuItem({
         {hasChildren ? <ChevronDownIcon className="h-4 w-4" /> : null}
       </Link>
       {hasChildren ? (
-        <div className="absolute left-0 top-[calc(100%+12px)] hidden min-w-[320px] rounded-[22px] border border-white/10 bg-[#071128]/96 p-2 shadow-card group-hover:block group-focus-within:block">
+        <div className="absolute left-0 top-[calc(100%+12px)] z-50 min-w-[320px] rounded-[22px] border border-white/10 bg-[#071128] p-2 shadow-card opacity-0 invisible translate-y-2 pointer-events-none transition-[opacity,transform,visibility] duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
           <div className="grid max-h-[52vh] gap-1 overflow-auto pr-1">{children}</div>
         </div>
       ) : null}

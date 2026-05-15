@@ -7,6 +7,23 @@ export type ProductItem = {
   badge?: string;
 };
 
+export function productKeyForSlug(slug: string) {
+  const map: Record<string, string> = {
+    "street-light": "streetLight",
+    "solar-street-light": "solarStreetLight",
+    "flood-light": "floodLight",
+    "solar-flood-light": "solarFloodLight",
+    "solar-garden-light": "solarGardenLight",
+    "high-bay-light": "highBayLight",
+    "moisture-proof-lamps": "moistureProof",
+    "wall-washer-light": "wallWasher",
+    "linear-light": "linearLight",
+    "projector-light": "projectorLight",
+    "point-light-source": "pointLight",
+  };
+  return map[slug] || "streetLight";
+}
+
 export const products: ProductItem[] = [
   {
     slug: "street-light",
