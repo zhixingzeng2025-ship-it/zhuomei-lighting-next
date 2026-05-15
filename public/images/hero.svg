@@ -1,0 +1,20 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#081A3B"/>
+  <rect width="1600" height="900" fill="url(#g1)"/>
+  <circle cx="1268" cy="210" r="240" fill="#2D8CFF" fill-opacity="0.16"/>
+  <circle cx="1380" cy="250" r="120" fill="#FFFFFF" fill-opacity="0.08"/>
+  <path d="M0 640L400 440L720 510L1080 350L1600 460V900H0V640Z" fill="#0E2E66" fill-opacity="0.72"/>
+  <path d="M240 730L470 560L650 630L920 470L1200 530L1420 430" stroke="#8CC8FF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.65"/>
+  <path d="M300 760H1280" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="2"/>
+  <path d="M1160 515L1230 435L1315 515" stroke="#FFFFFF" stroke-opacity="0.65" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="1230" cy="435" r="18" fill="#FFFFFF" fill-opacity="0.92"/>
+  <text x="92" y="132" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="700" letter-spacing="8">ZHUOMEI LIGHTING</text>
+  <text x="92" y="198" fill="#BFD7FF" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="500" letter-spacing="3">OUTDOOR LIGHTING FOR GLOBAL PROJECTS</text>
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#081A3B"/>
+      <stop offset="0.45" stop-color="#0C224D"/>
+      <stop offset="1" stop-color="#122C5F"/>
+    </linearGradient>
+  </defs>
+</svg>

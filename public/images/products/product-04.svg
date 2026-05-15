@@ -1,0 +1,17 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#F4F8FF"/>
+  <rect x="80" y="80" width="1040" height="740" rx="40" fill="url(#g)" />
+  <path d="M190 650H1010" stroke="#8CC8FF" stroke-width="16" stroke-linecap="round"/>
+  <path d="M300 670C380 550 480 500 600 500C720 500 820 550 900 670" stroke="#FFFFFF" stroke-opacity="0.7" stroke-width="14" stroke-linecap="round"/>
+  <path d="M310 500H890" stroke="#FFFFFF" stroke-opacity="0.75" stroke-width="20" stroke-linecap="round"/>
+  <path d="M420 420H780" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="600" cy="500" r="40" fill="#FFFFFF" fill-opacity="0.22"/>
+  <text x="96" y="150" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700">Solar Flood Light</text>
+  <text x="96" y="198" fill="#CDE2FF" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500">All-in-one solar outdoor lighting</text>
+  <defs>
+    <linearGradient id="g" x1="80" y1="80" x2="1120" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A214A"/>
+      <stop offset="1" stop-color="#081A3B"/>
+    </linearGradient>
+  </defs>
+</svg>

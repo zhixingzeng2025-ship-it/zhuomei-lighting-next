@@ -1,0 +1,19 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#F4F8FF"/>
+  <rect x="80" y="80" width="1040" height="740" rx="40" fill="url(#g)" />
+  <circle cx="920" cy="220" r="170" fill="#FFFFFF" fill-opacity="0.12"/>
+  <circle cx="920" cy="220" r="54" fill="#FFFFFF" fill-opacity="0.25"/>
+  <path d="M220 650C370 590 520 555 670 555C800 555 930 585 1020 620" stroke="#8CC8FF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M310 670L500 360L690 670" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M500 360L500 270" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="500" cy="270" r="16" fill="#2D8CFF"/>
+  <path d="M500 670V360" stroke="#081A3B" stroke-opacity="0.55" stroke-width="90" stroke-linecap="round"/>
+  <text x="96" y="150" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700">Solar Street Light</text>
+  <text x="96" y="198" fill="#CDE2FF" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500">Solar / Smart / Green</text>
+  <defs>
+    <linearGradient id="g" x1="80" y1="80" x2="1120" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0C224D"/>
+      <stop offset="1" stop-color="#081A3B"/>
+    </linearGradient>
+  </defs>
+</svg>

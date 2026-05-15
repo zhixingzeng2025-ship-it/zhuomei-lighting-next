@@ -1,0 +1,14 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#F4F8FF"/>
+  <rect x="80" y="80" width="1040" height="740" rx="40" fill="url(#g)"/>
+  <path d="M260 640L430 470H770L940 640" stroke="#FFFFFF" stroke-opacity="0.8" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M430 470V360H770V470" stroke="#8CC8FF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="96" y="150" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700">London Facade</text>
+  <text x="96" y="198" fill="#CDE2FF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="500">Wall Washer Light / Linear Light</text>
+  <defs>
+    <linearGradient id="g" x1="80" y1="80" x2="1120" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A214A"/>
+      <stop offset="1" stop-color="#2D8CFF"/>
+    </linearGradient>
+  </defs>
+</svg>

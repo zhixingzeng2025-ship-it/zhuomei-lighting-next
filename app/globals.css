@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 108px;
+}
+
+body {
+  @apply bg-brand-background text-brand-text antialiased;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  @apply transition-colors duration-200;
+}
+
+img {
+  display: block;
+}
+
+::selection {
+  background: rgba(45, 140, 255, 0.18);
+}
+
+.page-container {
+  @apply mx-auto w-[min(100%-1.5rem,84rem)] sm:w-[min(100%-2rem,84rem)];
+}
+
+.section-shell {
+  @apply py-16 sm:py-20 lg:py-28;
+}
+
+.section-title {
+  @apply max-w-3xl;
+}
+
+.section-title h2 {
+  @apply text-[clamp(2rem,3.3vw,3.25rem)] leading-[1.06] tracking-tighter2 font-semibold text-brand-text;
+}
+
+.section-title p {
+  @apply mt-4 text-[15px] leading-7 text-brand-muted sm:text-base;
+}
+
+.eyebrow {
+  @apply mb-3 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.22em] text-brand-deep;
+}
+
+.eyebrow-light {
+  @apply text-white/70;
+}
+
+.glass-panel {
+  @apply border border-white/10 bg-white/10 backdrop-blur-xl shadow-glass;
+}
+
+.soft-card {
+  @apply overflow-hidden rounded-[28px] border border-brand-line bg-white shadow-soft transition-transform duration-300 hover:-translate-y-1 hover:shadow-card;
+}
+
+.action-pill {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-all duration-200;
+}
+
+.nav-link {
+  @apply relative text-[14px] font-medium text-white/80 transition-colors duration-200 hover:text-white;
+}
+
+.nav-link::after {
+  content: "";
+  @apply absolute -bottom-2 left-0 h-0.5 w-full origin-center scale-x-0 rounded-full bg-gradient-to-r from-brand-blue to-white/50 transition-transform duration-200;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  @apply scale-x-100;
+}
+
+.icon-button {
+  @apply inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white backdrop-blur-xl transition-transform duration-200 hover:-translate-y-0.5 hover:bg-white/15;
+}
+
+.input-field {
+  @apply w-full rounded-[18px] border border-[#dfe7f2] bg-[#f8fbff] px-4 py-3 text-sm text-brand-text outline-none transition focus:border-brand-blue/50 focus:bg-white focus:ring-4 focus:ring-brand-blue/10;
+}
+
+.label-text {
+  @apply text-[13px] font-semibold tracking-tight text-brand-text;
+}
+
+.mobile-bottom-bar {
+  @apply fixed inset-x-0 bottom-0 z-[60] grid grid-cols-4 gap-2 border-t border-white/10 bg-[#061229]/95 px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur-xl lg:hidden;
+}
+
+.mobile-bottom-bar a,
+.mobile-bottom-bar button {
+  @apply grid min-h-[54px] place-items-center gap-1 rounded-[16px] border border-white/10 bg-white/5 text-[12px] font-semibold text-white;
+}
+
+.floating-contact {
+  @apply fixed right-5 top-1/2 z-[55] hidden -translate-y-1/2 gap-2 xl:grid;
+}
+
+.floating-contact a,
+.floating-contact button {
+  @apply flex min-w-[112px] items-center gap-2 rounded-[18px] border border-brand-line bg-white px-4 py-3 text-sm font-semibold text-brand-text shadow-soft transition-transform duration-200 hover:-translate-x-0.5;
+}
+
+.floating-contact svg {
+  @apply text-brand-deep;
+}
+
+.search-overlay {
+  @apply fixed inset-0 z-[80] hidden bg-slate-950/50 backdrop-blur-sm;
+}
+
+.search-overlay[data-open="true"] {
+  @apply block;
+}
+
+.search-panel {
+  @apply absolute left-1/2 top-24 w-[min(720px,calc(100%-1.5rem))] -translate-x-1/2 rounded-[28px] border border-brand-line bg-white p-6 shadow-card;
+}

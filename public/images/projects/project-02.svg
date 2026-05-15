@@ -1,0 +1,15 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#F4F8FF"/>
+  <rect x="80" y="80" width="1040" height="740" rx="40" fill="url(#g)"/>
+  <rect x="220" y="300" width="760" height="260" rx="36" fill="#FFFFFF" fill-opacity="0.1"/>
+  <circle cx="350" cy="430" r="76" fill="#8CC8FF" fill-opacity="0.2"/>
+  <circle cx="850" cy="430" r="76" fill="#FFFFFF" fill-opacity="0.12"/>
+  <text x="96" y="150" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700">Commercial Plaza</text>
+  <text x="96" y="198" fill="#CDE2FF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="500">Flood Light / Linear Light</text>
+  <defs>
+    <linearGradient id="g" x1="80" y1="80" x2="1120" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A214A"/>
+      <stop offset="1" stop-color="#081A3B"/>
+    </linearGradient>
+  </defs>
+</svg>

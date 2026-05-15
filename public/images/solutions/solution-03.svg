@@ -1,0 +1,15 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#081A3B"/>
+  <rect width="1200" height="900" rx="48" fill="url(#g)"/>
+  <rect x="180" y="280" width="840" height="260" rx="40" fill="#FFFFFF" fill-opacity="0.08"/>
+  <path d="M240 620H960" stroke="#8CC8FF" stroke-width="14" stroke-linecap="round"/>
+  <path d="M360 500L450 380H750L840 500" stroke="#FFFFFF" stroke-opacity="0.8" stroke-width="12" stroke-linejoin="round"/>
+  <text x="92" y="142" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700">Landscape</text>
+  <text x="92" y="188" fill="#CDE2FF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="500">Parks, gardens and public spaces</text>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1200" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#123A8D"/>
+      <stop offset="1" stop-color="#081A3B"/>
+    </linearGradient>
+  </defs>
+</svg>

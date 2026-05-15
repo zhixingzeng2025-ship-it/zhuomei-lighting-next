@@ -1,0 +1,17 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#F4F8FF"/>
+  <rect x="80" y="80" width="1040" height="740" rx="40" fill="url(#g)" />
+  <path d="M120 640C280 560 400 520 600 520C800 520 920 560 1080 640" stroke="#8CC8FF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M300 630L460 350H740L900 630" stroke="#FFFFFF" stroke-opacity="0.8" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M460 350L600 220L740 350" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="600" cy="220" r="20" fill="#2D8CFF"/>
+  <rect x="505" y="350" width="190" height="280" rx="28" fill="#081A3B" fill-opacity="0.75"/>
+  <text x="96" y="150" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700">Street Light</text>
+  <text x="96" y="198" fill="#CDE2FF" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500">Road / Urban / Infrastructure</text>
+  <defs>
+    <linearGradient id="g" x1="80" y1="80" x2="1120" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#123A8D"/>
+      <stop offset="1" stop-color="#2D8CFF"/>
+    </linearGradient>
+  </defs>
+</svg>
