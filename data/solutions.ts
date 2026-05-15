@@ -5,6 +5,20 @@ export type SolutionItem = {
   image: string;
 };
 
+export function solutionKeyForSlug(slug: string) {
+  const map: Record<string, string> = {
+    "road-street-lighting": "roadStreet",
+    "solar-lighting": "solar",
+    "landscape-lighting": "landscape",
+    "building-facade-lighting": "facade",
+    "industrial-lighting": "industrial",
+    "garden-park-lighting": "gardenPark",
+    "stadium-area-lighting": "stadiumArea",
+    "urban-public-lighting": "urbanPublic",
+  };
+  return map[slug] || "roadStreet";
+}
+
 export const solutions: SolutionItem[] = [
   {
     slug: "road-street-lighting",

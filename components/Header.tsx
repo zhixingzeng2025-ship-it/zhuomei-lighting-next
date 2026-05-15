@@ -68,7 +68,7 @@ export function Header() {
     return searchItems.filter((item) =>
       item.keywords.some((keyword) => keyword.toLowerCase().includes(normalized))
     );
-  }, [query]);
+  }, [query, searchItems]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -135,7 +135,7 @@ export function Header() {
                 {siteConfig.brand}
               </strong>
               <span className="hidden text-[12px] tracking-[0.04em] text-white/65 md:block">
-                {siteConfig.tagline}
+                {t("site.brandTagline")}
               </span>
             </span>
           </Link>
@@ -223,7 +223,7 @@ export function Header() {
               <div>
                 <p className="eyebrow">{t("common.search")}</p>
                 <h3 className="text-[26px] font-semibold tracking-tighter2 text-brand-text">
-                  Search products, solutions and projects
+                  {t("common.searchResults")}
                 </h3>
               </div>
               <button
@@ -242,13 +242,15 @@ export function Header() {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 className="w-full bg-transparent text-sm outline-none placeholder:text-brand-muted/70"
-                placeholder="Type a keyword to filter cards"
+                placeholder={t("common.searchPlaceholder")}
               />
             </label>
 
             <div className="mt-4 flex items-center justify-between gap-3 text-[13px] text-brand-muted">
-              <span>Try: Street Light, Solar, Facade, Stadium, OEM</span>
-              <span>{filtered.length} results</span>
+              <span>{t("common.tryKeywords")}</span>
+              <span>
+                {filtered.length} {t("common.results")}
+              </span>
             </div>
 
             <div className="mt-5 grid max-h-[52vh] gap-3 overflow-auto pr-1">
@@ -275,7 +277,7 @@ export function Header() {
                 ))
               ) : (
                 <div className="rounded-[20px] border border-brand-line bg-[#f8fbff] p-6 text-sm text-brand-muted">
-                  No results found.
+                  {t("common.noResults")}
                 </div>
               )}
             </div>
@@ -345,7 +347,7 @@ function MenuItem({
         {hasChildren ? <ChevronDownIcon className="h-4 w-4" /> : null}
       </Link>
       {hasChildren ? (
-        <div className="absolute left-0 top-[calc(100%+12px)] z-50 min-w-[320px] rounded-[22px] border border-white/10 bg-[#071128] p-2 shadow-card opacity-0 invisible translate-y-2 pointer-events-none transition-[opacity,transform,visibility] duration-150 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
+        <div className="absolute left-0 top-[calc(100%+12px)] z-50 min-w-[320px] rounded-[22px] border border-brand-line bg-white p-2 shadow-[0_20px_60px_rgba(8,26,59,0.16)] opacity-0 invisible pointer-events-none transition-opacity duration-150 group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible group-focus-within:pointer-events-auto">
           <div className="grid max-h-[52vh] gap-1 overflow-auto pr-1">{children}</div>
         </div>
       ) : null}
@@ -363,7 +365,7 @@ function SubMenuItem({
   return (
     <Link
       href={href}
-      className="rounded-2xl px-4 py-3 text-left text-sm text-white/88 transition hover:bg-white/8 hover:text-white"
+      className="rounded-2xl px-4 py-3 text-left text-sm text-brand-text transition hover:bg-brand-background hover:text-brand-deep"
     >
       {children}
     </Link>

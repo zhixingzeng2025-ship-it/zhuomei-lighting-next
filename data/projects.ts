@@ -6,6 +6,16 @@ export type ProjectItem = {
   image: string;
 };
 
+export function projectKeyForSlug(slug: string) {
+  const map: Record<string, string> = {
+    "road-lighting-dubai": "road",
+    "commercial-plaza-riyadh": "plaza",
+    "landscape-park-singapore": "landscape",
+    "building-facade-london": "facade",
+  };
+  return map[slug] || "road";
+}
+
 export const projects: ProjectItem[] = [
   {
     slug: "road-lighting-dubai",

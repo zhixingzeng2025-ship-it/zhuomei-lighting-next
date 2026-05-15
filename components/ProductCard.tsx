@@ -31,7 +31,7 @@ export function ProductCard({ product, href = "/products" }: ProductCardProps) {
         </h3>
         <p className="text-sm leading-7 text-brand-muted">{product.description}</p>
         <Link href={href} className="action-pill w-fit border border-brand-blue/15 bg-brand-blue/8 text-brand-deep hover:bg-brand-blue/12">
-          View Products
+          {t("common.viewProducts")}
           <ArrowRightIcon className="h-4 w-4" />
         </Link>
       </div>

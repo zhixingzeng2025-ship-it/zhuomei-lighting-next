@@ -1,52 +1,57 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 import { siteConfig } from "@/data/site";
 
-const footerGroups = [
-  {
-    title: "Products",
-    items: [
-      { label: "Street Light", href: "/products" },
-      { label: "Solar Street Light", href: "/products" },
-      { label: "Flood Light", href: "/products" },
-      { label: "Solar Flood Light", href: "/products" },
-      { label: "Garden Light", href: "/products" },
-      { label: "High Bay Light", href: "/products" },
-      { label: "Wall Washer Light", href: "/products" },
-    ],
-  },
-  {
-    title: "Solutions",
-    items: [
-      { label: "Road Lighting", href: "/solutions" },
-      { label: "Solar Lighting", href: "/solutions" },
-      { label: "Landscape Lighting", href: "/solutions" },
-      { label: "Building Facade Lighting", href: "/solutions" },
-      { label: "Industrial Lighting", href: "/solutions" },
-    ],
-  },
-  {
-    title: "Support",
-    items: [
-      { label: "Catalog Download", href: "/contact" },
-      { label: "Installation Guide", href: "/contact" },
-      { label: "FAQ", href: "/contact" },
-      { label: "Warranty", href: "/contact" },
-      { label: "Contact Support", href: "/contact" },
-    ],
-  },
-  {
-    title: "Company",
-    items: [
-      { label: "About Us", href: "/about" },
-      { label: "Factory", href: "/about" },
-      { label: "Certifications", href: "/about" },
-      { label: "Projects", href: "/projects" },
-      { label: "News", href: "/about" },
-    ],
-  },
-];
-
 export function Footer() {
+  const { t } = useLanguage();
+
+  const footerGroups = [
+    {
+      title: t("footer.products"),
+      items: [
+        { label: t("footer.streetLight"), href: "/products" },
+        { label: t("footer.solarStreetLight"), href: "/products" },
+        { label: t("footer.floodLight"), href: "/products" },
+        { label: t("footer.solarFloodLight"), href: "/products" },
+        { label: t("footer.gardenLight"), href: "/products" },
+        { label: t("footer.highBayLight"), href: "/products" },
+        { label: t("footer.wallWasherLight"), href: "/products" },
+      ],
+    },
+    {
+      title: t("footer.solutions"),
+      items: [
+        { label: t("footer.roadLighting"), href: "/solutions" },
+        { label: t("footer.solarLighting"), href: "/solutions" },
+        { label: t("footer.landscapeLighting"), href: "/solutions" },
+        { label: t("footer.buildingFacadeLighting"), href: "/solutions" },
+        { label: t("footer.industrialLighting"), href: "/solutions" },
+      ],
+    },
+    {
+      title: t("footer.support"),
+      items: [
+        { label: t("footer.catalogDownload"), href: "/contact" },
+        { label: t("footer.installationGuide"), href: "/contact" },
+        { label: t("footer.faq"), href: "/contact" },
+        { label: t("footer.warranty"), href: "/contact" },
+        { label: t("footer.contactSupport"), href: "/contact" },
+      ],
+    },
+    {
+      title: t("footer.company"),
+      items: [
+        { label: t("footer.aboutUs"), href: "/about" },
+        { label: t("footer.factory"), href: "/about" },
+        { label: t("footer.certifications"), href: "/about" },
+        { label: t("footer.projects"), href: "/projects" },
+        { label: t("footer.news"), href: "/about" },
+      ],
+    },
+  ];
+
   return (
     <footer className="border-t border-white/8 bg-[#061229] text-white">
       <div className="page-container py-16">
@@ -58,12 +63,10 @@ export function Footer() {
               </span>
               <div className="grid gap-0.5">
                 <strong className="text-[16px] font-extrabold tracking-[0.06em]">{siteConfig.brand}</strong>
-                <span className="text-[12px] tracking-[0.04em] text-white/65">{siteConfig.tagline}</span>
+                <span className="text-[12px] tracking-[0.04em] text-white/65">{t("site.brandTagline")}</span>
               </div>
             </div>
-            <p className="mt-5 max-w-sm text-sm leading-7 text-white/70">
-              Premium outdoor lighting for engineering projects, distributors and international buyers.
-            </p>
+            <p className="mt-5 max-w-sm text-sm leading-7 text-white/70">{t("footer.description")}</p>
           </div>
 
           {footerGroups.map((group) => (
@@ -79,8 +82,8 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col gap-3 border-t border-white/8 pt-6 text-sm text-white/55 sm:flex-row sm:items-center sm:justify-between">
-          <span>© 2026 ZHUOMEI LIGHTING. All rights reserved.</span>
-          <span>Outdoor lighting brand website homepage prototype.</span>
+          <span>{t("footer.copyright")}</span>
+          <span>{t("footer.prototype")}</span>
         </div>
       </div>
     </footer>

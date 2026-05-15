@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHeader } from "@/components/PageHeader";
+import { LocalizedPageHeader } from "@/components/LocalizedPageHeader";
 import { products } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 
@@ -13,12 +13,12 @@ export default function ProductsPage() {
   return (
     <section className="section-shell">
       <div className="page-container space-y-10">
-        <PageHeader
-          eyebrow="Products"
-          title="Outdoor Lighting Product Categories"
-          description="A clean product browsing structure for engineering buyers, distributors and project procurement teams."
+        <LocalizedPageHeader
+          eyebrowKey="sections.productsEyebrow"
+          titleKey="sections.productsTitle"
+          descriptionKey="sections.productsDescription"
           actionHref="/contact"
-          actionLabel="Request Catalog"
+          actionLabelKey="common.quickInquiry"
         />
 
         <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
