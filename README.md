@@ -31,9 +31,13 @@ npm start
 - Update product data in `data/products.ts`
 - Update solution data in `data/solutions.ts`
 - Update project data in `data/projects.ts`
+- Update contact details in `data/site.ts`
 
 ## Contact form storage and reminders
 
 - Form submissions are posted to `/api/inquiry`
 - Data is stored in a PostgreSQL table named `inquiries`
 - If `RESEND_API_KEY`, `NOTIFICATION_EMAIL_FROM` and `NOTIFICATION_EMAIL_TO` are configured, an email notification is sent automatically
+- Current contact email: `shine@zomeiled.com`
+- Current WhatsApp: `+86 177 7966 7635`
+- Current phone: `+86 17779667635`

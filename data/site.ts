@@ -19,10 +19,10 @@ export const siteConfig = {
     { value: "5 Years", label: "Warranty", labelKey: "site.stats.warranty" },
   ],
   contact: {
-    whatsapp: "+86 138 0000 0000",
-    whatsappLink: "https://wa.me/8613800000000",
-    email: "sales@zhuomeilighting.com",
-    phone: "+86 138 0000 0000",
+    whatsapp: "+86 177 7966 7635",
+    whatsappLink: "https://wa.me/8617779667635",
+    email: "shine@zomeiled.com",
+    phone: "+86 17779667635",
   },
 };
 
