@@ -22,8 +22,7 @@ npm start
 2. Import the repo in Vercel.
 3. Keep the default build command: `npm run build`.
 4. Keep the output preset as Next.js.
-5. Add a Vercel Postgres/Neon integration, or fill `POSTGRES_URL` / `DATABASE_URL`.
-6. Optionally add Resend variables for inquiry notifications.
+5. Add `FORMSPREE_ENDPOINT` for the inquiry form.
 
 ## Content update
 
@@ -33,12 +32,11 @@ npm start
 - Update project data in `data/projects.ts`
 - Update contact details in `data/site.ts`
 
-## Contact form storage and reminders
+## Contact form
 
-- Form submissions are posted to `/api/inquiry`
-- Data is stored in a PostgreSQL table named `inquiries`
-- Database connection accepts `POSTGRES_URL`, `DATABASE_URL`, `POSTGRES_URL_NON_POOLING`, or `POSTGRES_HOST` + `POSTGRES_USER` + `POSTGRES_PASSWORD` + `POSTGRES_DATABASE`
-- If `RESEND_API_KEY`, `NOTIFICATION_EMAIL_FROM` and `NOTIFICATION_EMAIL_TO` are configured, an email notification is sent automatically
+- Form submissions are posted to `/api/contact`
+- The recommended free setup is Formspree. Create a Formspree form that sends to `shine@zomeiled.com`, then set `FORMSPREE_ENDPOINT` in Vercel, for example `https://formspree.io/f/your-form-id`
+- If `FORMSPREE_ENDPOINT` is missing, `/api/contact` can still fall back to an external `BACKEND_CONTACT_URL` or the legacy PostgreSQL inquiry API when database variables are configured
 - Current contact email: `shine@zomeiled.com`
 - Current WhatsApp: `+86 177 7966 7635`
 - Current phone: `+86 17779667635`
