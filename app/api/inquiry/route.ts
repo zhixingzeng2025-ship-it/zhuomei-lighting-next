@@ -21,6 +21,14 @@ function escapeHtml(value?: string) {
     .replace(/'/g, "&#039;");
 }
 
+function hasPostgresConfig() {
+  return Boolean(
+    process.env.POSTGRES_URL ||
+      process.env.POSTGRES_URL_NON_POOLING ||
+      (process.env.POSTGRES_HOST && process.env.POSTGRES_USER && process.env.POSTGRES_PASSWORD && process.env.POSTGRES_DATABASE)
+  );
+}
+
 async function ensureTable() {
   await sql`
     CREATE TABLE IF NOT EXISTS inquiries (
@@ -139,21 +147,45 @@ export async function POST(request: Request) {
       );
     }
 
-    await ensureTable();
-
-    await sql`
-      INSERT INTO inquiries (name, email, company, country, product, details, source, user_agent)
-      VALUES (
-        ${name},
-        ${email},
-        ${body.company?.trim() || null},
-        ${body.country?.trim() || null},
-        ${body.product?.trim() || null},
-        ${body.details?.trim() || null},
-        'website',
-        ${request.headers.get("user-agent") || null}
+    if (!hasPostgresConfig()) {
+      return NextResponse.json(
+        {
+          ok: false,
+          code: "DATABASE_NOT_CONFIGURED",
+          message: "询盘数据库未配置，请在 Vercel 绑定 Postgres 或添加 POSTGRES_URL 环境变量。",
+        },
+        { status: 500 }
       );
-    `;
+    }
+
+    try {
+      await ensureTable();
+
+      await sql`
+        INSERT INTO inquiries (name, email, company, country, product, details, source, user_agent)
+        VALUES (
+          ${name},
+          ${email},
+          ${body.company?.trim() || null},
+          ${body.country?.trim() || null},
+          ${body.product?.trim() || null},
+          ${body.details?.trim() || null},
+          'website',
+          ${request.headers.get("user-agent") || null}
+        );
+      `;
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Unknown database error";
+      console.error("Failed to save inquiry to database", error);
+      return NextResponse.json(
+        {
+          ok: false,
+          code: "DATABASE_SAVE_FAILED",
+          message: `询盘数据库保存失败：${message}`,
+        },
+        { status: 500 }
+      );
+    }
 
     try {
       await sendNotificationEmail({ ...body, name, email });
