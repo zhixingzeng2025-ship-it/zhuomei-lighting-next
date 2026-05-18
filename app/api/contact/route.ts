@@ -11,6 +11,8 @@ type ContactPayload = {
   details?: string;
 };
 
+const DEFAULT_FORMSPREE_ENDPOINT = "https://formspree.io/f/xgoqenro";
+
 function isUsableBackendUrl(value?: string) {
   if (!value) return false;
   if (value.includes("your-backend.example.com")) return false;
@@ -34,7 +36,7 @@ function isUsableFormspreeEndpoint(value?: string) {
 }
 
 async function sendWithFormspree(data: ContactPayload) {
-  const endpoint = process.env.FORMSPREE_ENDPOINT;
+  const endpoint = process.env.FORMSPREE_ENDPOINT || DEFAULT_FORMSPREE_ENDPOINT;
 
   if (!isUsableFormspreeEndpoint(endpoint)) {
     return NextResponse.json(
@@ -132,7 +134,7 @@ export async function POST(request: Request) {
       );
     }
 
-    if (isUsableFormspreeEndpoint(process.env.FORMSPREE_ENDPOINT)) {
+    if (isUsableFormspreeEndpoint(process.env.FORMSPREE_ENDPOINT || DEFAULT_FORMSPREE_ENDPOINT)) {
       return sendWithFormspree(data);
     }
 

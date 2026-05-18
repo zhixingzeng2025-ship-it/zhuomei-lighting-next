@@ -22,7 +22,7 @@ npm start
 2. Import the repo in Vercel.
 3. Keep the default build command: `npm run build`.
 4. Keep the output preset as Next.js.
-5. Add `FORMSPREE_ENDPOINT` for the inquiry form.
+5. The inquiry form uses Formspree endpoint `https://formspree.io/f/xgoqenro` by default. Optionally set `FORMSPREE_ENDPOINT` in Vercel to override it.
 
 ## Content update
 
@@ -35,7 +35,7 @@ npm start
 ## Contact form
 
 - Form submissions are posted to `/api/contact`
-- The recommended free setup is Formspree. Create a Formspree form that sends to `shine@zomeiled.com`, then set `FORMSPREE_ENDPOINT` in Vercel, for example `https://formspree.io/f/your-form-id`
+- The recommended free setup is Formspree. The current Formspree endpoint is `https://formspree.io/f/xgoqenro`, which should send notifications to `shine@zomeiled.com`
 - If `FORMSPREE_ENDPOINT` is missing, `/api/contact` can still fall back to an external `BACKEND_CONTACT_URL` or the legacy PostgreSQL inquiry API when database variables are configured
 - Current contact email: `shine@zomeiled.com`
 - Current WhatsApp: `+86 177 7966 7635`
