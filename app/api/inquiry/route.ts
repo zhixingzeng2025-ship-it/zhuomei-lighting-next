@@ -1,7 +1,16 @@
 import { NextResponse } from "next/server";
-import { sql } from "@vercel/postgres";
+import {
+  createClient,
+  createPool,
+  type QueryResult,
+  type QueryResultRow,
+  type VercelClient,
+  type VercelPool,
+} from "@vercel/postgres";
 
 export const runtime = "nodejs";
+
+type Primitive = string | number | boolean | undefined | null;
 
 type InquiryPayload = {
   name?: string;
@@ -21,16 +30,74 @@ function escapeHtml(value?: string) {
     .replace(/'/g, "&#039;");
 }
 
-function hasPostgresConfig() {
-  return Boolean(
+let cachedPool: VercelPool | undefined;
+let cachedPoolConnectionString = "";
+
+function buildPostgresUrlFromParts() {
+  const host = process.env.POSTGRES_HOST;
+  const user = process.env.POSTGRES_USER;
+  const password = process.env.POSTGRES_PASSWORD;
+  const database = process.env.POSTGRES_DATABASE;
+
+  if (!host || !user || !password || !database) return undefined;
+
+  const port = process.env.POSTGRES_PORT ? `:${process.env.POSTGRES_PORT}` : "";
+  return `postgresql://${encodeURIComponent(user)}:${encodeURIComponent(password)}@${host}${port}/${encodeURIComponent(database)}?sslmode=require`;
+}
+
+function getPostgresConnectionString() {
+  return (
     process.env.POSTGRES_URL ||
+    process.env.DATABASE_URL ||
       process.env.POSTGRES_URL_NON_POOLING ||
-      (process.env.POSTGRES_HOST && process.env.POSTGRES_USER && process.env.POSTGRES_PASSWORD && process.env.POSTGRES_DATABASE)
+    buildPostgresUrlFromParts()
   );
 }
 
+function isLocalhostConnectionString(connectionString: string) {
+  try {
+    const url = new URL(connectionString.replace(/^postgres(?:ql)?:\/\//, "https://"));
+    return url.hostname === "localhost" || url.hostname === "127.0.0.1";
+  } catch {
+    return false;
+  }
+}
+
+function canUseConnectionPool(connectionString: string) {
+  return isLocalhostConnectionString(connectionString) || connectionString.includes("-pooler.");
+}
+
+async function runSql<O extends QueryResultRow>(
+  strings: TemplateStringsArray,
+  ...values: Primitive[]
+): Promise<QueryResult<O>> {
+  const connectionString = getPostgresConnectionString();
+
+  if (!connectionString) {
+    throw new Error("Missing POSTGRES_URL or DATABASE_URL.");
+  }
+
+  if (canUseConnectionPool(connectionString)) {
+    if (!cachedPool || cachedPoolConnectionString !== connectionString) {
+      cachedPool = createPool({ connectionString });
+      cachedPoolConnectionString = connectionString;
+    }
+
+    return cachedPool.sql<O>(strings, ...values);
+  }
+
+  const client: VercelClient = createClient({ connectionString });
+  await client.connect();
+
+  try {
+    return await client.sql<O>(strings, ...values);
+  } finally {
+    await client.end();
+  }
+}
+
 async function ensureTable() {
-  await sql`
+  await runSql`
     CREATE TABLE IF NOT EXISTS inquiries (
       id BIGSERIAL PRIMARY KEY,
       name TEXT NOT NULL,
@@ -147,12 +214,12 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!hasPostgresConfig()) {
+    if (!getPostgresConnectionString()) {
       return NextResponse.json(
         {
           ok: false,
           code: "DATABASE_NOT_CONFIGURED",
-          message: "询盘数据库未配置，请在 Vercel 绑定 Postgres 或添加 POSTGRES_URL 环境变量。",
+          message: "询盘数据库未配置，请在 Vercel 绑定 Postgres，或添加 POSTGRES_URL / DATABASE_URL 环境变量。",
         },
         { status: 500 }
       );
@@ -161,7 +228,7 @@ export async function POST(request: Request) {
     try {
       await ensureTable();
 
-      await sql`
+      await runSql`
         INSERT INTO inquiries (name, email, company, country, product, details, source, user_agent)
         VALUES (
           ${name},
