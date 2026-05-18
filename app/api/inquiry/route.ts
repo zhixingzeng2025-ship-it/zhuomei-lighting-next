@@ -105,7 +105,7 @@ async function sendNotificationEmail(payload: Required<Pick<InquiryPayload, "nam
     </div>
   `;
 
-  await fetch("https://api.resend.com/emails", {
+  const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
@@ -119,6 +119,11 @@ async function sendNotificationEmail(payload: Required<Pick<InquiryPayload, "nam
       reply_to: payload.email,
     }),
   });
+
+  if (!response.ok) {
+    const text = await response.text().catch(() => "");
+    console.warn("Failed to send inquiry notification email", response.status, text);
+  }
 }
 
 export async function POST(request: Request) {
@@ -150,7 +155,11 @@ export async function POST(request: Request) {
       );
     `;
 
-    await sendNotificationEmail({ ...body, name, email });
+    try {
+      await sendNotificationEmail({ ...body, name, email });
+    } catch (error) {
+      console.warn("Inquiry saved, but notification email failed", error);
+    }
 
     return NextResponse.json({
       ok: true,
