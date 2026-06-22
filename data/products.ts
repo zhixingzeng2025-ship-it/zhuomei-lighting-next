@@ -1,3 +1,10 @@
+import {
+  collectAssets,
+  mapProductToUnified,
+  withPublicStatus,
+  type ZomeiProductFields,
+} from "./zomei-unified";
+
 export type ProductItem = {
   slug: string;
   name: string;
@@ -9,7 +16,7 @@ export type ProductItem = {
   features: string[];
   applications: string[];
   specs: Array<{ label: string; value: string }>;
-};
+} & ZomeiProductFields;
 
 export function productKeyForSlug(slug: string) {
   const map: Record<string, string> = {
@@ -28,7 +35,7 @@ export function productKeyForSlug(slug: string) {
   return map[slug] || "streetLight";
 }
 
-export const products: ProductItem[] = [
+const productMocks = [
   {
     slug: "street-light",
     name: "Street Light",
@@ -254,3 +261,6 @@ export const products: ProductItem[] = [
     ],
   },
 ];
+
+export const products: ProductItem[] = withPublicStatus(productMocks.map(mapProductToUnified));
+export const productAssets = collectAssets(products);

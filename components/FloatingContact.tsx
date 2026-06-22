@@ -1,11 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import { DocIcon, MailIcon, PhoneIcon, UpIcon, WhatsAppIcon } from "./Icons";
+import { DocIcon, MailIcon, UpIcon, WhatsAppIcon } from "./Icons";
 import { siteConfig } from "@/data/site";
 
 export function FloatingContact() {
+  const pathname = usePathname();
+  const isProductDetail = pathname.startsWith("/products/");
+
   useEffect(() => {
     const onScroll = () => {
       const mobileBar = document.getElementById("mobile-contact-bar");
@@ -20,7 +24,7 @@ export function FloatingContact() {
 
   return (
     <>
-      <aside className="floating-contact">
+      <aside className={isProductDetail ? "hidden" : "floating-contact"}>
         <a href={siteConfig.contact.whatsappLink} target="_blank" rel="noreferrer">
           <WhatsAppIcon className="h-5 w-5 text-brand-deep" />
           <span>WhatsApp</span>

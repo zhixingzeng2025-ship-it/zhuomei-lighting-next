@@ -1,3 +1,10 @@
+import {
+  collectAssets,
+  mapCaseToUnified,
+  withPublicStatus,
+  type ZomeiCaseFields,
+} from "./zomei-unified";
+
 export type ProjectItem = {
   slug: string;
   name: string;
@@ -6,7 +13,7 @@ export type ProjectItem = {
   image: string;
   overview: string;
   highlights: string[];
-};
+} & ZomeiCaseFields;
 
 export function projectKeyForSlug(slug: string) {
   const map: Record<string, string> = {
@@ -18,7 +25,7 @@ export function projectKeyForSlug(slug: string) {
   return map[slug] || "road";
 }
 
-export const projects: ProjectItem[] = [
+const projectMocks = [
   {
     slug: "road-lighting-dubai",
     name: "Road Lighting Project",
@@ -76,3 +83,6 @@ export const projects: ProjectItem[] = [
     ],
   },
 ];
+
+export const projects: ProjectItem[] = withPublicStatus(projectMocks.map(mapCaseToUnified));
+export const projectAssets = collectAssets(projects);

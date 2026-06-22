@@ -1,3 +1,10 @@
+import {
+  collectAssets,
+  mapSolutionToUnified,
+  withPublicStatus,
+  type ZomeiSolutionFields,
+} from "./zomei-unified";
+
 export type SolutionItem = {
   slug: string;
   title: string;
@@ -6,7 +13,7 @@ export type SolutionItem = {
   overview: string;
   highlights: string[];
   applications: string[];
-};
+} & ZomeiSolutionFields;
 
 export function solutionKeyForSlug(slug: string) {
   const map: Record<string, string> = {
@@ -22,7 +29,7 @@ export function solutionKeyForSlug(slug: string) {
   return map[slug] || "roadStreet";
 }
 
-export const solutions: SolutionItem[] = [
+const solutionMocks = [
   {
     slug: "road-street-lighting",
     title: "Road & Street Lighting",
@@ -136,3 +143,6 @@ export const solutions: SolutionItem[] = [
     applications: ["City streets", "Public squares", "Pedestrian spaces"],
   },
 ];
+
+export const solutions: SolutionItem[] = withPublicStatus(solutionMocks.map(mapSolutionToUnified));
+export const solutionAssets = collectAssets(solutions);
