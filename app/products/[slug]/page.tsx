@@ -1,28 +1,25 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ProductDetailView } from "@/components/ProductDetailView";
-import { products, productKeyForSlug } from "@/data/products";
-import { projects } from "@/data/projects";
+import { ProductCategoryList } from "@/components/ProductCategoryList";
+import { getProductGroup, productGroups } from "@/data/productGroups";
 
 export const dynamic = "force-static";
 
 export function generateStaticParams() {
-  return products.map((product) => ({ slug: product.slug }));
+  return productGroups.map((group) => ({ slug: group.slug }));
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const product = products.find((item) => item.slug === params.slug);
+  const group = getProductGroup(params.slug);
   return {
-    title: product?.name ? `${product.name} | ZHUOMEI LIGHTING` : "Product | ZHUOMEI LIGHTING",
-    description: product?.description,
+    title: group ? `${group.labels.zh} | ZOMEI` : "产品 | ZOMEI",
+    description: group ? `浏览 ZOMEI ${group.labels.zh} 产品系列。` : "浏览 ZOMEI 产品系列。",
   };
 }
 
-export default function ProductDetailPage({ params }: { params: { slug: string } }) {
-  const product = products.find((item) => item.slug === params.slug);
-  if (!product) notFound();
+export default function ProductCategoryPage({ params }: { params: { slug: string } }) {
+  const group = getProductGroup(params.slug);
+  if (!group) notFound();
 
-  const productKey = productKeyForSlug(product.slug);
-
-  return <ProductDetailView product={product} titleKey={`products.${productKey}`} relatedProjects={projects} />;
+  return <ProductCategoryList group={group} />;
 }

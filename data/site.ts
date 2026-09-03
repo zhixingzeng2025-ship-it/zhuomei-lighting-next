@@ -1,5 +1,5 @@
 export const siteConfig = {
-  brand: "ZHUOMEI LIGHTING",
+  brand: "ZOMEILED",
   tagline: "Outdoor lighting for global projects",
   description:
     "Professional outdoor lighting solutions for roads, landscapes, buildings and industrial spaces.",

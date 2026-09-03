@@ -32,7 +32,7 @@ export function LanguageSwitcher() {
     <div ref={ref} className="relative">
       <button
         type="button"
-        className="inline-flex h-10 items-center gap-1 rounded-full border border-white/10 bg-white/10 px-4 text-sm font-semibold text-white backdrop-blur-xl transition hover:bg-white/15"
+        className="inline-flex h-10 items-center gap-1 border border-brand-line bg-white px-4 text-sm font-semibold text-brand-text backdrop-blur-xl transition hover:bg-brand-background"
         aria-haspopup="listbox"
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
@@ -44,14 +44,14 @@ export function LanguageSwitcher() {
       {open ? (
         <ul
           role="listbox"
-          className="absolute right-0 top-[calc(100%+10px)] z-50 min-w-28 rounded-[18px] border border-brand-line bg-white p-2 shadow-[0_20px_60px_rgba(8,26,59,0.16)]"
+          className="absolute right-0 top-[calc(100%+10px)] z-50 min-w-28 border border-brand-line bg-white p-2 shadow-[0_20px_60px_rgba(8,26,59,0.16)]"
         >
           {options.map((option) => (
             <li key={option.locale}>
               <button
                 type="button"
                 className={[
-                  "block w-full rounded-2xl px-4 py-2 text-left text-sm font-semibold transition hover:bg-brand-background",
+                  "block w-full px-4 py-2 text-left text-sm font-semibold transition hover:bg-brand-background",
                   option.locale === locale ? "text-brand-deep" : "text-brand-text",
                 ].join(" ")}
                 onClick={() => {

@@ -5,9 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { siteConfig } from "@/data/site";
-import { products } from "@/data/products";
-import { projects } from "@/data/projects";
+import { productKeyForSlug, products } from "@/data/products";
+import { productGroups } from "@/data/productGroups";
+import { projectCategories, projects } from "@/data/projects";
 import { solutions } from "@/data/solutions";
+import { blogArticles, getBlogCategoryLabel } from "@/data/blog";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ArrowRightIcon, ChevronDownIcon, CloseIcon, MenuIcon, SearchIcon } from "./Icons";
 
@@ -19,13 +21,59 @@ type SearchItem = {
   keywords: string[];
 };
 
+const productMenuGroups = {
+  en: [
+    { label: "Linear Lighting", href: "/products/linear-lighting" },
+    { label: "Projector Light", href: "/products/projector-light" },
+    { label: "Point Light Source", href: "/products/point-light-source" },
+    { label: "Wall Lamp", href: "/products/wall-lamp" },
+    { label: "General Lighting", href: "/products/general-lighting" },
+    { label: "Specialty Lighting", href: "/products/specialty-lighting" },
+  ],
+  zh: [
+    { label: "线形照明", href: "/products/linear-lighting" },
+    { label: "投光灯", href: "/products/projector-light" },
+    { label: "点光源", href: "/products/point-light-source" },
+    { label: "壁灯", href: "/products/wall-lamp" },
+    { label: "常规照明", href: "/products/general-lighting" },
+    { label: "特种照明", href: "/products/specialty-lighting" },
+  ],
+  ru: [
+    { label: "Линейное освещение", href: "/products/linear-lighting" },
+    { label: "Проекторный светильник", href: "/products/projector-light" },
+    { label: "Точечный источник", href: "/products/point-light-source" },
+    { label: "Настенный светильник", href: "/products/wall-lamp" },
+    { label: "Общее освещение", href: "/products/general-lighting" },
+    { label: "Специальное освещение", href: "/products/specialty-lighting" },
+  ],
+};
+
 export function Header() {
   const pathname = usePathname();
-  const { t } = useLanguage();
+  const { locale, t } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
   const searchPanelRef = useRef<HTMLDivElement>(null);
+  const groupedProducts = productMenuGroups[locale as keyof typeof productMenuGroups] || productMenuGroups.en;
+  const projectMenuCategories = useMemo(() => {
+    return projectCategories.map((category) => ({
+      key: category.key,
+      label: locale === "en" ? category.labelEn : locale === "ru" ? category.labelRu : category.label,
+      href: category.key === "all" ? "/projects" : `/projects?category=${category.key}`,
+    }));
+  }, [locale]);
+  const blogMenuCategories = useMemo(() => {
+    const sourceCategories = Array.from(new Set(blogArticles.map((article) => article.category)));
+    return [
+      { key: "all", label: t("blog.allCategory") as string, href: "/blog" },
+      ...sourceCategories.map((category) => ({
+        key: category,
+        label: getBlogCategoryLabel(category, locale as "en" | "zh" | "ru"),
+        href: `/blog?category=${encodeURIComponent(category)}`,
+      })),
+    ];
+  }, [locale, t]);
 
   const searchItems = useMemo<SearchItem[]>(() => {
     return [
@@ -34,7 +82,7 @@ export function Header() {
         return {
           label,
           subtitle: item.description,
-          href: `/products#${item.slug}`,
+          href: `/products/${productGroups.find((group) => group.productSlugs.includes(item.slug))?.slug || "linear-lighting"}`,
           kind: "Product" as const,
           keywords: [label, item.name, item.cn, item.description, "product"],
         };
@@ -118,23 +166,29 @@ export function Header() {
   return (
     <header
       id="site-header"
-      className="fixed inset-x-0 top-0 z-[70] border-b border-white/10 bg-[#071128]/80 backdrop-blur-xl"
+      className="fixed inset-x-0 top-0 z-[70] border-b border-brand-line bg-white/95 backdrop-blur-xl"
     >
       <div className="page-container">
-        <div className="flex h-[92px] items-center gap-3">
+        <div className="flex h-[76px] items-center gap-2 md:h-[92px] md:gap-3">
           <Link
             href="/"
             aria-label="Go to homepage"
-            className="group flex min-w-0 items-center gap-3 rounded-2xl px-1 py-1 text-white transition hover:opacity-90"
+            className="group flex min-w-0 items-center gap-2 px-1 py-1 text-brand-text transition hover:opacity-90 md:gap-3"
           >
-            <span className="grid h-12 w-12 flex-none place-items-center rounded-2xl bg-gradient-to-br from-brand-blue to-brand-deep text-[13px] font-extrabold tracking-[0.12em] shadow-glass transition group-hover:scale-[1.02]">
-              ZL
+            <span className="grid h-10 w-10 flex-none place-items-center overflow-hidden bg-transparent transition group-hover:scale-[1.02] md:h-12 md:w-12">
+              <img
+                src="/images/brand/zomei-logo-2026.png"
+                alt=""
+                width={48}
+                height={48}
+                className="h-10 w-10 object-contain md:h-12 md:w-12"
+              />
             </span>
             <span className="grid min-w-0 gap-0.5">
-              <strong className="truncate text-[15px] font-extrabold tracking-[0.06em] sm:text-[16px]">
+              <strong className="truncate text-[14px] font-extrabold tracking-[0.06em] sm:text-[16px]">
                 {siteConfig.brand}
               </strong>
-              <span className="hidden text-[12px] tracking-[0.04em] text-white/65 md:block">
+              <span className="hidden text-[12px] tracking-[0.04em] text-brand-muted md:block">
                 {t("site.brandTagline")}
               </span>
             </span>
@@ -142,7 +196,7 @@ export function Header() {
 
           <button
             type="button"
-            className="ml-auto inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white transition hover:bg-white/15 md:hidden"
+            className="ml-auto inline-flex h-10 w-10 items-center justify-center border border-brand-line bg-white text-brand-text transition hover:bg-brand-background md:hidden"
             aria-label="Open menu"
             onClick={() => setMenuOpen((value) => !value)}
           >
@@ -151,15 +205,15 @@ export function Header() {
 
           <nav
             className={[
-              "absolute left-3 right-3 top-[92px] grid gap-1 rounded-[24px] border border-white/10 bg-[#071128]/96 p-4 shadow-card transition md:static md:ml-8 md:flex md:flex-1 md:items-center md:justify-start md:gap-6 md:border-0 md:bg-transparent md:p-0 md:shadow-none",
+              "absolute left-3 right-3 top-[76px] grid max-h-[calc(100vh-92px)] gap-1 overflow-auto border border-brand-line bg-white p-4 shadow-card transition md:static md:ml-10 md:flex md:max-h-none md:flex-1 md:items-center md:justify-center md:gap-9 md:overflow-visible md:border-0 md:bg-transparent md:p-0 md:shadow-none xl:gap-12",
               menuOpen ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0 md:pointer-events-auto md:translate-y-0 md:opacity-100",
             ].join(" ")}
             aria-label="Primary navigation"
           >
             <MenuItem label={t("menu.products")} href="/products">
-              {products.map((item) => (
-                <SubMenuItem key={item.slug} href={`/products#${item.slug}`}>
-                  <span>{t(`products.${productKeyForSlug(item.slug)}`)}</span>
+              {groupedProducts.map((item) => (
+                <SubMenuItem key={item.href} href={item.href}>
+                  <span>{item.label}</span>
                 </SubMenuItem>
               ))}
             </MenuItem>
@@ -173,18 +227,22 @@ export function Header() {
             </MenuItem>
 
             <MenuItem label={t("menu.projects")} href="/projects">
-              {projects.map((item) => (
-                <SubMenuItem key={item.slug} href={`/projects#${item.slug}`}>
-                  <span>{t(`projects.${projectKeyForSlug(item.slug)}`)}</span>
+              {projectMenuCategories.map((item) => (
+                <SubMenuItem key={item.key} href={item.href}>
+                  <span>{item.label}</span>
                 </SubMenuItem>
               ))}
             </MenuItem>
 
+            <MenuItem label={t("menu.support")} href="/blog">
+              {blogMenuCategories.map((item) => (
+                <SubMenuItem key={item.key} href={item.href}>
+                  <span>{item.label}</span>
+                </SubMenuItem>
+              ))}
+            </MenuItem>
             <Link href="/about" className="nav-link py-3 md:py-0">
               {t("menu.about")}
-            </Link>
-            <Link href="/contact" className="nav-link py-3 md:py-0">
-              {t("menu.support")}
             </Link>
             <Link href="/contact" className="nav-link py-3 md:py-0">
               {t("menu.contact")}
@@ -203,7 +261,7 @@ export function Header() {
 
             <LanguageSwitcher />
 
-            <Link href="/contact" className="action-pill bg-gradient-to-r from-brand-blue to-[#77bfff] text-white shadow-[0_16px_34px_rgba(45,140,255,0.28)]">
+            <Link href="/contact" className="action-pill bg-brand-blue text-white shadow-[0_14px_28px_rgba(37,99,255,0.22)] hover:bg-brand-deep">
               {t("common.quickInquiry")}
             </Link>
           </div>
@@ -288,23 +346,6 @@ export function Header() {
   );
 }
 
-function productKeyForSlug(slug: string) {
-  const map: Record<string, string> = {
-    "street-light": "streetLight",
-    "solar-street-light": "solarStreetLight",
-    "flood-light": "floodLight",
-    "solar-flood-light": "solarFloodLight",
-    "solar-garden-light": "solarGardenLight",
-    "high-bay-light": "highBayLight",
-    "moisture-proof-lamps": "moistureProof",
-    "wall-washer-light": "wallWasher",
-    "linear-light": "linearLight",
-    "projector-light": "projectorLight",
-    "point-light-source": "pointLight",
-  };
-  return map[slug] || "streetLight";
-}
-
 function solutionKeyForSlug(slug: string) {
   const map: Record<string, string> = {
     "road-street-lighting": "roadStreet",
@@ -321,12 +362,10 @@ function solutionKeyForSlug(slug: string) {
 
 function projectKeyForSlug(slug: string) {
   const map: Record<string, string> = {
-    "road-lighting-dubai": "road",
-    "commercial-plaza-riyadh": "plaza",
-    "landscape-park-singapore": "landscape",
-    "building-facade-london": "facade",
+    "almaty-museum-of-arts-facade-lighting": "almatyMuseum",
+    "guangzhou-digital-culture-valley-lighting-design": "guangzhouDigitalCultureValley",
   };
-  return map[slug] || "road";
+  return map[slug] || slug;
 }
 
 function MenuItem({
@@ -341,14 +380,16 @@ function MenuItem({
   const hasChildren = Boolean(children);
 
   return (
-    <div className="group relative">
-      <Link href={href} className="nav-link flex items-center gap-1 py-3 md:py-0">
+    <div className="group relative flex justify-center">
+      <Link href={href} className="nav-link flex items-center justify-center gap-1 py-3 md:min-h-[92px] md:py-0">
         {label}
         {hasChildren ? <ChevronDownIcon className="h-4 w-4" /> : null}
       </Link>
       {hasChildren ? (
-        <div className="absolute left-0 top-[calc(100%+12px)] z-50 min-w-[320px] rounded-[22px] border border-brand-line bg-white p-2 shadow-[0_20px_60px_rgba(8,26,59,0.16)] opacity-0 invisible pointer-events-none transition-opacity duration-150 group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:visible group-focus-within:pointer-events-auto">
-          <div className="grid max-h-[52vh] gap-1 overflow-auto pr-1">{children}</div>
+        <div className="absolute left-1/2 top-[calc(100%-6px)] z-50 min-w-[230px] -translate-x-1/2 translate-y-1 opacity-0 invisible pointer-events-none transition-all duration-120 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto md:min-w-[250px]">
+          <div className="border border-brand-line bg-white p-1.5 shadow-[0_16px_42px_rgba(8,26,59,0.14)]">
+            <div className="grid max-h-[52vh] gap-1 overflow-auto">{children}</div>
+          </div>
         </div>
       ) : null}
     </div>
@@ -365,7 +406,7 @@ function SubMenuItem({
   return (
     <Link
       href={href}
-      className="rounded-2xl px-4 py-3 text-left text-sm text-brand-text transition hover:bg-brand-background hover:text-brand-deep"
+      className="block border border-transparent px-5 py-3.5 text-center text-[15px] font-semibold tracking-[0.04em] text-brand-text transition hover:border-brand-gold hover:bg-brand-gold hover:text-[#071225] focus-visible:border-brand-gold focus-visible:bg-brand-gold focus-visible:text-[#071225] focus-visible:outline-none"
     >
       {children}
     </Link>

@@ -3,16 +3,15 @@ import { LocalizedPageHeader } from "@/components/LocalizedPageHeader";
 import { AboutContent } from "@/components/AboutContent";
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description:
-    "Learn about ZHUOMEI LIGHTING's engineering-focused outdoor lighting capability, factory background and global project support.",
+  title: "关于我们",
+  description: "了解深圳卓美LED（ZOMEI Lighting）的建筑照明解决方案、多制造基地协同体系、品质保障、工程经验和国际项目服务能力。",
 };
 
 export const dynamic = "force-static";
 
 export default function AboutPage() {
   return (
-    <section className="section-shell bg-gradient-to-b from-white to-[#eef4fb]">
+    <section className="bg-gradient-to-b from-white to-[#eef4fb] py-14">
       <div className="page-container space-y-10">
         <LocalizedPageHeader
           eyebrowKey="pageHeader.aboutEyebrow"
@@ -20,6 +19,7 @@ export default function AboutPage() {
           descriptionKey="pageHeader.aboutDescription"
           actionHref="/contact"
           actionLabelKey="pageHeader.aboutAction"
+          image="/images/company/website-assets/reception-room.png"
         />
 
         <AboutContent />

@@ -10,14 +10,15 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          navy: "#081A3B",
-          blue: "#2D8CFF",
+          navy: "#071128",
+          blue: "#2563FF",
           deep: "#123A8D",
           sky: "#8CC8FF",
           line: "#E8EEF8",
           text: "#0F1729",
           muted: "#5A687F",
           background: "#F5F8FC",
+          gold: "#FFB13B",
         },
       },
       boxShadow: {
@@ -31,9 +32,9 @@ const config: Config = {
       },
       backgroundImage: {
         "hero-overlay":
-          "linear-gradient(90deg, rgba(8, 26, 59, 0.84) 0%, rgba(8, 26, 59, 0.4) 52%, rgba(8, 26, 59, 0.18) 100%)",
+          "linear-gradient(90deg, rgba(7, 17, 40, 0.82) 0%, rgba(7, 17, 40, 0.52) 42%, rgba(7, 17, 40, 0.08) 100%)",
         "hero-backdrop":
-          "linear-gradient(180deg, rgba(8, 26, 59, 0.38) 0%, rgba(8, 26, 59, 0.76) 100%), url('/images/hero.svg')",
+          "linear-gradient(180deg, rgba(7, 17, 40, 0.08) 0%, rgba(7, 17, 40, 0.22) 100%), url('/images/generated/hero-facade-lighting.png')",
       },
       letterSpacing: {
         tighter2: "-0.05em",

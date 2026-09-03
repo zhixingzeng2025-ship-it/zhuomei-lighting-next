@@ -117,6 +117,9 @@ type LegacySolution = {
   overview: string;
   highlights: string[];
   applications: string[];
+  designFocus: string[];
+  recommendedProducts: string[];
+  deliverables: string[];
   status?: ZomeiContentStatus;
 };
 

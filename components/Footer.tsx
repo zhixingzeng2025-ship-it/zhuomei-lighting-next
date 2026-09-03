@@ -1,89 +1,88 @@
 "use client";
 
 import Link from "next/link";
-import { useLanguage } from "@/context/LanguageContext";
 import { siteConfig } from "@/data/site";
+import { MailIcon, PhoneIcon, SearchIcon, WhatsAppIcon } from "./Icons";
 
 export function Footer() {
-  const { t } = useLanguage();
-
-  const footerGroups = [
-    {
-      title: t("footer.products"),
-      items: [
-        { label: t("footer.streetLight"), href: "/products" },
-        { label: t("footer.solarStreetLight"), href: "/products" },
-        { label: t("footer.floodLight"), href: "/products" },
-        { label: t("footer.solarFloodLight"), href: "/products" },
-        { label: t("footer.gardenLight"), href: "/products" },
-        { label: t("footer.highBayLight"), href: "/products" },
-        { label: t("footer.wallWasherLight"), href: "/products" },
-      ],
-    },
-    {
-      title: t("footer.solutions"),
-      items: [
-        { label: t("footer.roadLighting"), href: "/solutions" },
-        { label: t("footer.solarLighting"), href: "/solutions" },
-        { label: t("footer.landscapeLighting"), href: "/solutions" },
-        { label: t("footer.buildingFacadeLighting"), href: "/solutions" },
-        { label: t("footer.industrialLighting"), href: "/solutions" },
-      ],
-    },
-    {
-      title: t("footer.support"),
-      items: [
-        { label: t("footer.catalogDownload"), href: "/contact" },
-        { label: t("footer.installationGuide"), href: "/contact" },
-        { label: t("footer.faq"), href: "/contact" },
-        { label: t("footer.warranty"), href: "/contact" },
-        { label: t("footer.contactSupport"), href: "/contact" },
-      ],
-    },
-    {
-      title: t("footer.company"),
-      items: [
-        { label: t("footer.aboutUs"), href: "/about" },
-        { label: t("footer.factory"), href: "/about" },
-        { label: t("footer.certifications"), href: "/about" },
-        { label: t("footer.projects"), href: "/projects" },
-        { label: t("footer.news"), href: "/about" },
-      ],
-    },
+  const socialLinks = [
+    { label: "LinkedIn", text: "IN" },
+    { label: "Facebook", text: "F" },
+    { label: "Instagram", text: "IG" },
+    { label: "YouTube", text: "YT" },
+    { label: "X", text: "X" },
   ];
 
   return (
-    <footer className="border-t border-white/8 bg-[#061229] text-white">
-      <div className="page-container py-16">
-        <div className="grid gap-10 lg:grid-cols-[1.35fr_repeat(4,minmax(0,1fr))]">
-          <div>
-            <div className="flex items-center gap-3">
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-brand-blue to-brand-deep text-[13px] font-extrabold tracking-[0.12em] shadow-glass">
-                ZL
-              </span>
-              <div className="grid gap-0.5">
-                <strong className="text-[16px] font-extrabold tracking-[0.06em]">{siteConfig.brand}</strong>
-                <span className="text-[12px] tracking-[0.04em] text-white/65">{t("site.brandTagline")}</span>
-              </div>
-            </div>
-            <p className="mt-5 max-w-sm text-sm leading-7 text-white/70">{t("footer.description")}</p>
-          </div>
+    <footer className="border-t border-white/10 bg-black text-white">
+      <div className="page-container py-8 text-center">
+        <Link href="/" className="mx-auto inline-grid place-items-center">
+          <img
+            src="/images/brand/zomei-logo-2026.png"
+            alt="ZOMEILED"
+            width={92}
+            height={92}
+            className="h-[92px] w-[92px] object-contain opacity-95"
+          />
+        </Link>
 
-          {footerGroups.map((group) => (
-            <div key={group.title} className="grid gap-3">
-              <h3 className="text-[16px] font-semibold tracking-tight">{group.title}</h3>
-              {group.items.map((item) => (
-                <Link key={item.label} href={item.href} className="text-sm text-white/68 hover:text-white">
-                  {item.label}
-                </Link>
-              ))}
-            </div>
+        <div className="mx-auto mt-4 flex max-w-[430px] flex-wrap items-center justify-center gap-2 text-white">
+          <a
+            href={siteConfig.contact.whatsappLink}
+            aria-label="WhatsApp"
+            className="grid h-10 w-10 place-items-center rounded-full text-white/88 transition hover:bg-white/10 hover:text-brand-gold"
+          >
+            <WhatsAppIcon className="h-6 w-6" />
+          </a>
+          <a
+            href={`mailto:${siteConfig.contact.email}`}
+            aria-label="Email"
+            className="grid h-10 w-10 place-items-center rounded-full text-white/88 transition hover:bg-white/10 hover:text-brand-gold"
+          >
+            <MailIcon className="h-6 w-6" />
+          </a>
+          <a
+            href={`tel:${siteConfig.contact.phone}`}
+            aria-label="Phone"
+            className="grid h-10 w-10 place-items-center rounded-full text-white/88 transition hover:bg-white/10 hover:text-brand-gold"
+          >
+            <PhoneIcon className="h-6 w-6" />
+          </a>
+          {socialLinks.map((item) => (
+            <a
+              key={item.label}
+              href="#"
+              aria-label={item.label}
+              className="grid h-10 min-w-10 place-items-center rounded-full px-2 text-[14px] font-semibold tracking-[0.08em] text-white/88 transition hover:bg-white/10 hover:text-brand-gold"
+            >
+              {item.text}
+            </a>
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-white/8 pt-6 text-sm text-white/55 sm:flex-row sm:items-center sm:justify-between">
-          <span>{t("footer.copyright")}</span>
-          <span>{t("footer.prototype")}</span>
+        <form className="mx-auto mt-3 flex h-10 max-w-[380px] items-center rounded-full bg-white/20 px-5 text-left ring-1 ring-white/10 transition focus-within:bg-white/24 focus-within:ring-white/24">
+          <input
+            aria-label="搜索"
+            type="search"
+            placeholder="请输入关键词..."
+            className="min-w-0 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-white/42"
+          />
+          <button
+            type="submit"
+            aria-label="搜索"
+            className="ml-4 text-white/86 transition hover:text-brand-gold"
+          >
+            <SearchIcon className="h-5 w-5" />
+          </button>
+        </form>
+
+        <div className="mx-auto mt-4 flex max-w-5xl flex-wrap items-center justify-center gap-x-7 gap-y-1 text-[13px] leading-6 text-white/76">
+          <span>Address: Guangzhou, Guangdong, China</span>
+          <span>Service Hotline: {siteConfig.contact.phone}</span>
+          <span>Email: {siteConfig.contact.email}</span>
+        </div>
+        <div className="mt-1 text-[13px] leading-6 text-white/70">
+          © 2026 ZOMEILED LIGHTING. All rights reserved.
         </div>
       </div>
     </footer>

@@ -3,13 +3,12 @@ import { Hero } from "@/components/Hero";
 import { ProductCategories } from "@/components/ProductCategories";
 import { SolutionsSection } from "@/components/SolutionsSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
-import { WhyChooseUs } from "@/components/WhyChooseUs";
+import { HomeCompanySection } from "@/components/HomeCompanySection";
 import { InquirySection } from "@/components/InquirySection";
 
 export const metadata: Metadata = {
-  title: "Outdoor Lighting for Global Projects",
-  description:
-    "Professional outdoor lighting solutions for roads, landscapes, buildings and industrial spaces.",
+  title: "面向全球项目的户外照明",
+  description: "面向道路、景观、建筑和工业空间的专业户外照明解决方案。",
 };
 
 export const dynamic = "force-static";
@@ -21,7 +20,7 @@ export default function HomePage() {
       <ProductCategories />
       <SolutionsSection />
       <ProjectsSection />
-      <WhyChooseUs />
+      <HomeCompanySection />
       <InquirySection />
     </>
   );

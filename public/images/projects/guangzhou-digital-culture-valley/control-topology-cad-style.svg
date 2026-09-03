@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <style>
+      .bg{fill:#000}.w{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.t{fill:none;stroke:#fff;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}.r{fill:none;stroke:#f33;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}.c{fill:none;stroke:#00e5ff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}.g{fill:none;stroke:#00ff4c;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}.txt{fill:#fff;font:22px Arial,"PingFang SC","Microsoft YaHei",sans-serif}.s{fill:#fff;font:16px Arial,"PingFang SC","Microsoft YaHei",sans-serif}.red{fill:#ff3030;font:18px Arial,"PingFang SC","Microsoft YaHei",sans-serif}.cyan{fill:#00e5ff;font:18px Arial,"PingFang SC","Microsoft YaHei",sans-serif}.yellow{fill:#f5e642;font:17px Arial,"PingFang SC","Microsoft YaHei",sans-serif}.title{fill:#fff;font:42px Arial,"PingFang SC","Microsoft YaHei",sans-serif;letter-spacing:8px}
+    </style>
+  </defs>
+  <rect class="bg" width="1920" height="1080"/>
+  <text x="650" y="92" class="title">泛光照明控制系统拓扑图</text>
+
+  <g transform="translate(120 130)">
+    <rect x="45" y="0" width="175" height="132" rx="12" class="w"/>
+    <rect x="65" y="17" width="135" height="82" class="t"/>
+    <line x1="98" y1="114" x2="168" y2="114" class="t"/>
+    <path d="M95 132 L170 132 L202 150 L64 150 Z" class="t"/>
+    <rect x="-18" y="205" width="306" height="96" class="w"/>
+    <line x1="78" y1="205" x2="78" y2="301" class="t"/>
+    <line x1="200" y1="205" x2="200" y2="301" class="t"/>
+    <text x="112" y="258" class="s">工程主机</text>
+    <text x="42" y="345" class="red">电脑工程机放置控制中心</text>
+    <text x="42" y="375" class="red">由弱电机房统一管理</text>
+  </g>
+
+  <g transform="translate(520 345)">
+    <path d="M0 45 L96 0 L186 30 L88 78 Z" class="w"/>
+    <path d="M0 45 L0 88 L88 122 L88 78 Z" class="t"/>
+    <path d="M88 78 L186 30 L186 70 L88 122 Z" class="t"/>
+    <rect x="58" y="54" width="55" height="18" class="t"/>
+    <text x="45" y="152" class="s">网络交换 / 主控接口</text>
+  </g>
+
+  <rect x="725" y="205" width="1045" height="320" class="c"/>
+  <text x="1325" y="265" class="red">设备集中放置于弱电井或控制箱内</text>
+  <rect x="900" y="285" width="205" height="58" class="w"/>
+  <text x="955" y="321" class="s">24口交换机</text>
+
+  <g transform="translate(850 405)"><rect x="0" y="0" width="148" height="72" class="w"/><rect x="15" y="12" width="18" height="16" class="t"/><rect x="105" y="12" width="18" height="16" class="t"/><text x="18" y="105" class="s">光纤收发器</text></g>
+  <g transform="translate(1120 405)"><rect x="0" y="0" width="148" height="72" class="w"/><rect x="15" y="12" width="18" height="16" class="t"/><rect x="105" y="12" width="18" height="16" class="t"/><text x="18" y="105" class="s">光纤收发器</text></g>
+  <g transform="translate(1390 405)"><rect x="0" y="0" width="148" height="72" class="w"/><rect x="15" y="12" width="18" height="16" class="t"/><rect x="105" y="12" width="18" height="16" class="t"/><text x="18" y="105" class="s">光纤收发器</text></g>
+
+  <polyline points="410,378 500,378 500,390 728,390 728,314 900,314" class="r"/>
+  <text x="455" y="360" class="red">超五类网线</text>
+  <polyline points="1105,314 1155,314 1155,405" class="r"/>
+  <polyline points="1105,322 1425,322 1425,405" class="r"/>
+  <polyline points="1105,330 885,330 885,405" class="r"/>
+  <text x="980" y="355" class="s">短距网线</text>
+
+  <polyline points="998,443 998,560 560,560 560,1010" class="c"/>
+  <polyline points="1268,443 1268,585 1140,585 1140,1010" class="c"/>
+  <polyline points="1538,443 1538,610 1640,610 1640,1010" class="c"/>
+  <text x="1380" y="615" class="cyan">单模四芯光纤主干</text>
+
+  <g transform="translate(60 685)"><text x="0" y="-45" class="s">分控器回路 01</text><rect x="0" y="0" width="215" height="86" class="w"/><text x="75" y="50" class="s">分控器</text><g><rect x="20" y="94" width="12" height="190" class="t"/><rect x="42" y="94" width="12" height="190" class="t"/><rect x="64" y="94" width="12" height="190" class="t"/><rect x="86" y="94" width="12" height="190" class="t"/><rect x="108" y="94" width="12" height="190" class="t"/><rect x="130" y="94" width="12" height="190" class="t"/><rect x="152" y="94" width="12" height="190" class="t"/><rect x="174" y="94" width="12" height="190" class="t"/></g><text x="15" y="315" class="yellow">顶部线条灯 / 洗墙灯回路</text></g>
+  <g transform="translate(350 685)"><text x="0" y="-45" class="s">分控器回路 02</text><rect x="0" y="0" width="215" height="86" class="w"/><text x="75" y="50" class="s">分控器</text><g><rect x="20" y="94" width="12" height="190" class="t"/><rect x="42" y="94" width="12" height="190" class="t"/><rect x="64" y="94" width="12" height="190" class="t"/><rect x="86" y="94" width="12" height="190" class="t"/><rect x="108" y="94" width="12" height="190" class="t"/><rect x="130" y="94" width="12" height="190" class="t"/><rect x="152" y="94" width="12" height="190" class="t"/><rect x="174" y="94" width="12" height="190" class="t"/></g></g>
+  <g transform="translate(750 685)"><text x="0" y="-45" class="s">分控器回路 03</text><rect x="0" y="0" width="215" height="86" class="w"/><text x="75" y="50" class="s">分控器</text><g><rect x="20" y="94" width="12" height="190" class="t"/><rect x="42" y="94" width="12" height="190" class="t"/><rect x="64" y="94" width="12" height="190" class="t"/><rect x="86" y="94" width="12" height="190" class="t"/><rect x="108" y="94" width="12" height="190" class="t"/><rect x="130" y="94" width="12" height="190" class="t"/><rect x="152" y="94" width="12" height="190" class="t"/><rect x="174" y="94" width="12" height="190" class="t"/></g><text x="10" y="315" class="yellow">弧形铝板区域灯具回路</text></g>
+  <g transform="translate(1160 685)"><text x="0" y="-45" class="s">分控器回路 04</text><rect x="0" y="0" width="215" height="86" class="w"/><text x="75" y="50" class="s">分控器</text><g><rect x="20" y="94" width="12" height="190" class="t"/><rect x="42" y="94" width="12" height="190" class="t"/><rect x="64" y="94" width="12" height="190" class="t"/><rect x="86" y="94" width="12" height="190" class="t"/><rect x="108" y="94" width="12" height="190" class="t"/><rect x="130" y="94" width="12" height="190" class="t"/><rect x="152" y="94" width="12" height="190" class="t"/><rect x="174" y="94" width="12" height="190" class="t"/></g></g>
+  <g transform="translate(1560 685)"><text x="0" y="-45" class="s">分控器回路 05</text><rect x="0" y="0" width="215" height="86" class="w"/><text x="75" y="50" class="s">分控器</text><g><rect x="20" y="94" width="12" height="190" class="t"/><rect x="42" y="94" width="12" height="190" class="t"/><rect x="64" y="94" width="12" height="190" class="t"/><rect x="86" y="94" width="12" height="190" class="t"/><rect x="108" y="94" width="12" height="190" class="t"/><rect x="130" y="94" width="12" height="190" class="t"/><rect x="152" y="94" width="12" height="190" class="t"/><rect x="174" y="94" width="12" height="190" class="t"/></g><text x="10" y="315" class="yellow">冲孔铝板 / 立面洗墙回路</text></g>
+
+  <polyline points="168,660 168,655 458,655 458,685" class="r"/>
+  <polyline points="565,655 858,655 858,685" class="r"/>
+  <polyline points="965,655 1268,655 1268,685" class="r"/>
+  <polyline points="1375,655 1668,655 1668,685" class="r"/>
+  <polyline points="560,1010 560,655 458,655" class="c"/>
+  <polyline points="1140,1010 1140,655 858,655" class="c"/>
+  <polyline points="1640,1010 1640,655 1668,655" class="c"/>
+  <polyline points="168,771 168,1010" class="g"/>
+  <polyline points="458,771 458,1010" class="g"/>
+  <polyline points="858,771 858,1010" class="g"/>
+  <polyline points="1268,771 1268,1010" class="g"/>
+  <polyline points="1668,771 1668,1010" class="g"/>
+
+  <g transform="translate(1265 928)">
+    <line x1="0" y1="0" x2="90" y2="0" class="r"/><text x="110" y="8" class="s">红色：网线 / 控制网络</text>
+    <line x1="0" y1="40" x2="90" y2="40" class="c"/><text x="110" y="48" class="s">青色：单模四芯光纤</text>
+    <line x1="0" y1="80" x2="90" y2="80" class="g"/><text x="110" y="88" class="s">绿色：灯具控制输出</text>
+  </g>
+</svg>

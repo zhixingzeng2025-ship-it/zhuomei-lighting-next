@@ -13,68 +13,68 @@ type ProductDetailViewProps = {
 };
 
 const heroStats = [
-  { value: "140", unit: "lm/W", label: "High Efficiency", icon: "efficiency" },
-  { value: "IP66", unit: "", label: "Waterproof", icon: "waterproof" },
-  { value: "IK08", unit: "", label: "Impact Resistant", icon: "impact" },
-  { value: "5", unit: "Years", label: "Warranty", icon: "warranty" },
-  { value: "CE", unit: "CB", label: "Certification", icon: "cert" },
+  { value: "140", unit: "lm/W", label: "高光效", icon: "efficiency" },
+  { value: "IP66", unit: "", label: "防水", icon: "waterproof" },
+  { value: "IK08", unit: "", label: "抗冲击", icon: "impact" },
+  { value: "5", unit: "年", label: "质保", icon: "warranty" },
+  { value: "CE", unit: "CB", label: "认证", icon: "cert" },
 ];
 
 const detailCards = [
   {
-    title: "High Efficiency LEDs",
-    text: "High-performance LED chips with strong luminous efficacy and low light decay.",
+    title: "高效 LED",
+    text: "高性能 LED 芯片，具备较高光效与低光衰表现。",
   },
   {
-    title: "Efficient Heat Dissipation",
-    text: "Fin-type heat sink design supports stable operation in demanding projects.",
+    title: "高效散热",
+    text: "鳍片式散热结构，支持复杂工程环境下稳定运行。",
   },
   {
-    title: "Tool-free Maintenance",
-    text: "Open housing structure helps speed up inspection, service and replacement.",
+    title: "便捷维护",
+    text: "开放式结构有助于提升检查、维护与更换效率。",
   },
   {
-    title: "Professional Optics",
-    text: "Multiple lens options support different road widths and mounting heights.",
+    title: "专业光学",
+    text: "多种透镜方案，适配不同道路宽度与安装高度。",
   },
   {
-    title: "Flexible Mounting",
-    text: "Adjustable bracket options make installation easier across project sites.",
+    title: "灵活安装",
+    text: "可调支架方案，提升不同项目现场的安装适配性。",
   },
 ];
 
 const applications = [
-  "Roads & Highways",
-  "Urban Streets",
-  "Residential Areas",
-  "Parking Lots",
-  "Industrial Areas",
-  "Parks & Pathways",
+  "道路与高速",
+  "城市街道",
+  "住宅区域",
+  "停车场",
+  "工业区域",
+  "公园与步道",
 ];
 
 const extendedSpecs = [
-  { label: "Model No.", value: "ZM-SL-100W" },
-  { label: "Power", value: "100W" },
-  { label: "Luminous Flux", value: "14000lm ±5%" },
-  { label: "Luminous Efficacy", value: "140lm/W" },
-  { label: "LED Chip", value: "Lumileds 3030" },
-  { label: "Input Voltage", value: "AC100-277V 50/60Hz" },
-  { label: "Power Factor", value: ">0.95" },
+  { label: "型号", value: "ZM-SL-100W" },
+  { label: "功率", value: "100W" },
+  { label: "光通量", value: "14000lm ±5%" },
+  { label: "光效", value: "140lm/W" },
+  { label: "LED 芯片", value: "Lumileds 3030" },
+  { label: "输入电压", value: "AC100-277V 50/60Hz" },
+  { label: "功率因数", value: ">0.95" },
   { label: "THD", value: "<10%" },
-  { label: "Surge Protection", value: "10kV" },
-  { label: "CCT", value: "3000K / 4000K / 5000K / 5700K" },
-  { label: "CRI", value: "Ra >70" },
-  { label: "Beam Angle", value: "Type II / Type III / Type IV / Type V" },
-  { label: "IP Rating", value: "IP66" },
-  { label: "IK Rating", value: "IK08" },
-  { label: "Working Temperature", value: "-40°C ~ +50°C" },
-  { label: "Housing Material", value: "Die-cast Aluminum" },
-  { label: "Housing Color", value: "Dark Grey / Black" },
-  { label: "Mounting", value: "Ø60mm Pole / Adjustable Arm" },
-  { label: "Lifespan", value: ">100,000 hours (L70)" },
-  { label: "Warranty", value: "5 Years" },
-  { label: "Certification", value: "CE, CB, RoHS, LM-79, LM-80" },
-  { label: "Net Weight", value: "4.3kg" },
+  { label: "浪涌保护", value: "10kV" },
+  { label: "色温", value: "3000K / 4000K / 5000K / 5700K" },
+  { label: "显指", value: "Ra >70" },
+  { label: "光束角", value: "Type II / Type III / Type IV / Type V" },
+  { label: "防护等级", value: "IP66" },
+  { label: "抗冲击等级", value: "IK08" },
+  { label: "工作温度", value: "-40°C ~ +50°C" },
+  { label: "外壳材质", value: "压铸铝" },
+  { label: "外壳颜色", value: "深灰 / 黑色" },
+  { label: "安装方式", value: "Ø60mm 灯杆 / 可调支臂" },
+  { label: "寿命", value: ">100,000 小时 (L70)" },
+  { label: "质保", value: "5 年" },
+  { label: "认证", value: "CE, CB, RoHS, LM-79, LM-80" },
+  { label: "净重", value: "4.3kg" },
 ];
 
 function MetricIcon({ name }: { name: string }) {
@@ -124,9 +124,9 @@ export function ProductDetailView({ product, titleKey, relatedProjects }: Produc
         <div className="page-container relative grid min-h-[620px] gap-8 py-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(420px,0.85fr)] lg:items-center lg:py-14">
           <div>
             <nav className="mb-8 flex flex-wrap items-center gap-2 text-xs font-medium text-white/70">
-              <Link href="/" className="hover:text-white">Home</Link>
+              <Link href="/" className="hover:text-white">首页</Link>
               <span>/</span>
-              <Link href="/products" className="hover:text-white">Products</Link>
+              <Link href="/products" className="hover:text-white">产品中心</Link>
               <span>/</span>
               <span className="text-white">{displayName}</span>
             </nav>
@@ -158,7 +158,7 @@ export function ProductDetailView({ product, titleKey, relatedProjects }: Produc
 
           <div className="pb-6 lg:pb-0">
             <p className="mb-3 text-[13px] font-bold uppercase tracking-[0.18em] text-brand-sky">
-              LED Outdoor Lighting
+              LED 户外照明
             </p>
             <h1 className="text-[clamp(2.6rem,5vw,4.9rem)] font-extrabold leading-[0.95] tracking-tight text-white">
               {displayName}
@@ -187,14 +187,14 @@ export function ProductDetailView({ product, titleKey, relatedProjects }: Produc
                 href="/contact"
                 className="inline-flex min-h-12 items-center justify-center gap-3 rounded-md bg-brand-blue px-6 text-[13px] font-extrabold uppercase tracking-tight text-white shadow-[0_18px_36px_rgba(45,140,255,0.28)]"
               >
-                Download Datasheet
+                下载资料
                 <DocIcon className="h-4 w-4" />
               </Link>
               <Link
                 href="/contact"
                 className="inline-flex min-h-12 items-center justify-center gap-3 rounded-md border border-white/24 px-6 text-[13px] font-extrabold uppercase tracking-tight text-white hover:bg-white/10"
               >
-                IES Files
+                IES 文件
                 <DocIcon className="h-4 w-4" />
               </Link>
             </div>
@@ -208,11 +208,11 @@ export function ProductDetailView({ product, titleKey, relatedProjects }: Produc
             <SectionLabel>{t("detail.keyFeatures")}</SectionLabel>
             <ul className="space-y-2 text-sm leading-6 text-brand-text">
               {product.features.concat([
-                "Built-in surge protection",
-                "Multiple lens options for various applications",
-                "Excellent thermal management",
-                "IP66 waterproof, IK08 impact resistance",
-                "5 years warranty",
+                "内置浪涌保护",
+                "多种透镜选项适配不同应用",
+                "优秀的热管理设计",
+                "IP66 防水，IK08 抗冲击",
+                "5 年质保",
               ]).slice(0, 8).map((item) => (
                 <li key={item} className="flex gap-2">
                   <span className="mt-[0.65em] h-1.5 w-1.5 flex-none rounded-full bg-brand-blue" />
@@ -293,7 +293,7 @@ export function ProductDetailView({ product, titleKey, relatedProjects }: Produc
         </div>
 
         <div className="py-8">
-          <SectionLabel>Related Projects</SectionLabel>
+          <SectionLabel>相关项目</SectionLabel>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {relatedProjects.map((project) => (
               <Link key={project.slug} href={`/projects/${project.slug}`} className="group block overflow-hidden rounded-md bg-white shadow-soft">
@@ -313,19 +313,19 @@ export function ProductDetailView({ product, titleKey, relatedProjects }: Produc
       <section className="bg-[#050914] py-8 text-white">
         <div className="page-container grid gap-6 lg:grid-cols-[1fr_1.8fr] lg:items-center">
           <div>
-            <h2 className="text-[24px] font-extrabold uppercase tracking-tight">Need a Custom Solution?</h2>
-            <p className="mt-2 text-sm text-white/70">We provide professional lighting solutions for your projects.</p>
+            <h2 className="text-[24px] font-extrabold uppercase tracking-tight">需要定制方案？</h2>
+            <p className="mt-2 text-sm text-white/70">我们为您的项目提供专业照明解决方案。</p>
             <Link href="/contact" className="mt-5 inline-flex min-h-11 items-center gap-3 rounded-md bg-brand-blue px-5 text-sm font-extrabold uppercase text-white">
-              Contact Us
+              联系我们
               <ArrowRightIcon className="h-4 w-4" />
             </Link>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              ["team", "Professional Team", "Project-ready lighting support"],
-              ["quality", "Quality Assurance", "Strict quality control system"],
-              ["delivery", "On-time Delivery", "Reliable production and fast delivery"],
-              ["warranty", "After-sales Support", "5 years warranty and technical support"],
+              ["team", "专业团队", "面向项目的照明支持"],
+              ["quality", "品质保障", "严格质量控制体系"],
+              ["delivery", "准时交付", "稳定生产与快速交付"],
+              ["warranty", "售后支持", "5 年质保与技术支持"],
             ].map(([icon, title, text]) => (
               <div key={title} className="flex items-start gap-3">
                 <span className="grid h-11 w-11 flex-none place-items-center rounded-full border border-white/25 text-brand-sky">

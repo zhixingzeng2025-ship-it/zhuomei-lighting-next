@@ -9,11 +9,13 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 108px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   @apply bg-brand-background text-brand-text antialiased;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-family: Montserrat, Inter, -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
 * {
@@ -37,7 +39,7 @@ img {
 }
 
 .section-shell {
-  @apply py-16 sm:py-20 lg:py-28;
+  @apply py-14 sm:py-20 lg:py-24;
 }
 
 .section-title {
@@ -45,7 +47,7 @@ img {
 }
 
 .section-title h2 {
-  @apply text-[clamp(2rem,3.3vw,3.25rem)] leading-[1.06] tracking-tighter2 font-semibold text-brand-text;
+  @apply text-[clamp(2rem,3.1vw,3rem)] leading-[1.08] font-semibold text-brand-text;
 }
 
 .section-title p {
@@ -53,7 +55,7 @@ img {
 }
 
 .eyebrow {
-  @apply mb-3 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.22em] text-brand-deep;
+  @apply mb-3 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.22em] text-brand-blue;
 }
 
 .eyebrow-light {
@@ -65,20 +67,20 @@ img {
 }
 
 .soft-card {
-  @apply overflow-hidden rounded-[28px] border border-brand-line bg-white shadow-soft transition-transform duration-300 hover:-translate-y-1 hover:shadow-card;
+  @apply overflow-hidden rounded-none border border-brand-line bg-white shadow-soft transition-transform duration-300 hover:-translate-y-1 hover:shadow-card;
 }
 
 .action-pill {
-  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-all duration-200;
+  @apply inline-flex items-center justify-center gap-2 rounded-none px-5 py-3 text-sm font-semibold transition-all duration-200;
 }
 
 .nav-link {
-  @apply relative text-[14px] font-medium text-white/80 transition-colors duration-200 hover:text-white;
+  @apply relative text-[14px] font-bold uppercase tracking-[0.07em] text-brand-text/80 transition-colors duration-200 hover:text-brand-blue;
 }
 
 .nav-link::after {
   content: "";
-  @apply absolute -bottom-2 left-0 h-0.5 w-full origin-center scale-x-0 rounded-full bg-gradient-to-r from-brand-blue to-white/50 transition-transform duration-200;
+  @apply absolute -bottom-2 left-0 h-0.5 w-full origin-center scale-x-0 rounded-full bg-brand-blue transition-transform duration-200;
 }
 
 .nav-link:hover::after,
@@ -87,7 +89,7 @@ img {
 }
 
 .icon-button {
-  @apply inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white backdrop-blur-xl transition-transform duration-200 hover:-translate-y-0.5 hover:bg-white/15;
+  @apply inline-flex h-10 w-10 items-center justify-center rounded-none border border-brand-line bg-white text-brand-text backdrop-blur-xl transition-transform duration-200 hover:-translate-y-0.5 hover:bg-brand-background;
 }
 
 .input-field {
@@ -108,12 +110,16 @@ img {
 }
 
 .floating-contact {
-  @apply fixed right-5 top-1/2 z-[55] hidden -translate-y-1/2 gap-2 xl:grid;
+  @apply fixed right-4 top-[68%] z-[55] hidden -translate-y-1/2 gap-1.5 xl:grid;
 }
 
 .floating-contact a,
 .floating-contact button {
-  @apply flex min-w-[112px] items-center gap-2 rounded-[18px] border border-brand-line bg-white px-4 py-3 text-sm font-semibold text-brand-text shadow-soft transition-transform duration-200 hover:-translate-x-0.5;
+  @apply flex h-12 w-12 items-center justify-center rounded-none border border-brand-line bg-white p-0 text-[13px] font-semibold text-brand-text shadow-soft transition-transform duration-200 hover:-translate-x-0.5;
+}
+
+.floating-contact span {
+  @apply sr-only;
 }
 
 .floating-contact svg {
@@ -130,4 +136,100 @@ img {
 
 .search-panel {
   @apply absolute left-1/2 top-24 w-[min(720px,calc(100%-1.5rem))] -translate-x-1/2 rounded-[28px] border border-brand-line bg-white p-6 shadow-card;
+}
+
+@media (max-width: 767px) {
+  html {
+    scroll-padding-top: 84px;
+  }
+
+  body {
+    font-size: 16px;
+  }
+
+  .page-container {
+    width: min(calc(100% - 1.25rem), 84rem);
+  }
+
+  .section-shell {
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
+  }
+
+  section.py-14,
+  section.py-16 {
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
+  }
+
+  .py-14,
+  .py-16 {
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
+  }
+
+  .py-20,
+  .py-24 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .section-title h2 {
+    font-size: clamp(1.75rem, 9vw, 2.35rem);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+
+  .section-title p,
+  p {
+    line-height: 1.82;
+  }
+
+  h1 {
+    text-wrap: balance;
+  }
+
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  .grid {
+    min-width: 0;
+  }
+
+  .soft-card {
+    box-shadow: 0 12px 34px rgba(9, 31, 71, 0.07);
+  }
+
+  .action-pill,
+  .icon-button,
+  button,
+  a {
+    -webkit-tap-highlight-color: rgba(37, 99, 255, 0.14);
+  }
+
+  .action-pill {
+    min-height: 46px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .input-field {
+    min-height: 48px;
+    font-size: 16px;
+  }
+
+  .floating-contact {
+    display: none;
+  }
+
+  .search-panel {
+    top: calc(76px + env(safe-area-inset-top) + 0.75rem);
+    width: min(calc(100% - 1rem), 720px);
+    max-height: calc(100vh - 96px - env(safe-area-inset-bottom));
+    overflow: auto;
+    border-radius: 22px;
+    padding: 1rem;
+  }
 }

@@ -8,8 +8,8 @@ import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: {
-    default: "ZHUOMEI LIGHTING",
-    template: "%s | ZHUOMEI LIGHTING",
+    default: "ZOMEI",
+    template: "%s | ZOMEI",
   },
   description: siteConfig.description,
 };
@@ -20,11 +20,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="zh-CN">
       <body className="bg-brand-background text-brand-text">
         <LanguageProvider>
           <Header />
-          <main className="relative pt-[92px]">{children}</main>
+          <main className="relative pt-[76px] md:pt-[92px]">{children}</main>
           <Footer />
           <FloatingContact />
         </LanguageProvider>

@@ -8,7 +8,7 @@
   <path d="M300 760H1280" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="2"/>
   <path d="M1160 515L1230 435L1315 515" stroke="#FFFFFF" stroke-opacity="0.65" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
   <circle cx="1230" cy="435" r="18" fill="#FFFFFF" fill-opacity="0.92"/>
-  <text x="92" y="132" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="700" letter-spacing="8">ZHUOMEI LIGHTING</text>
+  <text x="92" y="132" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="700" letter-spacing="8">ZOMEI</text>
   <text x="92" y="198" fill="#BFD7FF" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="500" letter-spacing="3">OUTDOOR LIGHTING FOR GLOBAL PROJECTS</text>
   <defs>
     <linearGradient id="g1" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
