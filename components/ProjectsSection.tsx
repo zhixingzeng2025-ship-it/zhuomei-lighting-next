@@ -5,8 +5,38 @@ import { useLanguage } from "@/context/LanguageContext";
 import { projectCategories, projectKeyForSlug, projects, type ProjectCategoryKey } from "@/data/projects";
 import { ArrowRightIcon } from "./Icons";
 
+type SiteLanguage = "en" | "zh" | "ru";
+
+const projectCardCopy: Record<SiteLanguage, {
+  viewAll: string;
+  tags: Record<string, string[]>;
+}> = {
+  en: {
+    viewAll: "View all projects",
+    tags: {
+      "guangzhou-digital-culture-valley-lighting-design": ["Commercial Facade", "RGBW Wall Washer", "Design + Supply + Control"],
+      "almaty-museum-of-arts-facade-lighting": ["Cultural Landmark", "1150W Gobo Projector", "Design + Commissioning"],
+    },
+  },
+  zh: {
+    viewAll: "查看全部项目",
+    tags: {
+      "guangzhou-digital-culture-valley-lighting-design": ["商业立面", "RGBW 洗墙灯", "设计 + 供货 + 控制"],
+      "almaty-museum-of-arts-facade-lighting": ["文旅地标", "1150W 切割灯", "深化 + 跨国调试"],
+    },
+  },
+  ru: {
+    viewAll: "Все проекты",
+    tags: {
+      "guangzhou-digital-culture-valley-lighting-design": ["Коммерческий фасад", "RGBW Wall Washer", "Дизайн + Поставка"],
+      "almaty-museum-of-arts-facade-lighting": ["Культурный объект", "1150W Gobo Projector", "Дизайн + Пусконаладка"],
+    },
+  },
+};
+
 export function ProjectsSection() {
   const { locale, t } = useLanguage();
+  const copy = projectCardCopy[locale as SiteLanguage] || projectCardCopy.en;
 
   const labelForCategory = (categoryKey: ProjectCategoryKey) => {
     const category = projectCategories.find((item) => item.key === categoryKey);
@@ -26,7 +56,7 @@ export function ProjectsSection() {
             <p>{t("sections.projectsDescription")}</p>
           </div>
           <Link href="/projects" className="text-sm font-semibold text-brand-blue hover:text-brand-deep">
-            View all projects →
+            {copy.viewAll} →
           </Link>
         </div>
 
@@ -47,17 +77,16 @@ export function ProjectsSection() {
                     {labelForCategory(project.category)}
                   </span>
                 </div>
-                <div className="grid gap-3 p-5">
-                  <h3 className="text-[20px] leading-[1.15] font-semibold text-brand-text">
+                <div className="grid gap-3 p-4 sm:p-5">
+                  <h3 className="text-[18px] leading-[1.15] font-semibold text-brand-text sm:text-[20px]">
                     {title}
                   </h3>
-                  <div className="grid gap-1 text-sm text-brand-muted">
-                    <span>
-                      <strong className="text-brand-text">{t("common.location")}:</strong> {project.location}
-                    </span>
-                    <span>
-                      <strong className="text-brand-text">{t("common.usedProducts")}:</strong> {project.products}
-                    </span>
+                  <div className="flex flex-wrap gap-2">
+                    {(copy.tags[project.slug] || [labelForCategory(project.category), project.products, project.location]).map((tag) => (
+                      <span key={tag} className="border border-brand-line bg-[#f7faff] px-2.5 py-1.5 text-[11px] font-semibold text-brand-muted sm:px-3 sm:text-[12px]">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                   <Link href={`/projects/${project.slug}`} className="action-pill w-fit border border-brand-blue/15 bg-brand-blue/8 text-brand-blue hover:bg-brand-blue hover:text-white">
                     {t("common.viewCase")}

@@ -73,9 +73,12 @@ export type ZomeiInquiryPayload = {
   inquiry_id?: string;
   customer_name: string;
   customer_email: string;
+  whatsapp?: string;
   company_name?: string;
   country_region?: string;
+  project_type?: string;
   product_interest?: string;
+  quantity_scale?: string;
   inquiry_message?: string;
   source_channel: "website";
   status: "pending";
@@ -228,10 +231,16 @@ export function mapCaseToUnified(item: LegacyCase): LegacyCase & ZomeiCaseFields
 export function normalizeInquiryPayload(payload: {
   name?: string;
   email?: string;
+  whatsapp?: string;
   company?: string;
   country?: string;
   product?: string;
+  projectInterest?: string;
+  projectType?: string;
+  productInterest?: string;
+  quantity?: string;
   details?: string;
+  message?: string;
 }): ZomeiInquiryPayload | undefined {
   const customer_name = payload.name?.trim();
   const customer_email = payload.email?.trim();
@@ -241,10 +250,13 @@ export function normalizeInquiryPayload(payload: {
   return {
     customer_name,
     customer_email,
+    whatsapp: payload.whatsapp?.trim() || undefined,
     company_name: payload.company?.trim() || undefined,
     country_region: payload.country?.trim() || undefined,
-    product_interest: payload.product?.trim() || undefined,
-    inquiry_message: payload.details?.trim() || undefined,
+    project_type: payload.projectType?.trim() || payload.projectInterest?.trim() || undefined,
+    product_interest: payload.productInterest?.trim() || payload.product?.trim() || undefined,
+    quantity_scale: payload.quantity?.trim() || undefined,
+    inquiry_message: payload.message?.trim() || payload.details?.trim() || undefined,
     source_channel: "website",
     status: "pending",
   };

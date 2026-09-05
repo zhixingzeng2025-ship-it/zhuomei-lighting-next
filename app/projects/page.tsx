@@ -3,8 +3,9 @@ import { LocalizedPageHeader } from "@/components/LocalizedPageHeader";
 import { LocalizedProjectsGrid } from "@/components/LocalizedProjectsGrid";
 
 export const metadata: Metadata = {
-  title: "项目",
-  description: "查看已整理的真实户外照明项目案例，了解照明设计、产品应用和现场交付过程。",
+  title: "Outdoor Lighting Project Cases",
+  description:
+    "View real ZOMEI outdoor lighting project cases with final effect, application scene, products used, technical challenges and delivery support.",
 };
 
 export const dynamic = "force-static";

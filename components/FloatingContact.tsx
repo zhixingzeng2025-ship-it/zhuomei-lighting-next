@@ -59,10 +59,6 @@ export function FloatingContact() {
           <DocIcon className="h-5 w-5" />
           <span>Inquiry</span>
         </Link>
-        <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <UpIcon className="h-5 w-5" />
-          <span>Top</span>
-        </button>
       </div>
     </>
   );

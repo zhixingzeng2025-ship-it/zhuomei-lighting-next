@@ -206,6 +206,47 @@ function ProjectOverview() {
   );
 }
 
+function ProjectTrustPath() {
+  const items = [
+    ["最终效果", "博物馆外立面形成清晰的夜间艺术图案与动态识别。"],
+    ["项目背景", "中亚文化地标，需要兼顾建筑表达、远距离观看和运营场景。"],
+    ["使用产品", "1150W LED 切割投影灯，配合定制图案与控制系统。"],
+    ["技术难点", "大面积投影拼接、亮度一致、边界控制和现场安装偏差。"],
+    ["解决方式", "图案分区、灯位深化、编号管理、夜间逐台调焦与联调。"],
+    ["交付结果", "完成静态图案、动态场景和最终夜景验收支持。"],
+  ];
+
+  return (
+    <section className={`${sectionClass} bg-white`}>
+      <div className={containerClass}>
+        <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
+          <SectionTitle
+            title="先看这个项目是否匹配你的需求"
+            description="项目页先呈现客户最关心的判断点：最终效果、产品选择、技术难点和交付方式。"
+          />
+          <div className="flex flex-wrap gap-3 lg:justify-end">
+            <Link href="/contact" className="inline-flex min-h-12 items-center gap-3 bg-brand-blue px-5 py-3 text-sm font-bold text-white">
+              获取类似项目方案 <ArrowRightIcon className="h-4 w-4" />
+            </Link>
+            <a href="#project-glance" className="inline-flex min-h-12 items-center border border-brand-line px-5 py-3 text-sm font-bold text-brand-text">
+              查看项目概览
+            </a>
+          </div>
+        </div>
+        <div className="mt-8 grid overflow-hidden border border-brand-line bg-brand-line sm:grid-cols-2 lg:grid-cols-3">
+          {items.map(([title, text], index) => (
+            <article key={title} className="bg-[#f8fbff] p-5 sm:p-6">
+              <p className="text-[12px] font-bold tracking-[0.18em] text-brand-blue">{String(index + 1).padStart(2, "0")}</p>
+              <h3 className="mt-3 text-xl font-semibold leading-tight text-brand-text">{title}</h3>
+              <p className="mt-3 text-sm leading-7 text-brand-muted">{text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Significance({ onOpen }: { onOpen: (image: ProjectImageRecord) => void }) {
   const image = getAlmatyImage("P02");
   return (
@@ -570,6 +611,31 @@ function ProjectSummary() {
   );
 }
 
+function FoldedProjectProcess({ onOpen }: { onOpen: (image: ProjectImageRecord) => void }) {
+  return (
+    <section className="bg-[#f5f7fa] py-10">
+      <div className={containerClass}>
+        <details className="group border border-brand-line bg-white">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-5 p-5 text-lg font-semibold text-brand-text sm:p-6">
+            更多深化过程与技术资料
+            <span className="text-sm font-bold text-brand-blue group-open:hidden">展开</span>
+            <span className="hidden text-sm font-bold text-brand-blue group-open:inline">收起</span>
+          </summary>
+          <div className="border-t border-brand-line">
+            <Significance onOpen={onOpen} />
+            <DesignDevelopmentGallery onOpen={onOpen} />
+            <GlobalCollaboration onOpen={onOpen} />
+            <ClientValue />
+            <EngineeringTimeline onOpen={onOpen} />
+            <TechnicalInsights />
+            <LessonsLearned />
+          </div>
+        </details>
+      </div>
+    </section>
+  );
+}
+
 function ProjectCTA() {
   const [started, setStarted] = useState(false);
   const onFocus = () => {
@@ -666,18 +732,14 @@ export function AlmatyMuseumProjectPage() {
   return (
     <>
       <ProjectHero onOpen={openLightbox} />
+      <ProjectTrustPath />
       <ProjectOverview />
-      <Significance onOpen={openLightbox} />
       <Highlights />
       <BeforeAfter onOpen={openLightbox} />
       <LightingMethodComparison onOpen={openLightbox} />
-      <DesignDevelopmentGallery onOpen={openLightbox} />
       <EngineeringChallenges onOpen={openLightbox} />
-      <ClientValue />
-      <EngineeringTimeline onOpen={openLightbox} />
       <FinalResultGallery onOpen={openLightbox} />
-      <TechnicalInsights />
-      <LessonsLearned />
+      <FoldedProjectProcess onOpen={openLightbox} />
       <ProjectFAQ />
       <ProjectSummary />
       <Lightbox image={lightbox} onClose={() => setLightbox(undefined)} />

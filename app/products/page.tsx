@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { ProductSeriesBrowser } from "@/components/ProductSeriesBrowser";
 
 export const metadata: Metadata = {
-  title: "产品",
-  description: "浏览适用于道路、太阳能项目、建筑立面、园林和工业应用的户外照明产品。",
+  title: "Outdoor LED Lighting Products",
+  description:
+    "Browse ZOMEI outdoor LED lighting product categories for facade, landscape, road, commercial and custom engineering projects.",
 };
 
 export const dynamic = "force-static";

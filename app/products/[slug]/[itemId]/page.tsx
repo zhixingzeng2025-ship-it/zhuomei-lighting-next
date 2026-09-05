@@ -21,8 +21,10 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string; itemId: string } }): Metadata {
   const item = productSeries.find((entry) => entry.id === params.itemId);
   return {
-    title: item ? `${item.code} | ZOMEI` : "产品详情 | ZOMEI",
-    description: item ? `${item.name} 产品信息、技术规格与应用场景。` : "ZOMEI 产品详情。",
+    title: item ? `${item.code} Outdoor LED Lighting | ZOMEI` : "Outdoor Lighting Product | ZOMEI",
+    description: item
+      ? `${item.name} for outdoor lighting projects. View core specifications, application scenes and request datasheet or IES files from ZOMEI Lighting.`
+      : "ZOMEI outdoor lighting product details, specifications, datasheet and project inquiry support.",
   };
 }
 
@@ -160,7 +162,64 @@ export default function ProductSeriesDetailPage({ params }: { params: { slug: st
         </div>
       </section>
 
-      <div className="page-container">
+      <section className="page-container py-6 lg:hidden">
+        <div className="grid gap-3">
+          <details open className="border border-brand-line bg-white">
+            <summary className="cursor-pointer list-none p-4 text-[15px] font-extrabold text-brand-text">Overview</summary>
+            <div className="border-t border-brand-line p-4">
+              <p className="text-sm leading-7 text-brand-muted">{item.name}</p>
+              <div className="mt-4 grid grid-cols-2 gap-2">
+                {detailCards.map((card) => (
+                  <div key={card.title} className="border border-brand-line bg-[#f8fbff] p-3">
+                    <h3 className="text-sm font-semibold text-brand-text">{card.title}</h3>
+                    <p className="mt-1 line-clamp-3 text-[12px] leading-5 text-brand-muted">{card.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
+
+          <details className="border border-brand-line bg-white">
+            <summary className="cursor-pointer list-none p-4 text-[15px] font-extrabold text-brand-text">Specs</summary>
+            <div className="border-t border-brand-line p-4">
+              <div className="grid gap-0">
+                {specs.slice(0, 10).map(([label, value]) => (
+                  <div key={`${label}-${value}`} className="grid grid-cols-[92px_minmax(0,1fr)] gap-3 border-b border-brand-line py-2 text-[13px] leading-6">
+                    <span className="font-bold text-brand-text">{label}</span>
+                    <span className="min-w-0 break-words text-brand-muted">{value || "-"}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
+
+          <details className="border border-brand-line bg-white">
+            <summary className="cursor-pointer list-none p-4 text-[15px] font-extrabold text-brand-text">Downloads</summary>
+            <div className="grid gap-3 border-t border-brand-line p-4">
+              {["Request Datasheet", "Request IES File", "CE / RoHS / IP Test Report"].map((label) => (
+                <Link key={label} href="/contact" className="flex min-h-12 items-center justify-between border border-brand-line bg-[#f8fbff] px-4 text-sm font-semibold text-brand-text">
+                  {label}
+                  <DocIcon className="h-4 w-4 text-brand-blue" />
+                </Link>
+              ))}
+            </div>
+          </details>
+
+          <details className="border border-brand-line bg-white">
+            <summary className="cursor-pointer list-none p-4 text-[15px] font-extrabold text-brand-text">Inquiry</summary>
+            <div className="border-t border-brand-line p-4">
+              <p className="text-sm leading-7 text-brand-muted">
+                Share your project type, quantity, voltage and installation condition. We will help confirm product selection and quotation.
+              </p>
+              <Link href="/contact" className="mt-4 inline-flex min-h-11 w-full items-center justify-center gap-2 bg-brand-blue px-5 text-sm font-bold text-white">
+                Request Quote <ArrowRightIcon className="h-4 w-4" />
+              </Link>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <div className="page-container hidden lg:block">
         <section className="py-14">
           <SectionTitle eyebrow="Specification" title="技术规格" />
           <div className="grid overflow-hidden border border-[#d4e5f5] bg-white shadow-[0_24px_80px_rgba(17,58,141,0.1)] lg:grid-cols-[380px_minmax(0,1fr)]">
@@ -224,16 +283,20 @@ export default function ProductSeriesDetailPage({ params }: { params: { slug: st
         </section>
 
         <section className="border-t border-brand-line py-12">
-          <SectionTitle eyebrow="Download" title="资料下载" />
-          <div className="grid gap-5 md:grid-cols-2">
+          <SectionTitle eyebrow="Download" title="Request Product Documents" />
+          <div className="grid gap-5 md:grid-cols-3">
             {[
               {
-                title: "产品资料 / Datasheet",
-                text: "产品规格书、尺寸说明和基础参数资料整理中，如需完整文件可联系获取。",
+                title: "Download Datasheet",
+                text: "Request product specifications, dimensions and installation information for this model.",
               },
               {
-                title: "IES 文件 / Photometric",
-                text: "配光文件将根据具体型号与光束角逐步补齐，项目选型时可先联系我们确认。",
+                title: "IES / Photometric File",
+                text: "Ask for the photometric file by model, beam angle and project application.",
+              },
+              {
+                title: "CE / RoHS / IP Test Report",
+                text: "Confirm available certification and test documents before quotation or tender submission.",
               },
             ].map((card) => (
               <Link key={card.title} href="/contact" className="group border border-[#d4e5f5] bg-[#f8fbff] p-6 shadow-soft transition hover:border-brand-gold hover:bg-white">

@@ -169,19 +169,19 @@ export function Header() {
       className="fixed inset-x-0 top-0 z-[70] border-b border-brand-line bg-white/95 backdrop-blur-xl"
     >
       <div className="page-container">
-        <div className="flex h-[76px] items-center gap-2 md:h-[92px] md:gap-3">
+        <div className="flex h-16 items-center gap-2 md:h-[92px] md:gap-3">
           <Link
             href="/"
             aria-label="Go to homepage"
             className="group flex min-w-0 items-center gap-2 px-1 py-1 text-brand-text transition hover:opacity-90 md:gap-3"
           >
-            <span className="grid h-10 w-10 flex-none place-items-center overflow-hidden bg-transparent transition group-hover:scale-[1.02] md:h-12 md:w-12">
+            <span className="grid h-9 w-9 flex-none place-items-center overflow-hidden bg-transparent transition group-hover:scale-[1.02] md:h-12 md:w-12">
               <img
                 src="/images/brand/zomei-logo-2026.png"
                 alt=""
                 width={48}
                 height={48}
-                className="h-10 w-10 object-contain md:h-12 md:w-12"
+                className="h-9 w-9 object-contain md:h-12 md:w-12"
               />
             </span>
             <span className="grid min-w-0 gap-0.5">
@@ -196,7 +196,7 @@ export function Header() {
 
           <button
             type="button"
-            className="ml-auto inline-flex h-10 w-10 items-center justify-center border border-brand-line bg-white text-brand-text transition hover:bg-brand-background md:hidden"
+            className="ml-auto inline-flex h-9 w-9 items-center justify-center border border-brand-line bg-white text-brand-text transition hover:bg-brand-background md:hidden"
             aria-label="Open menu"
             onClick={() => setMenuOpen((value) => !value)}
           >
@@ -205,7 +205,7 @@ export function Header() {
 
           <nav
             className={[
-              "absolute left-3 right-3 top-[76px] grid max-h-[calc(100vh-92px)] gap-1 overflow-auto border border-brand-line bg-white p-4 shadow-card transition md:static md:ml-10 md:flex md:max-h-none md:flex-1 md:items-center md:justify-center md:gap-9 md:overflow-visible md:border-0 md:bg-transparent md:p-0 md:shadow-none xl:gap-12",
+              "absolute left-3 right-3 top-16 grid max-h-[calc(100vh-80px)] gap-1 overflow-auto border border-brand-line bg-white p-4 shadow-card transition md:static md:ml-10 md:flex md:max-h-none md:flex-1 md:items-center md:justify-center md:gap-9 md:overflow-visible md:border-0 md:bg-transparent md:p-0 md:shadow-none xl:gap-12",
               menuOpen ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0 md:pointer-events-auto md:translate-y-0 md:opacity-100",
             ].join(" ")}
             aria-label="Primary navigation"

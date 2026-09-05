@@ -5,14 +5,6 @@ import { siteConfig } from "@/data/site";
 import { MailIcon, PhoneIcon, SearchIcon, WhatsAppIcon } from "./Icons";
 
 export function Footer() {
-  const socialLinks = [
-    { label: "LinkedIn", text: "IN" },
-    { label: "Facebook", text: "F" },
-    { label: "Instagram", text: "IG" },
-    { label: "YouTube", text: "YT" },
-    { label: "X", text: "X" },
-  ];
-
   return (
     <footer className="border-t border-white/10 bg-black text-white">
       <div className="page-container py-8 text-center">
@@ -48,16 +40,6 @@ export function Footer() {
           >
             <PhoneIcon className="h-6 w-6" />
           </a>
-          {socialLinks.map((item) => (
-            <a
-              key={item.label}
-              href="#"
-              aria-label={item.label}
-              className="grid h-10 min-w-10 place-items-center rounded-full px-2 text-[14px] font-semibold tracking-[0.08em] text-white/88 transition hover:bg-white/10 hover:text-brand-gold"
-            >
-              {item.text}
-            </a>
-          ))}
         </div>
 
         <form className="mx-auto mt-3 flex h-10 max-w-[380px] items-center rounded-full bg-white/20 px-5 text-left ring-1 ring-white/10 transition focus-within:bg-white/24 focus-within:ring-white/24">

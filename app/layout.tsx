@@ -4,14 +4,15 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
 import { LanguageProvider } from "@/context/LanguageContext";
-import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.zomeiled.com"),
   title: {
-    default: "ZOMEI",
+    default: "ZOMEI Lighting | Architectural & Outdoor LED Lighting",
     template: "%s | ZOMEI",
   },
-  description: siteConfig.description,
+  description:
+    "ZOMEI Lighting provides architectural facade lighting, landscape lighting, outdoor LED products, OEM/ODM manufacturing and project inquiry support for global buyers.",
 };
 
 export default function RootLayout({
@@ -24,7 +25,7 @@ export default function RootLayout({
       <body className="bg-brand-background text-brand-text">
         <LanguageProvider>
           <Header />
-          <main className="relative pt-[76px] md:pt-[92px]">{children}</main>
+          <main className="relative pt-16 md:pt-[92px]">{children}</main>
           <Footer />
           <FloatingContact />
         </LanguageProvider>

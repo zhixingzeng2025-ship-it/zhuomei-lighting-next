@@ -7,8 +7,9 @@ import { HomeCompanySection } from "@/components/HomeCompanySection";
 import { InquirySection } from "@/components/InquirySection";
 
 export const metadata: Metadata = {
-  title: "面向全球项目的户外照明",
-  description: "面向道路、景观、建筑和工业空间的专业户外照明解决方案。",
+  title: "Architectural & Outdoor Lighting for Real Projects",
+  description:
+    "ZOMEI Lighting supplies outdoor LED lighting products, facade lighting solutions, custom manufacturing and project delivery support for global engineering buyers.",
 };
 
 export const dynamic = "force-static";
@@ -18,8 +19,8 @@ export default function HomePage() {
     <>
       <Hero />
       <ProductCategories />
-      <SolutionsSection />
       <ProjectsSection />
+      <SolutionsSection />
       <HomeCompanySection />
       <InquirySection />
     </>

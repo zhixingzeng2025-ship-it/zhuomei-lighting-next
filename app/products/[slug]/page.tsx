@@ -11,9 +11,12 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const group = getProductGroup(params.slug);
+  const label = group?.labels.en || group?.labels.zh;
   return {
-    title: group ? `${group.labels.zh} | ZOMEI` : "产品 | ZOMEI",
-    description: group ? `浏览 ZOMEI ${group.labels.zh} 产品系列。` : "浏览 ZOMEI 产品系列。",
+    title: label ? `${label} Products` : "Outdoor Lighting Products",
+    description: label
+      ? `Browse ZOMEI ${label} product series for outdoor lighting projects, with model pages, specifications and inquiry support.`
+      : "Browse ZOMEI outdoor lighting product series, specifications and inquiry support.",
   };
 }
 

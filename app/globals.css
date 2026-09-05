@@ -101,12 +101,12 @@ img {
 }
 
 .mobile-bottom-bar {
-  @apply fixed inset-x-0 bottom-0 z-[60] grid grid-cols-4 gap-2 border-t border-white/10 bg-[#061229]/95 px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur-xl lg:hidden;
+  @apply fixed inset-x-0 bottom-0 z-[60] grid grid-cols-3 gap-2 border-t border-white/10 bg-[#061229]/95 px-3 pb-[calc(0.65rem+env(safe-area-inset-bottom))] pt-2 backdrop-blur-xl lg:hidden;
 }
 
 .mobile-bottom-bar a,
 .mobile-bottom-bar button {
-  @apply grid min-h-[54px] place-items-center gap-1 rounded-[16px] border border-white/10 bg-white/5 text-[12px] font-semibold text-white;
+  @apply grid min-h-[48px] place-items-center gap-0.5 rounded-[14px] border border-white/10 bg-white/5 text-[11px] font-semibold text-white;
 }
 
 .floating-contact {
@@ -177,7 +177,7 @@ img {
   .section-title h2 {
     font-size: clamp(1.75rem, 9vw, 2.35rem);
     line-height: 1.08;
-    letter-spacing: -0.04em;
+    letter-spacing: 0;
   }
 
   .section-title p,

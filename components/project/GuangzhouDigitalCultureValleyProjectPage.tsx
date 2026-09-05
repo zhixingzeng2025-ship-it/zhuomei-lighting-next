@@ -168,7 +168,7 @@ function Hero({ onOpen }: { onOpen: (image: ProjectImageRecord) => void }) {
 
 function Facts() {
   return (
-    <section className={`${sectionClass} bg-white`}>
+    <section id="project-summary" className={`${sectionClass} bg-white`}>
       <div className={containerClass}>
         <SectionTitle
           eyebrow="Project Summary"
@@ -183,6 +183,47 @@ function Facts() {
             </div>
           ))}
         </dl>
+      </div>
+    </section>
+  );
+}
+
+function ProjectTrustPath() {
+  const items = [
+    ["最终效果", "顶部轮廓、立面光带与水面倒影形成完整夜景识别。"],
+    ["项目背景", "商业综合体更新，需要让建筑夜间更清晰、更有传播力。"],
+    ["使用产品", "RGBW 线性洗墙灯、线条灯与 DMX512 控制系统。"],
+    ["技术难点", "控眩、遮挡、亮度层次、控制分区和安装节点协调。"],
+    ["解决方式", "现场试灯、挡板验证、节点深化、分区控制与夜间调试。"],
+    ["交付结果", "形成平日、节日和深夜模式，支持后续运营维护。"],
+  ];
+
+  return (
+    <section className={`${sectionClass} bg-white`}>
+      <div className={containerClass}>
+        <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
+          <SectionTitle
+            title="先看这个项目是否匹配你的需求"
+            description="客户最关心的不是长篇介绍，而是这个项目用了什么产品、解决了什么问题、最后交付了什么效果。"
+          />
+          <div className="flex flex-wrap gap-3 lg:justify-end">
+            <Link href="/contact" className="inline-flex min-h-12 items-center gap-3 bg-brand-blue px-5 py-3 text-sm font-bold text-white">
+              获取类似项目方案 <ArrowRightIcon className="h-4 w-4" />
+            </Link>
+            <a href="#project-summary" className="inline-flex min-h-12 items-center border border-brand-line px-5 py-3 text-sm font-bold text-brand-text">
+              查看项目概览
+            </a>
+          </div>
+        </div>
+        <div className="mt-8 grid overflow-hidden border border-brand-line bg-brand-line sm:grid-cols-2 lg:grid-cols-3">
+          {items.map(([title, text], index) => (
+            <article key={title} className="bg-[#f8fbff] p-5 sm:p-6">
+              <p className="text-[12px] font-bold tracking-[0.18em] text-brand-blue">{String(index + 1).padStart(2, "0")}</p>
+              <h3 className="mt-3 text-xl font-semibold leading-tight text-brand-text">{title}</h3>
+              <p className="mt-3 text-sm leading-7 text-brand-muted">{text}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -452,6 +493,28 @@ function FAQ() {
   );
 }
 
+function FoldedProjectProcess({ onOpen }: { onOpen: (image: ProjectImageRecord) => void }) {
+  return (
+    <section className="bg-[#f5f7fa] py-10">
+      <div className={containerClass}>
+        <details className="group border border-brand-line bg-white">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-5 p-5 text-lg font-semibold text-brand-text sm:p-6">
+            更多深化过程与技术资料
+            <span className="text-sm font-bold text-brand-blue group-open:hidden">展开</span>
+            <span className="hidden text-sm font-bold text-brand-blue group-open:inline">收起</span>
+          </summary>
+          <div className="border-t border-brand-line">
+            <DesignNarrative onOpen={onOpen} />
+            <VisualSystem onOpen={onOpen} />
+            <Verification onOpen={onOpen} />
+            <DeliveryThinking onOpen={onOpen} />
+          </div>
+        </details>
+      </div>
+    </section>
+  );
+}
+
 export function GuangzhouDigitalCultureValleyProjectPage() {
   const [lightbox, setLightbox] = useState<ProjectImageRecord | undefined>();
   const openLightbox = (image: ProjectImageRecord) => {
@@ -475,14 +538,12 @@ export function GuangzhouDigitalCultureValleyProjectPage() {
   return (
     <>
       <Hero onOpen={openLightbox} />
+      <ProjectTrustPath />
       <Facts />
-      <DesignNarrative onOpen={openLightbox} />
       <BeforeAfter onOpen={openLightbox} />
-      <VisualSystem onOpen={openLightbox} />
       <ProductControl onOpen={openLightbox} />
-      <Verification onOpen={openLightbox} />
-      <DeliveryThinking onOpen={openLightbox} />
       <CompleteGallery onOpen={openLightbox} />
+      <FoldedProjectProcess onOpen={openLightbox} />
       <FAQ />
       <Lightbox image={lightbox} onClose={() => setLightbox(undefined)} />
     </>

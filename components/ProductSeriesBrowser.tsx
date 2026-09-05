@@ -7,6 +7,7 @@ import { productGroups } from "@/data/productGroups";
 const groupCopy = {
   en: {
     eyebrow: "Product Center",
+    view: "View Products",
     linear: "Linear Lighting",
     projector: "Projector Light",
     point: "Point Light Source",
@@ -16,6 +17,7 @@ const groupCopy = {
   },
   zh: {
     eyebrow: "产品中心",
+    view: "查看产品",
     linear: "线形照明",
     projector: "投光灯",
     point: "点光源",
@@ -25,6 +27,7 @@ const groupCopy = {
   },
   ru: {
     eyebrow: "Центр продукции",
+    view: "Смотреть",
     linear: "Линейное освещение",
     projector: "Проекторный светильник",
     point: "Точечный источник",
@@ -75,6 +78,7 @@ export function ProductSeriesBrowser() {
                   <h3 className="text-[clamp(1.7rem,2.7vw,3rem)] leading-none font-semibold tracking-tighter3 text-white drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)]">
                     {title}
                   </h3>
+                  <span className="text-sm font-semibold text-white/78">{copy.view}</span>
                 </div>
               </div>
             </div>

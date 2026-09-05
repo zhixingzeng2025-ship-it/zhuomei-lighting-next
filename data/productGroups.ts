@@ -18,6 +18,11 @@ export type ProductFamily = {
   variants: ProductSeriesItem[];
 };
 
+export type ProductSpecSummary = {
+  key: "power" | "ip" | "voltage" | "beam";
+  value: string;
+};
+
 export const productGroups: ProductGroup[] = [
   {
     slug: "linear-lighting",
@@ -99,6 +104,25 @@ export function getProductGroup(slug: string) {
 
 export function getProductGroupItems(group: ProductGroup): ProductSeriesItem[] {
   return productSeries.filter((item) => group.productSlugs.includes(item.categorySlug));
+}
+
+function compactSpecValue(value = "") {
+  const clean = value.replace(/\s+/g, " ").trim();
+  if (!clean) return "";
+  if (clean.length <= 32) return clean;
+  return `${clean.slice(0, 30)}...`;
+}
+
+export function getProductGroupSpecs(group: ProductGroup): ProductSpecSummary[] {
+  const representative = getProductGroupItems(group)[0];
+  if (!representative) return [];
+
+  return [
+    { key: "power" as const, value: compactSpecValue(representative.power) },
+    { key: "ip" as const, value: compactSpecValue(representative.ip) },
+    { key: "voltage" as const, value: compactSpecValue(representative.voltage) },
+    { key: "beam" as const, value: compactSpecValue(representative.beam) },
+  ].filter((item) => item.value);
 }
 
 /** Customer-facing family layer; individual model records remain unchanged. */

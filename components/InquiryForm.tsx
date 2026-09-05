@@ -2,15 +2,19 @@
 
 import { FormEvent, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import { productGroups } from "@/data/productGroups";
 import { ArrowRightIcon } from "./Icons";
 
 type FormState = {
   name: string;
   email: string;
+  whatsapp: string;
   company: string;
   country: string;
-  product: string;
-  details: string;
+  projectType: string;
+  productInterest: string;
+  quantity: string;
+  message: string;
 };
 
 type InquiryFormProps = {
@@ -23,10 +27,13 @@ type InquiryFormProps = {
 const initialState: FormState = {
   name: "",
   email: "",
+  whatsapp: "",
   company: "",
   country: "",
-  product: "",
-  details: "",
+  projectType: "",
+  productInterest: "",
+  quantity: "",
+  message: "",
 };
 
 export default function InquiryForm({
@@ -35,10 +42,19 @@ export default function InquiryForm({
   onSuccess,
   endpoint = "/api/contact",
 }: InquiryFormProps) {
-  const { t } = useLanguage();
+  const { locale, t } = useLanguage();
   const [formData, setFormData] = useState<FormState>(initialState);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const productOptions = productGroups.map((group) => group.labels[locale as keyof typeof group.labels] || group.labels.zh);
+  const projectTypes = [
+    t("inquiry.projectTypeFacade"),
+    t("inquiry.projectTypeLandscape"),
+    t("inquiry.projectTypeRoad"),
+    t("inquiry.projectTypeCulture"),
+    t("inquiry.projectTypeCommercial"),
+    t("inquiry.projectTypeCustom"),
+  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -100,9 +116,9 @@ export default function InquiryForm({
       </div>
       <div className="grid gap-4 md:grid-cols-2">
         <input
-          name="company"
-          placeholder={t("inquiry.company")}
-          value={formData.company}
+          name="whatsapp"
+          placeholder={t("inquiry.whatsapp")}
+          value={formData.whatsapp}
           onChange={handleChange}
           className="input-field"
         />
@@ -114,32 +130,57 @@ export default function InquiryForm({
           className="input-field"
         />
       </div>
-      <select
-        name="product"
-        value={formData.product}
-        onChange={handleChange}
-        className="input-field w-full"
-      >
-        <option value="">{t("inquiry.selectProduct")}</option>
-        <option>{t("products.streetLight")}</option>
-        <option>{t("products.solarStreetLight")}</option>
-        <option>{t("products.floodLight")}</option>
-        <option>{t("products.solarFloodLight")}</option>
-        <option>{t("products.solarGardenLight")}</option>
-        <option>{t("products.highBayLight")}</option>
-        <option>{t("products.moistureProof")}</option>
-        <option>{t("products.wallWasher")}</option>
-        <option>{t("products.linearLight")}</option>
-        <option>{t("products.projectorLight")}</option>
-        <option>{t("products.pointLight")}</option>
-      </select>
+      <div className="grid gap-4 md:grid-cols-2">
+        <input
+          name="company"
+          placeholder={t("inquiry.company")}
+          value={formData.company}
+          onChange={handleChange}
+          className="input-field"
+        />
+        <select
+          name="projectType"
+          value={formData.projectType}
+          onChange={handleChange}
+          className="input-field w-full"
+        >
+          <option value="">{t("inquiry.selectProjectType")}</option>
+          {projectTypes.map((label) => (
+            <option key={label} value={label}>
+              {label}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="grid gap-4 md:grid-cols-2">
+        <select
+          name="productInterest"
+          value={formData.productInterest}
+          onChange={handleChange}
+          className="input-field w-full"
+        >
+          <option value="">{t("inquiry.selectProduct")}</option>
+          {productOptions.map((label) => (
+            <option key={label} value={label}>
+              {label}
+            </option>
+          ))}
+        </select>
+        <input
+          name="quantity"
+          placeholder={t("inquiry.quantity")}
+          value={formData.quantity}
+          onChange={handleChange}
+          className="input-field"
+        />
+      </div>
       <textarea
-        name="details"
-        placeholder={t("inquiry.details")}
-        value={formData.details}
+        name="message"
+        placeholder={t("inquiry.message")}
+        value={formData.message}
         onChange={handleChange}
-        rows={5}
-        className="input-field min-h-40 w-full resize-y"
+        rows={4}
+        className="input-field min-h-32 w-full resize-y"
       />
       <button
         type="submit"
