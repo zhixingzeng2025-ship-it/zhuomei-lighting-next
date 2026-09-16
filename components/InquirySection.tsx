@@ -10,7 +10,7 @@ export function InquirySection() {
 
   return (
     <section className="relative overflow-hidden bg-brand-navy py-16 text-white sm:py-20" id="contact">
-      <div className="absolute inset-0 bg-[url('/images/generated/contact-inquiry.png')] bg-cover bg-center opacity-22" aria-hidden="true" />
+      <div className="absolute inset-0 bg-[url('https://img.zomeiled.com/images/generated/contact-inquiry.png')] bg-cover bg-center opacity-22" aria-hidden="true" />
       <div className="absolute inset-0 bg-gradient-to-r from-[#020712]/98 via-[#061229]/90 to-[#07142d]/62" aria-hidden="true" />
       <div className="page-container relative">
         <div className="grid items-stretch gap-7 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
@@ -62,7 +62,7 @@ export function InquirySection() {
               >
                 <span className="mx-auto flex h-28 w-28 items-center justify-center bg-white p-2">
                   <img
-                    src="/images/contact/zomei-wechat-qr.jpg"
+                    src="https://img.zomeiled.com/images/contact/zomei-wechat-qr.jpg"
                     alt={t("common.contactQrAlt")}
                     className="h-full w-full object-contain"
                   />

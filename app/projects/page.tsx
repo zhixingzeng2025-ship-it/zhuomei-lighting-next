@@ -20,7 +20,7 @@ export default function ProjectsPage() {
           descriptionKey="pageHeader.projectsDescription"
           actionHref="/contact"
           actionLabelKey="pageHeader.projectsAction"
-          image="/images/projects/guangzhou-digital-culture-valley/web/social-cover.jpg"
+          image="https://img.zomeiled.com/images/projects/guangzhou-digital-culture-valley/web/social-cover.jpg"
         />
         <LocalizedProjectsGrid />
       </div>

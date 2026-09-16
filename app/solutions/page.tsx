@@ -19,7 +19,7 @@ export default function SolutionsPage() {
           descriptionKey="pageHeader.solutionsDescription"
           actionHref="/contact"
           actionLabelKey="pageHeader.solutionsAction"
-          image="/images/solutions/solutions-hero-city-night.jpg"
+          image="https://img.zomeiled.com/images/solutions/solutions-hero-city-night.jpg"
         />
         <LocalizedSolutionsGrid />
       </div>

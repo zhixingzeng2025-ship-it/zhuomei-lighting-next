@@ -10,9 +10,9 @@ import { projectKeyForSlug, projects } from "@/data/projects";
 export const dynamic = "force-static";
 
 const almatyMuseumOgImage =
-  "/images/projects/almaty-museum/social/zomei-almaty-museum-facade-lighting-social-p01-final-night-hero.jpg";
+  "https://img.zomeiled.com/images/projects/almaty-museum/social/zomei-almaty-museum-facade-lighting-social-p01-final-night-hero.jpg";
 const guangzhouDigitalCultureValleyOgImage =
-  "/images/projects/guangzhou-digital-culture-valley/web/social-cover.jpg";
+  "https://img.zomeiled.com/images/projects/guangzhou-digital-culture-valley/web/social-cover.jpg";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));

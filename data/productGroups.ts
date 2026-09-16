@@ -4,6 +4,7 @@ export type ProductGroup = {
   slug: string;
   labels: Record<"en" | "zh" | "ru", string>;
   productSlugs: string[];
+  featuredProductId: string;
   heroImage: string;
   imageClassName: string;
   tileClassName: string;
@@ -32,7 +33,8 @@ export const productGroups: ProductGroup[] = [
       ru: "Линейное освещение",
     },
     productSlugs: ["wall-washer-light", "linear-light"],
-    heroImage: "/images/generated/products/library/linear-light-ZM-LIN-XT1.1.png",
+    featuredProductId: "zm-lin-xt1.1",
+    heroImage: "https://img.zomeiled.com/images/generated/products/library/linear-light-ZM-LIN-XT1.1.png",
     imageClassName: "object-contain scale-[0.94]",
     tileClassName: "md:col-span-2 md:row-span-2",
   },
@@ -44,7 +46,8 @@ export const productGroups: ProductGroup[] = [
       ru: "Проекторный светильник",
     },
     productSlugs: ["projector-light"],
-    heroImage: "/images/generated/products/library/projector-light-ZM-SL-FS2.0.png",
+    featuredProductId: "zm-sl-fs2.0",
+    heroImage: "https://img.zomeiled.com/images/generated/products/library/projector-light-ZM-SL-FS2.0.png",
     imageClassName: "object-contain scale-[0.92]",
     tileClassName: "md:row-span-2",
   },
@@ -56,7 +59,8 @@ export const productGroups: ProductGroup[] = [
       ru: "Точечный источник",
     },
     productSlugs: ["point-light-source"],
-    heroImage: "/images/generated/products/library/point-light-source-ZM-PLS-YD80.png",
+    featuredProductId: "zm-pls-yd80",
+    heroImage: "https://img.zomeiled.com/images/generated/products/library/point-light-source-ZM-PLS-YD80.png",
     imageClassName: "object-contain scale-[0.92]",
     tileClassName: "",
   },
@@ -68,7 +72,8 @@ export const productGroups: ProductGroup[] = [
       ru: "Настенный светильник",
     },
     productSlugs: ["wall-lamp"],
-    heroImage: "/images/generated/products/library/wall-lamp-ZM-WL-YB2.1-YB2.2.png",
+    featuredProductId: "zm-wl-yb2.1-yb2.2",
+    heroImage: "https://img.zomeiled.com/images/generated/products/library/wall-lamp-ZM-WL-YB2.1-YB2.2.png",
     imageClassName: "object-contain scale-[0.9]",
     tileClassName: "",
   },
@@ -80,7 +85,8 @@ export const productGroups: ProductGroup[] = [
       ru: "Общее освещение",
     },
     productSlugs: ["flood-light", "street-light", "solar-light", "high-bay-light"],
-    heroImage: "/images/generated/products/library/flood-light-ZOMEI-FL23-300W.png",
+    featuredProductId: "ZOMEI-FL23-300W",
+    heroImage: "https://img.zomeiled.com/images/generated/products/library/flood-light-ZOMEI-FL23-300W.png",
     imageClassName: "object-contain scale-[0.88]",
     tileClassName: "md:col-span-2 md:row-span-2",
   },
@@ -92,7 +98,8 @@ export const productGroups: ProductGroup[] = [
       ru: "Специальное освещение",
     },
     productSlugs: ["corrugated-light", "step-lamp", "window-sill-light", "column-lamp", "underwater-light", "specialty-light"],
-    heroImage: "/images/generated/products/library/column-lamp-ZM-TL-SYC1.0.png",
+    featuredProductId: "zm-tl-syc1.0",
+    heroImage: "https://img.zomeiled.com/images/generated/products/library/column-lamp-ZM-TL-SYC1.0.png",
     imageClassName: "object-contain scale-[0.9]",
     tileClassName: "md:col-span-2 md:row-span-2",
   },
@@ -103,7 +110,10 @@ export function getProductGroup(slug: string) {
 }
 
 export function getProductGroupItems(group: ProductGroup): ProductSeriesItem[] {
-  return productSeries.filter((item) => group.productSlugs.includes(item.categorySlug));
+  const featuredItem = productSeries.find((item) => item.id === group.featuredProductId);
+  if (featuredItem) return [featuredItem];
+
+  return productSeries.filter((item) => group.productSlugs.includes(item.categorySlug)).slice(0, 1);
 }
 
 function compactSpecValue(value = "") {
@@ -204,5 +214,5 @@ export function getProductSeriesFamilies(group: ProductGroup): ProductFamily[] {
 }
 
 export function productSeriesImage(item: ProductSeriesItem) {
-  return item.image || `/images/generated/products/library/${item.categorySlug}-${item.code}.png`;
+  return item.image || `https://img.zomeiled.com/images/generated/products/library/${item.categorySlug}-${item.code}.png`;
 }

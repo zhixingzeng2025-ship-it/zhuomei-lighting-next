@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogArticlePageContent } from "@/components/blog/BlogArticlePageContent";
-import { LedOutdoorProductKnowledgeArticle } from "@/components/blog/LedOutdoorProductKnowledgeArticle";
 import { blogArticles, getBlogArticle } from "@/data/blog";
 
 export const dynamic = "force-static";
@@ -21,10 +20,6 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 export default function BlogArticlePage({ params }: { params: { slug: string } }) {
   const article = getBlogArticle(params.slug);
   if (!article) notFound();
-
-  if (article.slug === "led-outdoor-lighting-technology") {
-    return <LedOutdoorProductKnowledgeArticle />;
-  }
 
   const relatedArticles = [
     ...blogArticles.filter((item) => item.slug !== article.slug),

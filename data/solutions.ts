@@ -37,7 +37,7 @@ const solutionMocks = [
     slug: "road-street-lighting",
     title: "道路与街道照明",
     description: "兼顾安全性与视觉舒适度的基础设施照明。",
-    image: "/images/generated/solutions/solution-road.png",
+    image: "https://img.zomeiled.com/images/generated/solutions/solution-road.jpg",
     overview:
       "道路与街道照明方案以通行安全、照度均匀度、眩光控制和后期维护为核心。方案阶段会结合道路等级、车道宽度、灯杆高度、杆距、悬臂长度、路面反射条件和周边环境亮度，匹配合适的功率、配光曲线、色温、防护等级与安装方式，避免只按单灯功率选型导致亮度不均、眩光明显或维护成本偏高。",
     highlights: [
@@ -60,7 +60,7 @@ const solutionMocks = [
     slug: "solar-lighting",
     title: "太阳能照明方案",
     description: "便于灵活部署的独立节能照明系统。",
-    image: "/images/generated/solutions/solution-solar.png",
+    image: "https://img.zomeiled.com/images/generated/solutions/solution-solar.jpg",
     overview:
       "太阳能照明方案适合供电接入困难、布线成本较高或需要快速部署的户外项目。方案会根据当地日照条件、连续阴雨天需求、夜间工作时长、灯具功率、安装高度和电池容量，综合配置太阳能板、锂电池、控制器、灯具光学和运行模式，确保系统不是简单点亮，而是在真实气候和使用周期中稳定工作。",
     highlights: [
@@ -83,7 +83,7 @@ const solutionMocks = [
     slug: "landscape-lighting",
     title: "景观照明",
     description: "服务公园、园林与公共空间的优雅氛围照明。",
-    image: "/images/generated/solutions/solution-landscape.png",
+    image: "https://img.zomeiled.com/images/generated/solutions/solution-landscape.jpg",
     overview:
       "景观照明方案强调人在夜间空间中的舒适感、方向感和场景氛围。设计时会把步道安全、植物层次、水景反射、节点装饰、眩光控制和灯具隐藏方式一起考虑，通过低位灯、投光灯、洗墙灯、线条灯和水下灯组合，形成有明暗节奏而不过度刺眼的夜间环境。",
     highlights: [
@@ -106,7 +106,7 @@ const solutionMocks = [
     slug: "building-facade-lighting",
     title: "建筑立面照明",
     description: "以可控色调与节奏塑造建筑场景。",
-    image: "/images/generated/solutions/solution-facade.png",
+    image: "https://img.zomeiled.com/images/generated/solutions/solution-facade.jpg",
     overview:
       "建筑立面照明方案用于塑造建筑夜间识别度、材质肌理和城市界面形象。方案会根据建筑高度、立面材质、观看距离、安装位置、幕墙结构、维护通道和控制需求，组合洗墙灯、线条灯、投光灯、点光源和图案投影设备，形成从轮廓、面光、重点节点到动态场景的完整表达。",
     highlights: [
@@ -129,7 +129,7 @@ const solutionMocks = [
     slug: "industrial-lighting",
     title: "工业照明",
     description: "面向厂房、仓库和作业区域的耐用照明。",
-    image: "/images/generated/solutions/solution-industrial.png",
+    image: "https://img.zomeiled.com/images/generated/solutions/solution-industrial.jpg",
     overview:
       "工业照明方案面向厂房、仓库、物流中心、装卸区和半户外作业环境，重点解决高空安装、持续运行、照度稳定、维护频率和环境耐受性问题。方案会根据作业类型、空间高度、货架布局、设备遮挡、地面反射率和安全规范，选择工矿灯、泛光灯、线性灯或防护型灯具组合。",
     highlights: [
@@ -152,7 +152,7 @@ const solutionMocks = [
     slug: "garden-park-lighting",
     title: "花园与公园照明",
     description: "服务休闲与公共环境的人性化照明。",
-    image: "/images/generated/solutions/solution-garden.png",
+    image: "https://img.zomeiled.com/images/generated/solutions/solution-garden.jpg",
     overview:
       "花园与公园照明方案更重视人的尺度、路径引导和夜间停留体验。方案会围绕入口、主步道、休憩区、草坪、树阵、儿童活动区和水景节点建立照明层次，让空间既有安全亮度，也保留柔和、安静和自然的夜间氛围。",
     highlights: [
@@ -175,7 +175,7 @@ const solutionMocks = [
     slug: "stadium-area-lighting",
     title: "体育场与广场照明",
     description: "服务运动场和大面积项目的高覆盖照明。",
-    image: "/images/generated/solutions/solution-stadium.png",
+    image: "https://img.zomeiled.com/images/generated/solutions/solution-stadium.jpg",
     overview:
       "体育场与广场照明方案适用于运动场、训练场、公共广场、大型停车场和活动场地。方案重点关注大面积覆盖、照度等级、均匀度、眩光限制、溢散光控制和高位安装安全，通过高功率投光灯、高杆灯、专业支架和分区控制实现稳定的夜间使用条件。",
     highlights: [
@@ -198,7 +198,7 @@ const solutionMocks = [
     slug: "urban-public-lighting",
     title: "城市公共照明",
     description: "服务城市与公共基础设施的可靠照明。",
-    image: "/images/generated/projects/project-commercial.png",
+    image: "https://img.zomeiled.com/images/generated/projects/project-commercial.jpg",
     overview:
       "城市公共照明方案服务于街区更新、商业步行街、公共广场、桥下空间、交通节点和市政配套设施。方案会同时考虑公共安全、城市形象、夜间活力、维护管理和能耗控制，通过功能照明、景观照明、重点照明和智能控制组合，形成连续、舒适且便于管理的公共夜间环境。",
     highlights: [

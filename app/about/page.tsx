@@ -3,8 +3,8 @@ import { LocalizedPageHeader } from "@/components/LocalizedPageHeader";
 import { AboutContent } from "@/components/AboutContent";
 
 export const metadata: Metadata = {
-  title: "关于我们",
-  description: "了解深圳卓美LED（ZOMEI Lighting）的建筑照明解决方案、多制造基地协同体系、品质保障、工程经验和国际项目服务能力。",
+  title: "关于我们 | ZOMEI Lighting",
+  description: "了解深圳市卓美灯具有限公司（ZOMEI Lighting）的户外建筑照明产品、定制制造、测试验证和工程项目交付配合能力。",
 };
 
 export const dynamic = "force-static";
@@ -19,7 +19,7 @@ export default function AboutPage() {
           descriptionKey="pageHeader.aboutDescription"
           actionHref="/contact"
           actionLabelKey="pageHeader.aboutAction"
-          image="/images/company/website-assets/reception-room.png"
+          image="https://img.zomeiled.com/images/company/website-assets/reception-room.jpg"
         />
 
         <AboutContent />

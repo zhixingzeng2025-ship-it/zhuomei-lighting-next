@@ -4,7 +4,13 @@ import { useLanguage } from "@/context/LanguageContext";
 import { BlogArticleGrid } from "@/components/BlogArticleGrid";
 
 export function BlogPageContent() {
-  const { t } = useLanguage();
+  const { locale, t } = useLanguage();
+  const heroAlt =
+    locale === "en"
+      ? "Architectural lighting design sketch"
+      : locale === "ru"
+        ? "Эскиз архитектурного освещения"
+        : "建筑照明设计草图";
 
   return (
     <section className="bg-gradient-to-b from-white to-[#eef5ff] py-14">
@@ -13,7 +19,7 @@ export function BlogPageContent() {
           <div className="grid lg:h-[360px] lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)]">
             <div className="flex h-full items-center px-6 py-8 sm:px-8 sm:py-10 lg:py-0">
               <div className="w-full max-w-3xl">
-                <p className="eyebrow mb-4 flex h-6 items-center">Lighting Resources</p>
+                <p className="eyebrow mb-4 flex h-6 items-center">{t("blog.metaTitle")}</p>
                 <h1 className="text-[clamp(2.1rem,4vw,4rem)] font-semibold leading-[0.98] text-brand-text lg:min-h-[7.9rem]">
                   {t("blog.title")}
                 </h1>
@@ -25,8 +31,8 @@ export function BlogPageContent() {
             </div>
             <div className="relative h-[260px] bg-brand-background lg:h-full">
               <img
-                src="/images/blog/lighting-resources-hero.jpg"
-                alt="建筑照明设计草图"
+                src="https://img.zomeiled.com/images/blog/lighting-resources-hero.jpg"
+                alt={heroAlt}
                 className="h-full w-full object-cover"
               />
             </div>

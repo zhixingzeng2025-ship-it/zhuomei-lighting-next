@@ -22,6 +22,8 @@ export function ProductCategoryList({ group }: ProductCategoryListProps) {
       table: ["Model", "Power", "Size(mm)", "IP", "Luminous Flux", "Beam", "Material"],
       cta: "View Representative Model",
       rangeLabel: "Model Range",
+      productSeriesLabel: "Product Series",
+      modelVariantsLabel: "Model Variants",
     },
     zh: {
       intro: "先按产品系列查看，再通过功率、尺寸和光学参数选择具体型号。",
@@ -31,6 +33,8 @@ export function ProductCategoryList({ group }: ProductCategoryListProps) {
       table: ["型号", "功率", "尺寸(mm)", "防护", "光通量", "角度", "材质"],
       cta: "查看系列代表型号",
       rangeLabel: "型号范围",
+      productSeriesLabel: "产品系列",
+      modelVariantsLabel: "型号规格",
     },
     ru: {
       intro: "Сначала просмотрите серию, затем выбирайте модель по мощности, размеру и оптическим параметрам.",
@@ -40,6 +44,8 @@ export function ProductCategoryList({ group }: ProductCategoryListProps) {
       table: ["Модель", "Мощность", "Размер(mm)", "IP", "Световой поток", "Угол", "Материал"],
       cta: "Открыть базовую модель серии",
       rangeLabel: "Диапазон моделей",
+      productSeriesLabel: "Серия продукции",
+      modelVariantsLabel: "Варианты моделей",
     },
   }[locale as "en" | "zh" | "ru"];
 
@@ -80,7 +86,7 @@ export function ProductCategoryList({ group }: ProductCategoryListProps) {
                   </div>
                   <div className="mt-5 flex items-end justify-between gap-4">
                     <div>
-                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-blue">Product Series</p>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-blue">{copy.productSeriesLabel}</p>
                       <h2 className="mt-2 text-[28px] font-extrabold tracking-tight text-brand-text">{family.seriesCode}</h2>
                       <p className="mt-2 text-sm leading-6 text-brand-muted">
                         {copy.rangeLabel}: <span className="font-semibold text-brand-text">{family.modelRange || family.representative.model}</span>
@@ -93,7 +99,7 @@ export function ProductCategoryList({ group }: ProductCategoryListProps) {
                 <div className="min-w-0 p-6 lg:p-8">
                   <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
                     <div>
-                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-blue">Model Variants</p>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-blue">{copy.modelVariantsLabel}</p>
                       <h3 className="mt-1 text-[24px] font-extrabold tracking-tight text-brand-text">{copy.modelSelection}</h3>
                     </div>
                     <span className="text-sm text-brand-muted">{copy.modelNote}</span>

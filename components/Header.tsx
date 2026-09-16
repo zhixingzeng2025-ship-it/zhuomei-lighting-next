@@ -177,7 +177,7 @@ export function Header() {
           >
             <span className="grid h-9 w-9 flex-none place-items-center overflow-hidden bg-transparent transition group-hover:scale-[1.02] md:h-12 md:w-12">
               <img
-                src="/images/brand/zomei-logo-2026.png"
+                src="https://img.zomeiled.com/images/brand/zomei-logo-2026.png"
                 alt=""
                 width={48}
                 height={48}

@@ -52,7 +52,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "25°、30°、40°、60°、30*60°",
     material: "航空拉伸铝",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-wwl-xq1.0/zm-wwl-xq1.0-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-wwl-xq1.0/zm-wwl-xq1.0-product-gallery-01.png",
   },
   {
     id: "zm-wwl-xq2.0",
@@ -70,7 +70,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:10°、15°、30°、45°、60°、20*40°、15*60°；RGB/RGBW:15°、25°、30°、40°、60°、20*40°",
     material: "航空拉伸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-wwl-xq2.0/zm-wwl-xq2.0-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-wwl-xq2.0/zm-wwl-xq2.0-product-gallery-01.png",
   },
   {
     id: "zm-wwl-xq3.0",
@@ -88,7 +88,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:10°、15°、30°、45°、60°、20*40°、15*60°；RGB/RGBW:15°、25°、30°、40°、60°、20*40°",
     material: "航空拉伸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-wwl-xq3.0/zm-wwl-xq3.0-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-wwl-xq3.0/zm-wwl-xq3.0-product-gallery-01.png",
   },
   {
     id: "zm-lin-xt1.0",
@@ -106,7 +106,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "航空拉伸铝",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-lin-xt1.0/zm-lin-xt1.0-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-lin-xt1.0/zm-lin-xt1.0-product-gallery-01.png",
   },
   {
     id: "zm-lin-xt1.1",
@@ -124,7 +124,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "航空拉伸铝+防紫外线抗老化PC罩",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-lin-xt1.1/zm-lin-xt1.1-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-lin-xt1.1/zm-lin-xt1.1-product-gallery-01.png",
   },
   {
     id: "zm-lin-xt1.2",
@@ -142,7 +142,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "航空拉伸铝+亚克力棒",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-lin-xt1.2/zm-lin-xt1.2-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-lin-xt1.2/zm-lin-xt1.2-product-gallery-01.png",
   },
   {
     id: "zm-lin-xt1.3",
@@ -160,7 +160,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "航空拉伸铝+防紫外线抗老化PC罩",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-lin-xt1.3/zm-lin-xt1.3-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-lin-xt1.3/zm-lin-xt1.3-product-gallery-01.png",
   },
   {
     id: "zm-lin-xt1.4",
@@ -178,7 +178,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "航空拉伸铝+防紫外线抗老化PC罩",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-lin-xt1.4/zm-lin-xt1.4-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-lin-xt1.4/zm-lin-xt1.4-product-gallery-01.png",
   },
   {
     id: "zm-lin-xt2.2",
@@ -196,7 +196,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "航空拉伸铝+亚克力棒",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-lin-xt2.2/zm-lin-xt2.2-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-lin-xt2.2/zm-lin-xt2.2-product-gallery-01.png",
   },
   {
     id: "zm-lin-xt2.3",
@@ -214,7 +214,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "航空拉伸铝+防紫外线抗老化PC罩",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-lin-xt2.3/zm-lin-xt2.3-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-lin-xt2.3/zm-lin-xt2.3-product-gallery-01.png",
   },
   {
     id: "zm-lin-xt2.4",
@@ -232,7 +232,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "航空拉伸铝+防紫外线抗老化PC罩",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-lin-xt2.4/zm-lin-xt2.4-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-lin-xt2.4/zm-lin-xt2.4-product-gallery-01.png",
   },
   {
     id: "zm-sl-ys1.0",
@@ -250,7 +250,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "航空拉伸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-sl-ys1.0/zm-sl-ys1.0-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-sl-ys1.0/zm-sl-ys1.0-product-gallery-01.png",
   },
   {
     id: "zm-sl-ys2.0",
@@ -268,7 +268,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "航空拉伸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-sl-ys2.0/zm-sl-ys2.0-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-sl-ys2.0/zm-sl-ys2.0-product-gallery-01.png",
   },
   {
     id: "zm-sl-fs1.0",
@@ -286,7 +286,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "航空拉伸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-sl-fs1.0/zm-sl-fs1.0-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-sl-fs1.0/zm-sl-fs1.0-product-gallery-01.png",
   },
   {
     id: "zm-sl-fs2.0",
@@ -304,7 +304,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "航空拉伸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-sl-fs2.0/zm-sl-fs2.0-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-sl-fs2.0/zm-sl-fs2.0-product-gallery-01.png",
   },
   {
     id: "zm-sl-fs3.0",
@@ -322,7 +322,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "航空拉伸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-sl-fs3.0/zm-sl-fs3.0-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-sl-fs3.0/zm-sl-fs3.0-product-gallery-01.png",
   },
   {
     id: "zm-sl-ft1.1",
@@ -340,7 +340,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "航空拉伸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-sl-ft1.1/zm-sl-ft1.1-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-sl-ft1.1/zm-sl-ft1.1-product-gallery-01.png",
   },
   {
     id: "zm-sl-ft2.1",
@@ -358,7 +358,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "航空拉伸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-sl-ft2.1/zm-sl-ft2.1-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-sl-ft2.1/zm-sl-ft2.1-product-gallery-01.png",
   },
   {
     id: "zm-sl-ft3.1",
@@ -376,7 +376,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "航空拉伸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-sl-ft3.1/zm-sl-ft3.1-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-sl-ft3.1/zm-sl-ft3.1-product-gallery-01.png",
   },
   {
     id: "zm-sl-ft4.1",
@@ -394,7 +394,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "航空拉伸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-sl-ft4.1/zm-sl-ft4.1-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-sl-ft4.1/zm-sl-ft4.1-product-gallery-01.png",
   },
   {
     id: "zm-sl-ft5.1",
@@ -412,7 +412,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "航空拉伸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-sl-ft5.1/zm-sl-ft5.1-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-sl-ft5.1/zm-sl-ft5.1-product-gallery-01.png",
   },
   {
     id: "zm-sl-ft5.2",
@@ -430,7 +430,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "航空拉伸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-sl-ft5.2/zm-sl-ft5.2-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-sl-ft5.2/zm-sl-ft5.2-product-gallery-01.png",
   },
   {
     id: "zm-sl-ft6.1",
@@ -448,7 +448,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "航空拉伸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-sl-ft6.1/zm-sl-ft6.1-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-sl-ft6.1/zm-sl-ft6.1-product-gallery-01.png",
   },
   {
     id: "zm-sl-ft6.2",
@@ -466,7 +466,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "航空拉伸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-sl-ft6.2/zm-sl-ft6.2-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-sl-ft6.2/zm-sl-ft6.2-product-gallery-01.png",
   },
   {
     id: "zm-sl-ft6.3",
@@ -484,7 +484,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "航空拉伸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-sl-ft6.3/zm-sl-ft6.3-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-sl-ft6.3/zm-sl-ft6.3-product-gallery-01.png",
   },
   {
     id: "zm-pls-yd30",
@@ -502,7 +502,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "ABS底座+PC面罩",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-pls-yd30/zm-pls-yd30-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-pls-yd30/zm-pls-yd30-product-gallery-01.png",
   },
   {
     id: "zm-pls-yd40",
@@ -520,7 +520,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "ABS底座+PC面罩",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-pls-yd40/zm-pls-yd40-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-pls-yd40/zm-pls-yd40-product-gallery-01.png",
   },
   {
     id: "zm-pls-yd60",
@@ -538,7 +538,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "ABS底座+PC面罩",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-pls-yd60/zm-pls-yd60-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-pls-yd60/zm-pls-yd60-product-gallery-01.png",
   },
   {
     id: "zm-pls-yd80",
@@ -556,7 +556,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "ABS底座+PC面罩",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-pls-yd80/zm-pls-yd80-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-pls-yd80/zm-pls-yd80-product-gallery-01.png",
   },
   {
     id: "zm-pls-yd90",
@@ -574,7 +574,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "高强度压铸铝+PC面罩",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-pls-yd90/zm-pls-yd90-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-pls-yd90/zm-pls-yd90-product-gallery-01.png",
   },
   {
     id: "zm-pls-yd120",
@@ -592,7 +592,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "高强度压铸铝+PC面罩",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-pls-yd120/zm-pls-yd120-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-pls-yd120/zm-pls-yd120-product-gallery-01.png",
   },
   {
     id: "zm-pls-yd150",
@@ -610,7 +610,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "高强度压铸铝+PC面罩",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-pls-yd150/zm-pls-yd150-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-pls-yd150/zm-pls-yd150-product-gallery-01.png",
   },
   {
     id: "zm-pls-yd200",
@@ -628,7 +628,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "高强度压铸铝+PC面罩",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-pls-yd200/zm-pls-yd200-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-pls-yd200/zm-pls-yd200-product-gallery-01.png",
   },
   {
     id: "zm-cl-wl1.0",
@@ -646,7 +646,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "高强度压铸铝",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-cl-wl1.0/zm-cl-wl1.0-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-cl-wl1.0/zm-cl-wl1.0-product-gallery-01.png",
   },
   {
     id: "zm-cl-wl2.0",
@@ -664,7 +664,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "(W)5°、8°、10°、15°、25°、30°、45°、60°",
     material: "高强度压铸铝",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-cl-wl2.0/zm-cl-wl2.0-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-cl-wl2.0/zm-cl-wl2.0-product-gallery-01.png",
   },
   {
     id: "zm-tl-syc1.0",
@@ -682,7 +682,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "ADC12压铸铝+钢化玻璃",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-tl-syc1.0/zm-tl-syc1.0-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-tl-syc1.0/zm-tl-syc1.0-product-gallery-01.png",
   },
   {
     id: "zm-wl-xl1.0",
@@ -700,7 +700,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "4*180°",
     material: "高强度压铸铝",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-wl-xl1.0/zm-wl-xl1.0-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-wl-xl1.0/zm-wl-xl1.0-product-gallery-01.png",
   },
   {
     id: "zm-stl-gy1.0",
@@ -718,7 +718,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "高强度压铸铝",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-stl-gy1.0/zm-stl-gy1.0-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-stl-gy1.0/zm-stl-gy1.0-product-gallery-01.png",
   },
   {
     id: "zm-stl-tb1.0",
@@ -736,7 +736,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "高强度压铸铝",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-stl-tb1.0/zm-stl-tb1.0-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-stl-tb1.0/zm-stl-tb1.0-product-gallery-01.png",
   },
   {
     id: "zm-stl-tb2.0",
@@ -754,7 +754,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "W/WY:5°、8°、10°、15°、25°、30°、45°、60°；RGB/RGBW:15°、25°、40°、60°",
     material: "高强度压铸铝",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-stl-tb2.0/zm-stl-tb2.0-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-stl-tb2.0/zm-stl-tb2.0-product-gallery-01.png",
   },
   {
     id: "zm-wl-yb1.1-yb1.2",
@@ -772,7 +772,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "5°、8°、10°、15°、25°、30°、45°、60°",
     material: "航空拉伸铝",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-wl-yb1.1-yb1.2/zm-wl-yb1.1-yb1.2-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-wl-yb1.1-yb1.2/zm-wl-yb1.1-yb1.2-product-gallery-01.png",
   },
   {
     id: "zm-wl-yb2.1-yb2.2",
@@ -790,7 +790,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "5°、8°、10°、15°、25°、30°、45°、60°",
     material: "航空拉伸铝",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-wl-yb2.1-yb2.2/zm-wl-yb2.1-yb2.2-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-wl-yb2.1-yb2.2/zm-wl-yb2.1-yb2.2-product-gallery-01.png",
   },
   {
     id: "zm-wl-yb3.1-yb3.2",
@@ -808,7 +808,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "5°、8°、10、15°、25°、30°、45°、60°",
     material: "航空拉伸铝",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-wl-yb3.1-yb3.2/zm-wl-yb3.1-yb3.2-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-wl-yb3.1-yb3.2/zm-wl-yb3.1-yb3.2-product-gallery-01.png",
   },
   {
     id: "zm-wl-yb4.1-yb4.2",
@@ -826,7 +826,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "5°、8°、10°、15°、25°、30°、45°、60°",
     material: "航空拉伸铝",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-wl-yb4.1-yb4.2/zm-wl-yb4.1-yb4.2-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-wl-yb4.1-yb4.2/zm-wl-yb4.1-yb4.2-product-gallery-01.png",
   },
   {
     id: "zm-wl-fb1.1-fb1.2",
@@ -844,7 +844,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "5°、8°、10°、15°、25°、30°、45°、60°",
     material: "航空拉伸铝",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-wl-fb1.1-fb1.2/zm-wl-fb1.1-fb1.2-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-wl-fb1.1-fb1.2/zm-wl-fb1.1-fb1.2-product-gallery-01.png",
   },
   {
     id: "zm-wl-fb2.1-fb2.2",
@@ -862,7 +862,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "5°、8°、10°、15°、25°、30°、45°、60°",
     material: "航空拉伸铝",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-wl-fb2.1-fb2.2/zm-wl-fb2.1-fb2.2-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-wl-fb2.1-fb2.2/zm-wl-fb2.1-fb2.2-product-gallery-01.png",
   },
   {
     id: "zm-wl-fb3.1-fb3.2",
@@ -880,7 +880,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "5°、8°、10°、15°、25°、30°、45°、60°",
     material: "航空拉伸铝",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-wl-fb3.1-fb3.2/zm-wl-fb3.1-fb3.2-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-wl-fb3.1-fb3.2/zm-wl-fb3.1-fb3.2-product-gallery-01.png",
   },
   {
     id: "zm-wl-fb4.1-fb4.2",
@@ -898,7 +898,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "5°、8、10°、15°、25°、30°、45°、60°",
     material: "航空拉伸铝",
     updatedAt: "2026-07-20",
-    image: "/images/generated/products/0809/zm-wl-fb4.1-fb4.2/zm-wl-fb4.1-fb4.2-product-gallery-01.png",
+    image: "https://img.zomeiled.com/images/generated/products/0809/zm-wl-fb4.1-fb4.2/zm-wl-fb4.1-fb4.2-product-gallery-01.png",
   },
 {
     id: "ZOMEI-FL23-300W",
@@ -916,7 +916,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "Aluminum",
     updatedAt: "2026-07-21",
-    image: "/images/generated/products/categories/flood-light.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/flood-light.png",
   },
 {
     id: "ZOMEI-FL23-600W",
@@ -934,7 +934,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "Aluminum",
     updatedAt: "2026-07-21",
-    image: "/images/generated/products/categories/flood-light.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/flood-light.png",
   },
 {
     id: "ZOMEI-LD022-150W",
@@ -952,7 +952,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "Aluminum",
     updatedAt: "2026-07-21",
-    image: "/images/generated/products/categories/street-light.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/street-light.png",
   },
 {
     id: "ZOMEI-LD022-400W",
@@ -970,7 +970,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "Aluminum",
     updatedAt: "2026-07-21",
-    image: "/images/generated/products/categories/street-light.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/street-light.png",
   },
 {
     id: "ZOMEI-LD009-100W",
@@ -988,7 +988,7 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "",
     material: "Stamped Iron",
     updatedAt: "2026-07-21",
-    image: "/images/generated/products/categories/solar-light.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/solar-light.png",
   },
 {
     id: "ZOMEI-SLF6-10W",
@@ -1006,6 +1006,6 @@ export const productSeries: ProductSeriesItem[] = [
     beam: "120°",
     material: "PC+Aluminum",
     updatedAt: "2026-07-21",
-    image: "/images/generated/products/categories/solar-light.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/solar-light.png",
   }
 ];

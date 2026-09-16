@@ -93,7 +93,7 @@ const projectMocks: Array<{
     name: "广东数字文化谷泛光照明更新改造项目",
     location: "广州，中国",
     products: "36W RGBW线性洗墙灯 / 10W RGBW线条灯 / DMX512控制系统",
-    image: "/images/projects/guangzhou-digital-culture-valley/web/social-cover.jpg",
+    image: "https://img.zomeiled.com/images/projects/guangzhou-digital-culture-valley/web/social-cover.jpg",
     overview:
       "广东数字文化谷泛光照明更新改造项目，以结构与韵律为设计线索，通过顶部线条灯、隐藏式线性洗墙灯、现场试灯和DMX512分区控制，重塑商业综合体夜间形象。",
     highlights: [
@@ -109,7 +109,7 @@ const projectMocks: Array<{
     name: "阿拉木图艺术博物馆外立面灯光",
     location: "阿拉木图，哈萨克斯坦",
     products: "1150W LED切割灯 / 建筑图案投影",
-    image: "/images/projects/almaty-museum/web/zomei-almaty-museum-facade-lighting-p01-final-night-hero.jpg",
+    image: "https://img.zomeiled.com/images/projects/almaty-museum/web/zomei-almaty-museum-facade-lighting-p01-final-night-hero.jpg",
     overview:
       "阿拉木图艺术博物馆建筑外立面灯光标杆项目，展示大功率精准投影、图案拼接、深化设计与跨国现场调试能力。",
     highlights: [

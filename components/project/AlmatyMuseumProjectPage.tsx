@@ -3,10 +3,12 @@
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 import { almatyMuseumProject } from "@/data/projects/almaty-museum";
 import { getAlmatyImage, type ProjectImageRecord } from "@/data/projects/almaty-museum-images";
 import { ArrowRightIcon } from "@/components/Icons";
 import { ProjectImagePlaceholder } from "./ProjectImagePlaceholder";
+import { ProjectBriefPage } from "./ProjectBriefPage";
 
 type EventPayload = Record<string, string | number | boolean | undefined>;
 
@@ -693,6 +695,7 @@ function ProjectCTA() {
 }
 
 export function AlmatyMuseumProjectPage() {
+  const { locale } = useLanguage();
   const [lightbox, setLightbox] = useState<ProjectImageRecord | undefined>();
   const openLightbox = (image: ProjectImageRecord) => {
     setLightbox(image);
@@ -728,6 +731,50 @@ export function AlmatyMuseumProjectPage() {
   }, [lightbox]);
 
   const allImages = useMemo(() => Object.values(almatyMuseumProject.images), []);
+
+  if (locale === "en" || locale === "ru") {
+    const gallery = ["P01", "P04", "P06"]
+      .map((code) => getAlmatyImage(code))
+      .filter((image): image is ProjectImageRecord => Boolean(image?.src))
+      .map((image) => ({ src: image.src as string, alt: image.altEn || image.alt }));
+    return (
+      <ProjectBriefPage
+        locale={locale}
+        title={locale === "en" ? "Almaty Museum of Arts Facade Lighting" : "Фасадное освещение Almaty Museum of Arts"}
+        subtitle={
+          locale === "en"
+            ? "Large-scale architectural pattern projection for a cultural landmark in Almaty, Kazakhstan."
+            : "Крупномасштабная архитектурная проекция для культурного объекта в Алматы, Казахстан."
+        }
+        image={getAlmatyImage("P01").src || "https://img.zomeiled.com/images/projects/almaty-museum/web/zomei-almaty-museum-facade-lighting-p01-final-night-hero.jpg"}
+        tags={
+          locale === "en"
+            ? ["Facade Lighting", "1150W LED Gobo Projector", "Design + Commissioning"]
+            : ["Фасадное освещение", "1150W LED gobo-проектор", "Проработка + настройка"]
+        }
+        facts={
+          locale === "en"
+            ? [
+                ["Final Effect", "Clear nighttime artistic patterns and dynamic recognition on the museum facade."],
+                ["Project Background", "A cultural landmark that required long-distance visibility and architectural expression."],
+                ["Products Used", "1150W precision LED gobo projectors with custom patterns and control system."],
+                ["Technical Challenge", "Large-area projection stitching, brightness consistency, edge control and site deviation."],
+                ["Solution", "Pattern zoning, fixture layout development, numbered management and night commissioning."],
+                ["Delivery Result", "Supported static patterns, dynamic scenes and final nighttime effect confirmation."],
+              ]
+            : [
+                ["Итоговый эффект", "Четкие художественные узоры и динамическая узнаваемость фасада ночью."],
+                ["Фон проекта", "Культурный объект, которому нужны дальняя видимость и архитектурное выражение."],
+                ["Использованные продукты", "1150W точные LED gobo-проекторы с индивидуальными узорами и системой управления."],
+                ["Техническая задача", "Сшивка крупной проекции, одинаковая яркость, контроль границ и монтажные отклонения."],
+                ["Решение", "Зонирование узора, проработка позиций, маркировка оборудования и ночная настройка."],
+                ["Результат", "Поддержка статических узоров, динамических сцен и финального подтверждения эффекта."],
+              ]
+        }
+        gallery={gallery}
+      />
+    );
+  }
 
   return (
     <>

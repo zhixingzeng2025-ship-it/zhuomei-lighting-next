@@ -1,6 +1,6 @@
 import type { ProjectImageRecord } from "./almaty-museum-images";
 
-const base = "/images/projects/guangzhou-digital-culture-valley";
+const base = "https://img.zomeiled.com/images/projects/guangzhou-digital-culture-valley";
 const web = `${base}/web`;
 
 export const guangzhouDigitalCultureValleyImages: Record<string, ProjectImageRecord> = {

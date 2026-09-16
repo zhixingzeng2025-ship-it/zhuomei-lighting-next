@@ -9,6 +9,7 @@ import { ArrowRightIcon } from "./Icons";
 
 const projectCopy = {
   en: {
+    libraryLabel: "Project Library",
     categoryDescriptions: {
       all: "View all organized engineering projects.",
       signature: "In-depth project stories and signature references.",
@@ -29,10 +30,12 @@ const projectCopy = {
     },
   },
   zh: {
+    libraryLabel: "项目库",
     categoryDescriptions: {},
     projects: {},
   },
   ru: {
+    libraryLabel: "Библиотека проектов",
     categoryDescriptions: {
       all: "Все подготовленные инженерные проекты.",
       signature: "Подробные материалы и ключевые референс-проекты.",
@@ -133,7 +136,9 @@ export function LocalizedProjectsGrid() {
         <p className="text-sm font-semibold text-brand-muted">
           {t("common.showCount")} <span className="text-brand-blue">{visibleProjects.length}</span> {t("common.projectCount")}
         </p>
-        <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-muted">Project Library</p>
+        <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-muted">
+          {projectCopy[locale as "en" | "zh" | "ru"]?.libraryLabel || projectCopy.zh.libraryLabel}
+        </p>
       </div>
 
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">

@@ -70,7 +70,7 @@ const productMocks = [
     name: "LED Wall Washer",
     cn: "LED洗墙灯",
     description: "Linear architectural wash lighting for facade surfaces and wall textures.",
-    image: "/images/generated/products/categories/wall-washer-light.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/wall-washer-light.png",
     badge: "Facade",
     overview:
       "LED wall washer lights provide clean linear illumination for building facades, bridges, hotels and commercial exteriors.",
@@ -87,7 +87,7 @@ const productMocks = [
     name: "LED Linear Luminaire",
     cn: "LED线条灯",
     description: "Minimal linear lighting for outlines, edges and architectural contours.",
-    image: "/images/generated/products/categories/linear-light.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/linear-light.png",
     badge: "Linear",
     overview:
       "LED linear luminaires are used for building outlines, edges, landscape accents and long continuous lighting effects.",
@@ -104,7 +104,7 @@ const productMocks = [
     name: "LED Projector Light",
     cn: "LED投光灯",
     description: "Focused projection lighting for signage, facade accents and precise outdoor scenes.",
-    image: "/images/generated/products/categories/projector-light.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/projector-light.png",
     badge: "Accent",
     overview:
       "LED projector lights create focused beams for signage, decorative accents and architectural focal points.",
@@ -121,7 +121,7 @@ const productMocks = [
     name: "LED Point Light Source",
     cn: "LED点光源",
     description: "Compact point lighting for decorative pixels, outlines and rhythmic facade effects.",
-    image: "/images/generated/products/categories/point-light-source.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/point-light-source.png",
     badge: "Pixel",
     overview:
       "LED point light sources are compact decorative luminaires for facade pixels, outline lighting and creative night scenes.",
@@ -138,7 +138,7 @@ const productMocks = [
     name: "LED Corrugated Luminaire",
     cn: "LED瓦楞灯",
     description: "Compact roof and tile-surface lighting for traditional and modern architecture.",
-    image: "/images/generated/products/categories/corrugated-light.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/corrugated-light.png",
     badge: "Roof",
     overview:
       "LED corrugated luminaires are designed for rooflines, tile surfaces and architectural detail lighting.",
@@ -155,7 +155,7 @@ const productMocks = [
     name: "LED Column Lamp",
     cn: "LED柱灯",
     description: "Vertical column lighting for entrances, gardens and public outdoor spaces.",
-    image: "/images/generated/products/categories/column-lamp.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/column-lamp.png",
     badge: "Column",
     overview:
       "LED column lamps support human-scale outdoor lighting for entrances, gardens, walkways and public areas.",
@@ -172,7 +172,7 @@ const productMocks = [
     name: "LED Window Sill Light",
     cn: "LED窗台灯",
     description: "Detail lighting for windows, ledges and facade layers.",
-    image: "/images/generated/products/categories/window-sill-light.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/window-sill-light.png",
     badge: "Detail",
     overview:
       "LED window sill lights bring controlled illumination to window ledges, facade layers and architectural details.",
@@ -189,7 +189,7 @@ const productMocks = [
     name: "LED Step Lamp",
     cn: "LED台阶灯",
     description: "Low-level step lighting for safe paths, stairs and landscape transitions.",
-    image: "/images/generated/products/categories/step-lamp.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/step-lamp.png",
     badge: "Step",
     overview:
       "LED step lamps provide low-glare guidance lighting for stairs, paths, courtyards and landscape transitions.",
@@ -206,7 +206,7 @@ const productMocks = [
     name: "LED Wall Lamp",
     cn: "LED壁灯",
     description: "Decorative and functional wall lighting for outdoor architectural spaces.",
-    image: "/images/generated/products/categories/wall-lamp.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/wall-lamp.png",
     badge: "Wall",
     overview:
       "LED wall lamps combine decorative lighting and functional outdoor illumination for walls, entrances and corridors.",
@@ -223,7 +223,7 @@ const productMocks = [
     name: "LED Flood Light",
     cn: "LED泛光灯",
     description: "High-output area lighting for facades, plazas and open outdoor spaces.",
-    image: "/images/generated/products/categories/flood-light.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/flood-light.png",
     badge: "Area",
     overview:
       "LED flood lights deliver strong output for plazas, building facades, landscape areas and general outdoor illumination.",
@@ -240,7 +240,7 @@ const productMocks = [
     name: "LED Street Light",
     cn: "LED路灯",
     description: "Reliable road and public-space lighting for municipal and infrastructure projects.",
-    image: "/images/generated/products/categories/street-light.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/street-light.png",
     badge: "Road",
     overview:
       "LED street lights are designed for roads, streets, parks and public infrastructure where stable illumination matters.",
@@ -257,7 +257,7 @@ const productMocks = [
     name: "LED Solar Light",
     cn: "LED太阳能灯",
     description: "Solar-powered outdoor lighting for flexible, energy-saving project deployment.",
-    image: "/images/generated/products/categories/solar-light.png",
+    image: "https://img.zomeiled.com/images/generated/products/categories/solar-light.png",
     badge: "Solar",
     overview:
       "LED solar lights support off-grid outdoor projects with integrated energy-saving lighting systems.",

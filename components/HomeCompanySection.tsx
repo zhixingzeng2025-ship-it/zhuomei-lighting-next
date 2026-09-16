@@ -6,13 +6,13 @@ import { ArrowRightIcon } from "./Icons";
 
 const companyImages = [
   {
-    src: "/images/company/website-assets/wall-washer-rd-test-area-hero.png",
+    src: "https://img.zomeiled.com/images/company/website-assets/wall-washer-rd-test-area-hero.jpg",
   },
   {
-    src: "/images/company/factory-production-line.jpg",
+    src: "https://img.zomeiled.com/images/company/factory-production-line.jpg",
   },
   {
-    src: "/images/company/website-assets/zhongshan-oem-odm-manufacturing-base-1717x916.png",
+    src: "https://img.zomeiled.com/images/company/website-assets/zhongshan-oem-odm-manufacturing-base-1717x916.jpg",
   },
 ];
 

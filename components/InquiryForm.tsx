@@ -2,7 +2,6 @@
 
 import { FormEvent, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { productGroups } from "@/data/productGroups";
 import { ArrowRightIcon } from "./Icons";
 
 type FormState = {
@@ -12,8 +11,6 @@ type FormState = {
   company: string;
   country: string;
   projectType: string;
-  productInterest: string;
-  quantity: string;
   message: string;
 };
 
@@ -31,8 +28,6 @@ const initialState: FormState = {
   company: "",
   country: "",
   projectType: "",
-  productInterest: "",
-  quantity: "",
   message: "",
 };
 
@@ -42,11 +37,10 @@ export default function InquiryForm({
   onSuccess,
   endpoint = "/api/contact",
 }: InquiryFormProps) {
-  const { locale, t } = useLanguage();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState<FormState>(initialState);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
-  const productOptions = productGroups.map((group) => group.labels[locale as keyof typeof group.labels] || group.labels.zh);
   const projectTypes = [
     t("inquiry.projectTypeFacade"),
     t("inquiry.projectTypeLandscape"),
@@ -151,28 +145,6 @@ export default function InquiryForm({
             </option>
           ))}
         </select>
-      </div>
-      <div className="grid gap-4 md:grid-cols-2">
-        <select
-          name="productInterest"
-          value={formData.productInterest}
-          onChange={handleChange}
-          className="input-field w-full"
-        >
-          <option value="">{t("inquiry.selectProduct")}</option>
-          {productOptions.map((label) => (
-            <option key={label} value={label}>
-              {label}
-            </option>
-          ))}
-        </select>
-        <input
-          name="quantity"
-          placeholder={t("inquiry.quantity")}
-          value={formData.quantity}
-          onChange={handleChange}
-          className="input-field"
-        />
       </div>
       <textarea
         name="message"

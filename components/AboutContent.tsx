@@ -1,210 +1,298 @@
-const manufacturingBases = [
-  {
-    location: "广东江门",
-    title: "工程照明协同制造基地",
-    label: "Authorized Manufacturing Support",
-    description:
-      "江门协同制造基地围绕建筑照明产品研发、生产、品质检测和工程订单支持展开，配合 ZOMEI Lighting 为国内外项目提供稳定的产品供应、技术资料和项目交付服务。",
-    points: ["建筑照明产品制造", "光电实验室与研发团队", "大型工程项目产品支持"],
-    image: "/images/company/website-assets/jiangmen-kmxg-manufacturing-base-1717x916.jpg",
-  },
-  {
-    location: "广东中山横栏",
-    title: "户外照明制造基地",
-    label: "Flexible Manufacturing",
-    description:
-      "中山横栏制造基地专注于户外建筑照明及工程灯具，覆盖产品供应、参数深化、OEM/ODM 定制和工程配套，可根据项目需求快速响应选型、打样、小批量与批量交付。",
-    points: ["户外工程灯具供应", "OEM / ODM 定制", "快速交付与供应链协同"],
-    image: "/images/company/website-assets/zhongshan-oem-odm-manufacturing-base-1717x916.png",
-  },
+"use client";
+
+import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
+import { ArrowRightIcon } from "./Icons";
+
+const capabilityImages = [
+  "https://img.zomeiled.com/images/company/website-assets/production-workshop-zomei-logo-clean.jpg",
+  "https://img.zomeiled.com/images/company/website-assets/wall-washer-rd-test-area-hero.jpg",
+  "https://img.zomeiled.com/images/company/website-assets/product-loading.jpg",
 ];
 
-const productSystems = [
-  "建筑立面照明",
-  "景观与道路照明",
-  "洗墙 / 线形 / 投光",
-  "智能控制系统",
-  "OEM / ODM 定制",
-  "工程项目配套",
-];
+const copy = {
+  en: {
+    heroEyebrow: "ZOMEI Lighting",
+    heroTitle: "Shenzhen ZOMEI,\nOutdoor Lighting for Project Delivery",
+    heroDescription:
+      "Shenzhen ZOMEI Lighting Co., Ltd. supports global project clients with outdoor architectural lighting products, solution coordination, custom manufacturing and delivery support.",
+    stats: [
+      ["2013", "Manufacturing experience"],
+      ["Zhongshan", "Outdoor lighting base"],
+      ["OEM/ODM", "Custom project support"],
+      ["Global", "International projects"],
+    ],
+    focusEyebrow: "What We Focus On",
+    focusTitle: "Not just fixtures, but practical lighting solutions that reach the site.",
+    focusItems: ["Product Supply", "Solution Support", "Custom Manufacturing", "Project Delivery"],
+    focusDescription:
+      "Project buyers care about lighting effect, approval documents, lead time and follow-up. We keep the work clear and practical.",
+    capabilityLabel: "Capability",
+    capabilityTitle: "Three capabilities that support delivery",
+    capabilityDescription: "Customers need to quickly confirm: we can supply, validate and coordinate.",
+    capabilities: [
+      {
+        title: "Manufacturing & Customization",
+        summary: "Outdoor project fixtures, parameter refinement and OEM/ODM customization from Henglan, Zhongshan.",
+        points: ["Outdoor architectural lighting", "OEM / ODM", "Project orders"],
+      },
+      {
+        title: "Testing & Validation",
+        summary: "Basic checks for waterproofing, aging, optical-electrical data and reliability.",
+        points: ["IP / aging test", "Optical data", "Reliability check"],
+      },
+      {
+        title: "Project Coordination",
+        summary: "Support selection, samples, documents, production and delivery communication by project schedule.",
+        points: ["Selection support", "Documents", "Delivery support"],
+      },
+    ],
+    documentsEyebrow: "Product & Documents",
+    documentsTitle: "Products and documents prepared for project delivery",
+    documentsDescription: "Start from the scene, then match fixtures, controls, certificates and project files.",
+    productTitle: "Product Support",
+    documentTitle: "Document Support",
+    productSupport: ["Facade lighting", "Landscape & road lighting", "Wall washer / linear / projector", "Smart control system", "OEM / ODM customization", "Project supporting supply"],
+    documentSupport: ["CE", "RoHS", "IP67", "IES files", "Test report", "Tender documents"],
+    projectEyebrow: "Project Experience",
+    projectTitle: "Real projects are the clearest proof",
+    projectDescription: "Prepared project cases can be opened for details. More cases can be added gradually.",
+    projectCases: [
+      ["Almaty Museum of Arts Facade Lighting", "/projects/almaty-museum-of-arts-facade-lighting"],
+      ["Zhengjue Temple Night Lighting", ""],
+      ["Guangzhou Digital Culture Valley Lighting Upgrade", "/projects/guangzhou-digital-culture-valley-lighting-design"],
+      ["Quanzhou Riverside Night Lighting Upgrade", ""],
+      ["World Power Battery Conference, Yibin China", ""],
+      ["Vietnam Standard Chartered Bank Landscape Lighting", ""],
+    ],
+    workflowEyebrow: "How We Work",
+    workflowTitle: "From product preparation to delivery support, keep the process clear",
+    workflowDescription:
+      "A project usually starts with scene and requirement confirmation, then moves to selection, samples, documents, production and delivery.",
+    workflowSteps: ["Requirement", "Selection", "Documents", "Delivery"],
+    positioningEyebrow: "Positioning",
+    positioningTitle: "ZOMEI Lighting\nOutdoor project lighting partner",
+    positioningDescription:
+      "For architecture, landscape, municipal and cultural tourism projects that need product supply, effect coordination, customization and delivery support.",
+    projectsCta: "View Projects",
+    contactCta: "Contact Us",
+  },
+  zh: {
+    heroEyebrow: "ZOMEI Lighting",
+    heroTitle: "深圳卓美，\n做工程户外照明落地",
+    heroDescription:
+      "深圳市卓美灯具有限公司面向国内外工程客户，提供户外建筑照明产品、照明方案配合、定制制造与项目交付支持。",
+    stats: [
+      ["2013", "制造体系积累"],
+      ["中山横栏", "户外灯具制造基地"],
+      ["OEM/ODM", "定制与项目配套"],
+      ["Global", "国内外工程服务"],
+    ],
+    focusEyebrow: "What We Focus On",
+    focusTitle: "不只提供灯具，更配合项目把照明方案落到现场。",
+    focusItems: ["产品供应", "方案配合", "定制制造", "项目交付"],
+    focusDescription:
+      "客户关心的不是灯具列表，而是效果是否能实现、资料是否能报审、交期是否能配合、现场问题是否有人跟进。",
+    capabilityLabel: "Capability",
+    capabilityTitle: "用三项能力支撑工程交付",
+    capabilityDescription: "关于我们不需要讲得复杂。客户只需要快速确认：能生产、能验证、能配合项目。",
+    capabilities: [
+      {
+        title: "制造定制",
+        summary: "中山横栏制造基地支持户外工程灯具供应、参数深化与 OEM/ODM 定制。",
+        points: ["户外建筑照明", "OEM / ODM", "小批量与工程订单"],
+      },
+      {
+        title: "测试验证",
+        summary: "围绕防水、老化、光电参数和可靠性做基础验证，减少项目落地风险。",
+        points: ["IP / 老化测试", "光电参数", "可靠性验证"],
+      },
+      {
+        title: "项目配合",
+        summary: "按项目节奏配合选型、样品、资料、生产和交付沟通。",
+        points: ["选型建议", "资料配合", "交付支持"],
+      },
+    ],
+    documentsEyebrow: "Product & Documents",
+    documentsTitle: "产品和资料，\n都围绕项目交付准备",
+    documentsDescription: "先看场景，再匹配灯具、控制方式、认证资料和项目文件，减少无效沟通。",
+    productTitle: "产品支持",
+    documentTitle: "资料支持",
+    productSupport: ["建筑立面照明", "景观与道路照明", "洗墙 / 线形 / 投光", "智能控制系统", "OEM / ODM 定制", "工程项目配套"],
+    documentSupport: ["CE", "RoHS", "IP67", "IES 文件", "检测报告", "项目报审资料"],
+    projectEyebrow: "Project Experience",
+    projectTitle: "项目经验是最直接的信任证明",
+    projectDescription: "真实案例比长篇介绍更有说服力。已整理的项目可点击查看详情。",
+    projectCases: [
+      ["阿拉木图艺术博物馆外立面灯光", "/projects/almaty-museum-of-arts-facade-lighting"],
+      ["圆明园正觉寺夜景照明工程", ""],
+      ["广东数字文化谷照明提升项目", "/projects/guangzhou-digital-culture-valley-lighting-design"],
+      ["泉州一江两岸夜景照明提升工程", ""],
+      ["世界动力电池大会（中国·宜宾）", ""],
+      ["越南渣打银行夜景照明工程", ""],
+    ],
+    workflowEyebrow: "How We Work",
+    workflowTitle: "从产品准备到交付配合，流程尽量清楚",
+    workflowDescription:
+      "项目合作通常从场景和需求确认开始，再进入选型、样品、资料、生产与交付。我们尽量把复杂问题提前说清楚。",
+    workflowSteps: ["需求确认", "产品选型", "资料配合", "生产交付"],
+    positioningEyebrow: "Positioning",
+    positioningTitle: "ZOMEI Lighting\n工程户外照明解决方案伙伴",
+    positioningDescription:
+      "适合需要灯具供应、效果沟通、定制配合和项目交付支持的建筑、景观、市政与文旅夜游项目。",
+    projectsCta: "查看项目案例",
+    contactCta: "联系我们",
+  },
+  ru: {
+    heroEyebrow: "ZOMEI Lighting",
+    heroTitle: "Shenzhen ZOMEI,\nнаружное освещение для проектов",
+    heroDescription:
+      "Shenzhen ZOMEI Lighting Co., Ltd. поддерживает международные проекты: продукция наружного архитектурного освещения, координация решений, кастомизация и поставка.",
+    stats: [
+      ["2013", "Опыт производства"],
+      ["Zhongshan", "База наружного освещения"],
+      ["OEM/ODM", "Кастомизация проектов"],
+      ["Global", "Международные проекты"],
+    ],
+    focusEyebrow: "Наш фокус",
+    focusTitle: "Не просто светильники, а решения, которые можно довести до объекта.",
+    focusItems: ["Поставка", "Решения", "Кастомизация", "Поставка проекта"],
+    focusDescription:
+      "Для клиента важны эффект, документы, сроки и сопровождение. Мы делаем процесс понятным и практичным.",
+    capabilityLabel: "Возможности",
+    capabilityTitle: "Три возможности для поддержки поставки",
+    capabilityDescription: "Клиенту нужно быстро понять: можем поставить, проверить и координировать проект.",
+    capabilities: [
+      {
+        title: "Производство и кастомизация",
+        summary: "Наружные проектные светильники, уточнение параметров и OEM/ODM кастомизация в Henglan, Zhongshan.",
+        points: ["Архитектурное освещение", "OEM / ODM", "Проектные заказы"],
+      },
+      {
+        title: "Испытания и проверка",
+        summary: "Базовые проверки влагозащиты, старения, оптико-электрических данных и надежности.",
+        points: ["IP / aging test", "Оптические данные", "Проверка надежности"],
+      },
+      {
+        title: "Проектная координация",
+        summary: "Подбор, образцы, документы, производство и коммуникация по поставке в рамках графика проекта.",
+        points: ["Подбор", "Документы", "Поставка"],
+      },
+    ],
+    documentsEyebrow: "Продукция и документы",
+    documentsTitle: "Продукция и документы подготовлены под проект",
+    documentsDescription: "Сначала сцена проекта, затем светильники, управление, сертификаты и проектные файлы.",
+    productTitle: "Поддержка продукции",
+    documentTitle: "Поддержка документов",
+    productSupport: ["Фасадное освещение", "Ландшафт и дороги", "Wall washer / linear / projector", "Smart control system", "OEM / ODM", "Проектная поставка"],
+    documentSupport: ["CE", "RoHS", "IP67", "IES файлы", "Протокол испытаний", "Документы для тендера"],
+    projectEyebrow: "Опыт проектов",
+    projectTitle: "Реальные проекты лучше всего подтверждают доверие",
+    projectDescription: "Подготовленные кейсы можно открыть для деталей. Новые проекты можно добавлять постепенно.",
+    projectCases: [
+      ["Фасадное освещение Almaty Museum of Arts", "/projects/almaty-museum-of-arts-facade-lighting"],
+      ["Ночное освещение Zhengjue Temple", ""],
+      ["Освещение Guangzhou Digital Culture Valley", "/projects/guangzhou-digital-culture-valley-lighting-design"],
+      ["Ночное освещение Quanzhou Riverside", ""],
+      ["World Power Battery Conference, Yibin China", ""],
+      ["Ландшафтное освещение Standard Chartered Bank Vietnam", ""],
+    ],
+    workflowEyebrow: "Как мы работаем",
+    workflowTitle: "От подготовки продукции до поставки процесс должен быть ясным",
+    workflowDescription:
+      "Обычно проект начинается с подтверждения сцены и требований, затем переходят к подбору, образцам, документам, производству и поставке.",
+    workflowSteps: ["Требования", "Подбор", "Документы", "Поставка"],
+    positioningEyebrow: "Позиционирование",
+    positioningTitle: "ZOMEI Lighting\nпартнер по наружному проектному освещению",
+    positioningDescription:
+      "Для архитектурных, ландшафтных, муниципальных и туристических проектов, где нужны поставка, согласование эффекта, кастомизация и поддержка поставки.",
+    projectsCta: "Смотреть проекты",
+    contactCta: "Связаться",
+  },
+};
 
-const certifications = [
-  "ISO 管理体系",
-  "CE",
-  "RoHS",
-  "IP67 检测报告",
-  "产品检测报告",
-  "项目报审资料",
-];
-
-const projectCases = [
-  { name: "阿拉木图艺术博物馆外立面灯光", href: "/projects/almaty-museum-of-arts-facade-lighting" },
-  { name: "圆明园正觉寺夜景照明工程" },
-  { name: "广东数字文化谷照明提升项目", href: "/projects/guangzhou-digital-culture-valley-lighting-design" },
-  { name: "泉州一江两岸夜景照明提升工程" },
-  { name: "世界动力电池大会（中国·宜宾）" },
-  { name: "山西武乡县大型市政亮化工程" },
-  { name: "越南渣打银行夜景照明工程" },
-  { name: "迪拜凯宾斯基酒店照明工程" },
-];
-
-const projectSupportValues = [
-  {
-    title: "方案更清晰",
-    description: "先看建筑、场景和安装条件，再给出适合项目的照明方向。",
-  },
-  {
-    title: "选型更省心",
-    description: "把灯具、功率、色温、角度和控制方式快速匹配到项目需求。",
-  },
-  {
-    title: "定制更可控",
-    description: "非标尺寸、配光和结构可先确认，减少现场返工和效果偏差。",
-  },
-  {
-    title: "交付更稳妥",
-    description: "资料、生产、物流和售后协同，帮助工程项目顺利推进。",
-  },
-];
-
-const factoryImages = [
-  {
-    src: "/images/company/website-assets/jiangmen-zomei-manufacturing-base.png",
-    title: "公司外部环境",
-    description: "公司大楼与厂区环境，展示 ZOMEI Lighting 的办公与生产基础。",
-  },
-  {
-    src: "/images/company/website-assets/production-workshop-zomei-logo-clean.png",
-    title: "生产车间",
-    description: "标准化生产线与现场管理环境，体现产品制造、过程流转和批量生产能力。",
-  },
-  {
-    src: "/images/company/website-assets/assembly-workshop-zomei-logo-clean.png",
-    title: "组装车间",
-    description: "灯具组装、过程检验与包装准备区域，用于支持稳定装配和订单交付。",
-  },
-  {
-    src: "/images/company/website-assets/product-showcase.png",
-    title: "产品展示",
-    description: "户外照明产品样品展示，便于客户进行系列对比与选型沟通。",
-  },
-  {
-    src: "/images/company/website-assets/warehouse-zomei.png",
-    title: "仓储与备货",
-    description: "仓储与成品管理区域，用于支持订单流转、备货和交付安排。",
-  },
-  {
-    src: "/images/company/website-assets/aging-workshop.png",
-    title: "老化测试车间",
-    description: "通过老化测试和过程验证，提升户外灯具长期使用稳定性。",
-  },
-];
-
-const brandStats = [
-  ["2013", "合作制造基地成立"],
-  ["2", "核心制造基地"],
-  ["OEM/ODM", "定制开发能力"],
-  ["Global", "国际项目服务"],
-];
-
-function SectionHeading({
-  eyebrow,
+function SectionTitle({
+  label,
   title,
   description,
-  light = false,
 }: {
-  eyebrow: string;
+  label: string;
   title: string;
-  description?: string;
-  light?: boolean;
+  description: string;
 }) {
   return (
-    <div className="mb-7 max-w-4xl">
-      <p className={light ? "text-xs font-bold uppercase tracking-[0.24em] text-brand-yellow" : "eyebrow"}>
-        {eyebrow}
-      </p>
-      <h2 className={["text-[clamp(1.85rem,3vw,3rem)] font-semibold leading-[1.08] tracking-tighter3", light ? "text-white" : "text-brand-text"].join(" ")}>
+    <div className="mb-7 max-w-3xl">
+      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-blue">{label}</p>
+      <h2 className="mt-3 whitespace-pre-line text-[clamp(1.8rem,3vw,2.8rem)] font-semibold leading-[1.08] tracking-tighter3 text-brand-text">
         {title}
       </h2>
-      {description ? (
-        <p className={["mt-4 text-[15px] leading-8", light ? "text-white/72" : "text-brand-muted"].join(" ")}>
-          {description}
-        </p>
-      ) : null}
+      <p className="mt-4 text-[15px] leading-7 text-brand-muted">{description}</p>
     </div>
   );
 }
 
 export function AboutContent() {
+  const { locale } = useLanguage();
+  const pageCopy = copy[locale as "en" | "zh" | "ru"] || copy.zh;
+
   return (
     <>
       <section className="overflow-hidden border border-brand-line bg-white shadow-soft">
-        <div className="p-6 sm:p-8 lg:p-10">
-          <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
-            <div className="pt-1">
-              <p className="eyebrow">ZOMEI Lighting</p>
-              <h2 className="text-[clamp(2rem,3.4vw,3.4rem)] font-semibold leading-[1.04] tracking-tighter3 text-brand-text">
-                深圳卓美LED，专业建筑照明解决方案品牌
+        <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
+          <div className="flex flex-col justify-between p-6 sm:p-8 lg:p-10">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-blue">{pageCopy.heroEyebrow}</p>
+              <h2 className="mt-4 whitespace-pre-line text-[clamp(2.1rem,4vw,4rem)] font-semibold leading-[0.98] tracking-tighter3 text-brand-text">
+                {pageCopy.heroTitle}
               </h2>
-            </div>
-            <div className="max-w-4xl space-y-3 text-[15px] leading-7 text-brand-muted">
-              <p>
-                深圳市卓美灯具有限公司（ZOMEI Lighting）专注于建筑照明、景观照明、文旅夜游照明及智能照明控制系统，为国内外工程客户提供可落地的照明解决方案。
-              </p>
-              <p>
-                依托中山横栏制造基地，ZOMEI 可围绕项目需求提供灯具选型、参数深化、OEM/ODM 定制和工程配套服务。
-              </p>
-              <p>
-                我们不只关注灯具本身，更关注灯光效果、安装条件、控制方式和长期运行品质，帮助客户减少沟通与返工，让项目更顺利落地。
+              <p className="mt-5 max-w-2xl text-[15px] leading-7 text-brand-muted sm:text-base">
+                {pageCopy.heroDescription}
               </p>
             </div>
-          </div>
 
-          <div className="mt-7 grid gap-5 lg:grid-cols-[1.08fr_0.92fr]">
-            <div className="grid grid-cols-2 gap-px border border-brand-line bg-brand-line sm:grid-cols-4">
-              {brandStats.map(([value, label]) => (
+            <div className="mt-8 grid grid-cols-2 gap-px border border-brand-line bg-brand-line sm:grid-cols-4">
+              {pageCopy.stats.map(([value, label]) => (
                 <div key={label} className="bg-[#f8fbff] p-4">
-                  <div className="text-[22px] font-extrabold tracking-tight text-brand-blue">{value}</div>
+                  <div className="text-[20px] font-extrabold tracking-tight text-brand-blue">{value}</div>
                   <div className="mt-1 text-xs leading-5 text-brand-muted">{label}</div>
                 </div>
               ))}
             </div>
-            <div className="flex flex-col justify-center bg-[#071225] p-5 text-white sm:p-6">
-              <p className="text-xs font-bold uppercase tracking-[0.24em] text-brand-yellow">Project Foundation</p>
-              <h3 className="mt-3 text-[clamp(1.35rem,2vw,2rem)] font-semibold leading-tight">
-                制造、定制与交付协同支持
-              </h3>
-              <p className="mt-2 text-sm leading-7 text-white/76">
-                用稳定供应链和项目经验，支持建筑照明从选型到落地。
-              </p>
-            </div>
           </div>
 
-          <p className="mt-7 border-l-4 border-brand-blue bg-[#f8fbff] px-5 py-4 text-[15px] font-semibold leading-8 text-brand-text">
-            我们始终坚持“以项目为中心，以品质为基础，以服务创造价值”，帮助全球客户高效完成建筑照明项目。
-          </p>
+          <div className="bg-[#071225] p-6 text-white sm:p-8 lg:p-10">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-yellow">{pageCopy.focusEyebrow}</p>
+            <h3 className="mt-4 max-w-2xl text-[clamp(1.75rem,3vw,3rem)] font-semibold leading-[1.08] tracking-tighter3">
+              {pageCopy.focusTitle}
+            </h3>
+            <div className="mt-8 grid gap-px bg-white/14 sm:grid-cols-2">
+              {pageCopy.focusItems.map((item) => (
+                <div key={item} className="min-h-[86px] bg-white/[0.06] p-5">
+                  <span className="text-[18px] font-semibold">{item}</span>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 text-sm leading-7 text-white/72">{pageCopy.focusDescription}</p>
+          </div>
         </div>
       </section>
 
-      <section className="soft-card p-6 sm:p-8">
-        <SectionHeading
-          eyebrow="Integrated Manufacturing Network"
-          title="多制造基地协同体系，支撑研发、品质与全球交付"
-          description="为了持续提升产品品质、研发能力及全球交付能力，ZOMEI Lighting 建立了覆盖广东建筑照明产业核心区域的制造协同体系，形成研发、制造、品质控制及供应链协同发展的完整体系。"
+      <section>
+        <SectionTitle
+          label={pageCopy.capabilityLabel}
+          title={pageCopy.capabilityTitle}
+          description={pageCopy.capabilityDescription}
         />
-        <div className="grid items-stretch gap-5 lg:grid-cols-2">
-          {manufacturingBases.map((base) => (
-            <article key={base.title} className="flex h-full flex-col overflow-hidden border border-brand-line bg-white">
-              <img src={base.image} alt={base.title} className="h-[300px] w-full object-cover" />
-              <div className="flex flex-1 flex-col p-5 sm:p-6">
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-blue">{base.label}</p>
-                <h3 className="mt-3 text-[24px] font-semibold tracking-tighter3 text-brand-text">
-                  {base.location}·{base.title}
-                </h3>
-                <p className="mt-4 text-sm leading-7 text-brand-muted">{base.description}</p>
-                <div className="mt-auto grid gap-2 pt-5 sm:grid-cols-3">
-                  {base.points.map((point) => (
-                    <span key={point} className="flex min-h-10 items-center justify-center border border-brand-line bg-[#f8fbff] px-3 py-2 text-center text-xs font-semibold leading-5 text-brand-text">
+        <div className="grid gap-5 lg:grid-cols-3">
+          {pageCopy.capabilities.map((item, index) => (
+            <article key={item.title} className="overflow-hidden border border-brand-line bg-white shadow-soft">
+              <img src={capabilityImages[index]} alt={item.title} className="h-52 w-full object-cover sm:h-60" />
+              <div className="p-5 sm:p-6">
+                <h3 className="text-[24px] font-semibold tracking-tighter3 text-brand-text">{item.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-brand-muted">{item.summary}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {item.points.map((point) => (
+                    <span key={point} className="border border-brand-line bg-[#f8fbff] px-3 py-2 text-xs font-semibold text-brand-text">
                       {point}
                     </span>
                   ))}
@@ -216,62 +304,32 @@ export function AboutContent() {
       </section>
 
       <section className="overflow-hidden border border-brand-line bg-white shadow-soft">
-        <div className="grid lg:grid-cols-[0.42fr_0.58fr]">
-          <div className="flex flex-col justify-between bg-[#071225] p-6 text-white sm:p-8 lg:p-10">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.24em] text-brand-yellow">
-                Product System & Quality Assurance
-              </p>
-              <h2 className="mt-4 text-[clamp(1.9rem,3vw,3.1rem)] font-semibold leading-[1.08] tracking-tighter3">
-                产品体系与质量资料，围绕工程交付配置
-              </h2>
-              <p className="mt-5 text-[15px] leading-8 text-white/72">
-                产品、控制、定制与质量资料围绕工程交付组织，帮助客户快速判断方案是否可用、资料是否够用。
-              </p>
-            </div>
-            <div className="mt-8 grid grid-cols-2 gap-px bg-white/15">
-              <div className="bg-white/[0.06] p-4">
-                <div className="text-[26px] font-extrabold text-brand-yellow">按场景</div>
-                <div className="mt-1 text-xs leading-5 text-white/70">匹配产品与控制</div>
-              </div>
-              <div className="bg-white/[0.06] p-4">
-                <div className="text-[26px] font-extrabold text-brand-yellow">按型号</div>
-                <div className="mt-1 text-xs leading-5 text-white/70">提供认证与检测资料</div>
-              </div>
-            </div>
+        <div className="grid lg:grid-cols-[0.48fr_0.52fr]">
+          <div className="bg-[#071225] p-6 text-white sm:p-8 lg:p-10">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-yellow">{pageCopy.documentsEyebrow}</p>
+            <h2 className="mt-4 whitespace-pre-line text-[clamp(1.8rem,3vw,2.9rem)] font-semibold leading-[1.08] tracking-tighter3">
+              {pageCopy.documentsTitle}
+            </h2>
+            <p className="mt-5 text-[15px] leading-7 text-white/72">{pageCopy.documentsDescription}</p>
           </div>
 
           <div className="grid gap-px bg-brand-line md:grid-cols-2">
             <article className="bg-white p-6 sm:p-8">
-              <p className="eyebrow">Product Coverage</p>
-              <h3 className="text-[clamp(1.45rem,2.1vw,2.2rem)] font-semibold leading-tight tracking-tighter3 text-brand-text">
-                覆盖工程常用照明系统
-              </h3>
-              <p className="mt-4 text-sm leading-7 text-brand-muted">
-                先按场景确定方向，再组合灯具、控制与定制服务。
-              </p>
-              <div className="mt-6 grid auto-rows-fr gap-2">
-                {productSystems.map((item) => (
-                  <div key={item} className="flex min-h-11 items-center border-l-2 border-brand-blue bg-[#f8fbff] px-3 py-2 text-sm font-semibold leading-5 text-brand-text">
+              <h3 className="text-[26px] font-semibold leading-tight tracking-tighter3 text-brand-text">{pageCopy.productTitle}</h3>
+              <div className="mt-6 grid gap-2">
+                {pageCopy.productSupport.map((item) => (
+                  <div key={item} className="border-l-2 border-brand-blue bg-[#f8fbff] px-4 py-3 text-sm font-semibold text-brand-text">
                     {item}
                   </div>
                 ))}
               </div>
             </article>
-
             <article className="bg-white p-6 sm:p-8">
-              <p className="eyebrow">Document Support</p>
-              <h3 className="text-[clamp(1.45rem,2.1vw,2.2rem)] font-semibold leading-tight tracking-tighter3 text-brand-text">
-                资料配合采购与报审
-              </h3>
-              <p className="mt-4 text-sm leading-7 text-brand-muted">
-                相关文件按具体型号和项目需求匹配，避免无效资料堆叠。
-              </p>
-              <div className="mt-6 grid auto-rows-fr gap-2">
-                {certifications.map((item) => (
-                  <div key={item} className="flex min-h-11 items-center gap-3 border border-brand-line bg-white px-3 py-2 text-sm font-semibold leading-5 text-brand-text">
-                    <span className="h-1.5 w-1.5 shrink-0 bg-brand-yellow" />
-                    <span>{item}</span>
+              <h3 className="text-[26px] font-semibold leading-tight tracking-tighter3 text-brand-text">{pageCopy.documentTitle}</h3>
+              <div className="mt-6 grid gap-2">
+                {pageCopy.documentSupport.map((item) => (
+                  <div key={item} className="border border-brand-line px-4 py-3 text-sm font-semibold text-brand-text">
+                    {item}
                   </div>
                 ))}
               </div>
@@ -281,27 +339,28 @@ export function AboutContent() {
       </section>
 
       <section className="overflow-hidden bg-[#071225] text-white shadow-soft">
-        <div className="grid lg:grid-cols-[0.42fr_0.58fr]">
+        <div className="grid lg:grid-cols-[0.48fr_0.52fr]">
           <div className="p-6 sm:p-8 lg:p-10">
-            <SectionHeading
-              eyebrow="Project Experience"
-              title="成熟制造体系服务国内外工程项目"
-              description="相关产品已广泛应用于商业综合体、酒店、市政工程、文化旅游、城市夜景及地标建筑等项目，体现制造体系在建筑照明领域的产品制造能力及工程服务经验。"
-              light
-            />
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-yellow">{pageCopy.projectEyebrow}</p>
+            <h2 className="mt-4 text-[clamp(1.8rem,3vw,2.9rem)] font-semibold leading-[1.08] tracking-tighter3">
+              {pageCopy.projectTitle}
+            </h2>
+            <p className="mt-5 text-[15px] leading-7 text-white/72">{pageCopy.projectDescription}</p>
           </div>
           <div className="grid gap-px bg-white/10 sm:grid-cols-2">
-            {projectCases.map((item, index) => (
-              <div key={item.name} className="group bg-white/[0.04] p-5 transition hover:bg-white/[0.09]">
+            {pageCopy.projectCases.map(([name, href], index) => (
+              <div key={name} className="group bg-white/[0.04] p-5 transition hover:bg-white/[0.09]">
                 <span className="text-xs font-bold tracking-[0.2em] text-brand-yellow">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                {item.href ? (
-                  <a href={item.href} className="mt-3 block text-[16px] font-semibold leading-7 text-brand-yellow transition group-hover:text-white group-hover:underline group-hover:underline-offset-4">
-                    {item.name}
-                  </a>
+                {href ? (
+                  <Link href={href} className="mt-3 block text-[16px] font-semibold leading-7 text-brand-yellow transition group-hover:text-white group-hover:underline group-hover:underline-offset-4">
+                    {name}
+                  </Link>
                 ) : (
-                  <h3 className="mt-3 text-[16px] font-semibold leading-7 text-white/86 transition group-hover:text-brand-yellow">{item.name}</h3>
+                  <h3 className="mt-3 text-[16px] font-semibold leading-7 text-white/84 transition group-hover:text-brand-yellow">
+                    {name}
+                  </h3>
                 )}
               </div>
             ))}
@@ -310,86 +369,37 @@ export function AboutContent() {
       </section>
 
       <section className="overflow-hidden border border-brand-line bg-white shadow-soft">
-        <div className="grid lg:grid-cols-[0.42fr_0.58fr]">
-          <article className="bg-[#071225] p-6 text-white sm:p-8">
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-brand-yellow">
-              Project Support
-            </p>
-            <h2 className="mt-4 text-[clamp(2rem,3vw,3.1rem)] font-semibold leading-[1.05] tracking-tighter3">
-              不只卖灯具，
-              <br />
-              更帮项目落地
+        <div className="grid gap-px bg-brand-line lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="bg-white p-6 sm:p-8 lg:p-10">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-blue">{pageCopy.workflowEyebrow}</p>
+            <h2 className="mt-4 text-[clamp(1.8rem,3vw,2.9rem)] font-semibold leading-[1.08] tracking-tighter3 text-brand-text">
+              {pageCopy.workflowTitle}
             </h2>
-            <p className="mt-4 max-w-xl text-[15px] leading-7 text-white/72">
-              客户不需要逐项研究技术细节，只要一眼明白：ZOMEI 能把效果、选型、定制和交付串起来。
-            </p>
-          </article>
-
-          <div className="grid gap-0">
-            <div className="grid h-full gap-px bg-brand-line md:grid-cols-2">
-              {projectSupportValues.map((card, index) => (
-                <article key={card.title} className="bg-white p-5 sm:p-6">
-                  <p className="text-[12px] font-bold tracking-[0.18em] text-brand-blue">{String(index + 1).padStart(2, "0")}</p>
-                  <h3 className="mt-4 text-[clamp(1.25rem,1.7vw,1.6rem)] font-semibold leading-tight text-brand-text">{card.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-brand-muted">{card.description}</p>
-                </article>
+            <p className="mt-5 text-[15px] leading-7 text-brand-muted">{pageCopy.workflowDescription}</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              {pageCopy.workflowSteps.map((step, index) => (
+                <span key={step} className="border border-brand-line bg-[#f8fbff] px-4 py-3 text-sm font-semibold text-brand-text">
+                  {String(index + 1).padStart(2, "0")} / {step}
+                </span>
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {factoryImages.map((item) => (
-          <figure key={item.src} className="overflow-hidden border border-brand-line bg-white shadow-soft">
-            <img src={item.src} alt={item.title} className="h-64 w-full object-cover transition duration-500 hover:scale-[1.03]" />
-            <figcaption className="p-5">
-              <h3 className="text-[18px] font-semibold text-brand-text">{item.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-brand-muted">{item.description}</p>
-            </figcaption>
-          </figure>
-        ))}
-      </section>
-
-      <section className="overflow-hidden border border-brand-line bg-white shadow-soft">
-        <div className="grid gap-0 lg:grid-cols-[1.08fr_0.92fr]">
-          <div className="p-6 sm:p-8">
-            <SectionHeading
-              eyebrow="Delivery Support"
-              title="从产品准备到项目交付的响应能力"
-              description="对于国际项目、工程订单和定制需求，ZOMEI Lighting 可根据项目进度配合产品资料、样品确认、生产排期、物流交付和售后沟通，减少客户在跨区域采购中的沟通成本。"
-            />
-            <div className="grid gap-3 sm:grid-cols-3">
-              {["资料确认", "样品与生产", "物流交付"].map((item, index) => (
-                <div key={item} className="border border-brand-line bg-[#f8fbff] p-4">
-                  <span className="text-xs font-bold tracking-[0.18em] text-brand-blue">{String(index + 1).padStart(2, "0")}</span>
-                  <h3 className="mt-3 text-[16px] font-semibold text-brand-text">{item}</h3>
-                </div>
-              ))}
+          <div className="bg-[#071225] p-6 text-white sm:p-8 lg:p-10">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-yellow">{pageCopy.positioningEyebrow}</p>
+            <h2 className="mt-4 whitespace-pre-line text-[clamp(1.8rem,3vw,2.9rem)] font-semibold leading-[1.08] tracking-tighter3">
+              {pageCopy.positioningTitle}
+            </h2>
+            <p className="mt-5 text-[15px] leading-7 text-white/72">{pageCopy.positioningDescription}</p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link href="/projects" className="action-pill bg-brand-blue text-white hover:bg-white hover:text-brand-text">
+                {pageCopy.projectsCta}
+                <ArrowRightIcon className="h-4 w-4" />
+              </Link>
+              <Link href="/contact" className="action-pill border border-white/18 bg-white/8 text-white hover:bg-white hover:text-brand-text">
+                {pageCopy.contactCta}
+                <ArrowRightIcon className="h-4 w-4" />
+              </Link>
             </div>
-          </div>
-          <img
-            src="/images/generated/product-to-project-delivery.png"
-            alt="产品准备到项目交付流程"
-            className="h-full min-h-[320px] w-full object-cover"
-          />
-        </div>
-      </section>
-
-      <section className="overflow-hidden border border-brand-line bg-white shadow-soft">
-        <div className="grid gap-px bg-brand-line lg:grid-cols-3">
-          <div className="bg-white p-6 sm:p-8">
-            <p className="eyebrow">Mission</p>
-            <h2 className="text-[30px] font-semibold tracking-tighter3 text-brand-text">让专业照明创造建筑价值。</h2>
-          </div>
-          <div className="bg-white p-6 sm:p-8">
-            <p className="eyebrow">Vision</p>
-            <h2 className="text-[30px] font-semibold tracking-tighter3 text-brand-text">成为全球值得信赖的建筑照明解决方案品牌。</h2>
-          </div>
-          <div className="bg-[#071225] p-6 text-white sm:p-8">
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-brand-yellow">Positioning</p>
-            <h2 className="mt-3 text-[26px] font-semibold tracking-tighter3">Professional Architectural Lighting Solutions</h2>
-            <p className="mt-3 text-sm leading-7 text-white/70">Powered by an Integrated Manufacturing Network</p>
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 type ProductGalleryProps = {
   images: string[];
@@ -42,13 +43,43 @@ function GalleryArrow({
   );
 }
 
-function Placeholder() {
+const galleryCopy = {
+  en: {
+    placeholderTitle: "Product image placeholder",
+    placeholderText: "Replace with real product images later",
+    prevThumb: "Previous product image",
+    nextThumb: "Next product image",
+    thumb: "View product image",
+    prevLarge: "Previous large image",
+    nextLarge: "Next large image",
+  },
+  zh: {
+    placeholderTitle: "产品图片占位",
+    placeholderText: "后续可替换为真实产品图",
+    prevThumb: "上一张产品图",
+    nextThumb: "下一张产品图",
+    thumb: "查看产品图",
+    prevLarge: "上一张大图",
+    nextLarge: "下一张大图",
+  },
+  ru: {
+    placeholderTitle: "Место для изображения",
+    placeholderText: "Позже можно заменить реальными фото продукта",
+    prevThumb: "Предыдущее изображение продукта",
+    nextThumb: "Следующее изображение продукта",
+    thumb: "Открыть изображение продукта",
+    prevLarge: "Предыдущее большое изображение",
+    nextLarge: "Следующее большое изображение",
+  },
+};
+
+function Placeholder({ copy }: { copy: (typeof galleryCopy)["en"] }) {
   return (
     <div className="grid h-full min-h-[260px] place-items-center border border-dashed border-white/28 bg-white/[0.04] p-6 text-center text-white/62">
       <div>
         <div className="mx-auto mb-3 h-10 w-10 border border-white/35" />
-        <div className="text-sm font-semibold uppercase tracking-[0.16em]">产品图片占位</div>
-        <div className="mt-2 text-xs leading-5">后续可替换为真实产品图</div>
+        <div className="text-sm font-semibold uppercase tracking-[0.16em]">{copy.placeholderTitle}</div>
+        <div className="mt-2 text-xs leading-5">{copy.placeholderText}</div>
       </div>
     </div>
   );
@@ -56,13 +87,15 @@ function Placeholder() {
 
 function productDisplayImage(image: string) {
   const cleanImage = image.replace(
-    "/images/generated/products/detail/",
-    "/images/generated/products/clean/transparent/",
+    "https://img.zomeiled.com/images/generated/products/detail/",
+    "https://img.zomeiled.com/images/generated/products/clean/transparent/",
   );
   return `${cleanImage}?v=clean-centered-20260728`;
 }
 
 export function ProductGallery({ images, alt }: ProductGalleryProps) {
+  const { locale } = useLanguage();
+  const copy = galleryCopy[locale as "en" | "zh" | "ru"] || galleryCopy.en;
   const galleryImages = useMemo(() => {
     if (images.length > 0) {
       const firstImage = images[0];
@@ -88,7 +121,7 @@ export function ProductGallery({ images, alt }: ProductGalleryProps) {
       <div className="relative hidden h-[420px] grid-rows-4 gap-2 md:grid">
         <button
           type="button"
-          aria-label="上一张产品图"
+          aria-label={copy.prevThumb}
           onClick={goPrev}
           className="absolute left-1/2 top-1 z-20 grid h-9 w-9 -translate-x-1/2 place-items-center text-white/45 transition hover:scale-110 hover:text-white/78"
         >
@@ -98,7 +131,7 @@ export function ProductGallery({ images, alt }: ProductGalleryProps) {
           <button
             key={`${image}-${thumb}`}
             type="button"
-            aria-label={`查看第 ${thumb + 1} 张产品图`}
+            aria-label={`${copy.thumb} ${thumb + 1}`}
             onClick={() => setActiveIndex(thumb)}
             className={[
               "grid min-h-0 overflow-hidden place-items-center border bg-white p-2 transition hover:border-brand-gold",
@@ -112,13 +145,13 @@ export function ProductGallery({ images, alt }: ProductGalleryProps) {
                 className="mx-auto h-full max-h-[86%] w-full max-w-[92%] object-contain"
               />
             ) : (
-              <Placeholder />
+              <Placeholder copy={copy} />
             )}
           </button>
         ))}
         <button
           type="button"
-          aria-label="下一张产品图"
+          aria-label={copy.nextThumb}
           onClick={goNext}
           className="absolute bottom-1 left-1/2 z-20 grid h-9 w-9 -translate-x-1/2 place-items-center text-white/45 transition hover:scale-110 hover:text-white/78"
         >
@@ -129,7 +162,7 @@ export function ProductGallery({ images, alt }: ProductGalleryProps) {
       <div className="relative h-[420px] overflow-hidden bg-white">
         <button
           type="button"
-          aria-label="上一张大图"
+          aria-label={copy.prevLarge}
           onClick={goPrev}
           className="absolute -left-1 top-1/2 z-20 grid h-[72px] w-12 -translate-y-1/2 place-items-center text-brand-gold transition hover:scale-110"
         >
@@ -143,12 +176,12 @@ export function ProductGallery({ images, alt }: ProductGalleryProps) {
               className="block h-full w-full object-contain object-center"
             />
           ) : (
-            <Placeholder />
+            <Placeholder copy={copy} />
           )}
         </div>
         <button
           type="button"
-          aria-label="下一张大图"
+          aria-label={copy.nextLarge}
           onClick={goNext}
           className="absolute -right-1 top-1/2 z-20 grid h-[72px] w-12 -translate-y-1/2 place-items-center text-brand-gold transition hover:scale-110"
         >

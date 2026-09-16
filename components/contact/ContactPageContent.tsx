@@ -1,174 +1,195 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { InquirySection } from "@/components/InquirySection";
-import { LocalizedPageHeader } from "@/components/LocalizedPageHeader";
+import { siteConfig } from "@/data/site";
+import InquiryForm from "@/components/InquiryForm";
+import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/Icons";
 
-const contactCopy = {
+const copy = {
   en: {
-    title: "Tell us about your outdoor lighting project",
+    eyebrow: "Contact / Inquiry",
+    title: "Send Your Lighting Project Requirement",
     description:
-      "Whether you need wall washers, linear lights, projector lights, flood lights, street lights or customized project support, you can contact us through the channels below. For faster selection, please share the application scene, installation position, target effect, quantity and delivery schedule.",
-    cards: [
-      ["Product Selection", "Match models and parameters"],
-      ["Solution Discussion", "Confirm light effect and installation"],
-      ["Quotation Support", "Share documents and lead time"],
+      "For product selection, quotation or project support, share your project scene, product interest, quantity and schedule. We will reply with practical next steps.",
+    formTitle: "Project Inquiry",
+    formHeading: "Request Quote / Get Lighting Proposal",
+    formNote: "Drawings, BOQ, photos or target product models are helpful. You can also send them by email or WhatsApp.",
+    quickTitle: "Fastest Contact",
+    qrTitle: "WeChat",
+    qrNote: "Scan to add ZOMEI Lighting",
+    essentialsTitle: "What to Send",
+    essentials: [
+      ["Project scene", "Facade, landscape, road, hotel, park or commercial area."],
+      ["Product interest", "Wall washer, linear light, projector, flood light or custom item."],
+      ["Basic quantity", "Estimated quantity, delivery time and target market."],
     ],
-    supportTitle: "What we can help you confirm",
-    support: [
-      ["Product selection advice", "Match suitable luminaire series according to mounting position, throw distance, target brightness, control method and IP requirement."],
-      ["Light effect and parameter check", "Confirm CCT, wattage, beam angle, light output method and control needs to reduce site adjustment costs."],
-      ["Documents and quotation support", "Provide product images, specifications, downloadable files, quotation information and basic procurement documents."],
-      ["Sample and delivery follow-up", "Support sample confirmation, batch orders, lead-time communication, packaging, shipping and after-sales technical questions."],
-    ],
-    workflowTitle: "Information to prepare before sending an inquiry",
-    workflowDescription:
-      "The more complete the information is, the faster we can judge the suitable product series, specification range, project risks and quotation method.",
-    steps: [
-      ["Describe the project scene", "Facade, road, landscape, park, plaza, commercial project or other application location."],
-      ["Provide product requirements", "Wattage, size, CCT, beam angle, control method, IP rating or target model."],
-      ["Confirm documents and quotation", "We match product documents, technical advice, lead time and quotation information based on the demand."],
-      ["Follow the project continuously", "Support samples, batch orders, installation commissioning and after-sales technical communication."],
-    ],
+    responseTitle: "How We Support",
+    response: ["Product selection", "Quotation support", "Technical documents", "Delivery coordination"],
   },
   zh: {
-    title: "告诉我们你的户外照明项目需求",
+    eyebrow: "联系 / 询盘",
+    title: "发送你的照明项目需求",
     description:
-      "无论是洗墙灯、线条灯、投光灯、泛光灯、路灯，还是项目定制需求，你都可以通过下方方式联系我们。为了更快匹配产品，建议同时提供项目场景、安装位置、目标效果、数量和交付时间。",
-    cards: [
-      ["产品选型", "匹配型号与参数"],
-      ["方案沟通", "确认光效与安装"],
-      ["报价支持", "同步资料与交期"],
+      "需要选型、报价或项目配合时，直接告诉我们项目场景、产品方向、数量和时间要求，我们会给出可执行的下一步建议。",
+    formTitle: "工程询盘",
+    formHeading: "获取报价 / 照明方案",
+    formNote: "如果有图纸、清单、现场照片或目标型号，可以通过 Email 或 WhatsApp 一起发送。",
+    quickTitle: "最快联系方式",
+    qrTitle: "微信",
+    qrNote: "扫码添加 ZOMEI Lighting",
+    essentialsTitle: "建议提供的信息",
+    essentials: [
+      ["项目场景", "建筑立面、景观、道路、酒店、公园或商业空间。"],
+      ["产品方向", "洗墙灯、线条灯、投光灯、泛光灯或定制产品。"],
+      ["数量与时间", "预估数量、交付时间、项目国家或地区。"],
     ],
-    supportTitle: "我们可以协助你确认哪些内容",
-    support: [
-      ["产品选型建议", "根据安装位置、投射距离、目标亮度、控制方式和防护等级，匹配合适的灯具系列。"],
-      ["光效与参数确认", "协助确认色温、功率、光束角、出光方式和控制需求，减少后期现场调整成本。"],
-      ["资料与报价配合", "可配合提供产品图片、规格参数、资料下载、报价信息和项目采购所需基础文件。"],
-      ["样品与交付跟进", "支持样品确认、批量订单、交期沟通、包装出货和售后技术问题跟进。"],
-    ],
-    workflowTitle: "提交询盘前，可以先准备这些信息",
-    workflowDescription:
-      "信息越完整，我们越容易快速判断适合的产品系列、规格范围、项目风险和报价方式。",
-    steps: [
-      ["说明项目场景", "建筑立面、道路、景观、公园、广场或商业项目等应用位置。"],
-      ["提供产品需求", "功率、尺寸、色温、光束角、控制方式、防护等级或目标型号。"],
-      ["确认资料与报价", "我们根据需求匹配产品资料、技术建议、交期和报价信息。"],
-      ["项目持续跟进", "支持样品确认、批量订单、安装调试和后续售后技术沟通。"],
-    ],
+    responseTitle: "我们可以配合",
+    response: ["产品选型", "报价支持", "技术资料", "交付协调"],
   },
   ru: {
-    title: "Расскажите о вашем проекте наружного освещения",
+    eyebrow: "Контакт / Запрос",
+    title: "Отправьте требования к проекту освещения",
     description:
-      "Если вам нужны wall washer, линейные светильники, проекторные светильники, прожекторы, уличные светильники или индивидуальная проектная поддержка, свяжитесь с нами удобным способом. Для быстрого подбора укажите сцену применения, место монтажа, желаемый эффект, количество и сроки поставки.",
-    cards: [
-      ["Подбор продукции", "Модели и параметры"],
-      ["Обсуждение решения", "Эффект света и монтаж"],
-      ["Поддержка расчета", "Документы и сроки"],
+      "Для подбора продукции, расчета или проектной поддержки опишите сцену проекта, интересующую продукцию, количество и сроки. Мы предложим практичные следующие шаги.",
+    formTitle: "Проектный запрос",
+    formHeading: "Запросить расчет / световое предложение",
+    formNote: "Чертежи, BOQ, фото объекта или целевые модели помогут быстрее подготовить ответ. Их можно отправить по email или WhatsApp.",
+    quickTitle: "Самый быстрый контакт",
+    qrTitle: "WeChat",
+    qrNote: "Сканируйте, чтобы добавить ZOMEI Lighting",
+    essentialsTitle: "Что указать",
+    essentials: [
+      ["Сцена проекта", "Фасад, ландшафт, дорога, отель, парк или коммерческое пространство."],
+      ["Интересующая продукция", "Wall washer, linear light, projector, flood light или индивидуальный продукт."],
+      ["Количество и сроки", "Ориентировочное количество, срок поставки и целевой рынок."],
     ],
-    supportTitle: "Что мы можем помочь уточнить",
-    support: [
-      ["Рекомендации по подбору", "Подберем серию светильников по месту установки, дистанции, целевой яркости, управлению и степени защиты."],
-      ["Проверка эффекта и параметров", "Поможем уточнить CCT, мощность, угол, способ выхода света и требования к управлению."],
-      ["Документы и коммерческое предложение", "Предоставим изображения, спецификации, материалы для загрузки, цены и базовые закупочные документы."],
-      ["Образцы и поставка", "Сопровождаем образцы, серийные заказы, сроки, упаковку, отгрузку и технические вопросы после продажи."],
-    ],
-    workflowTitle: "Что подготовить перед запросом",
-    workflowDescription:
-      "Чем полнее информация, тем быстрее мы определим подходящую серию, диапазон спецификаций, риски проекта и формат расчета.",
-    steps: [
-      ["Опишите сцену проекта", "Фасад, дорога, ландшафт, парк, площадь, коммерческий объект или другая зона."],
-      ["Укажите требования", "Мощность, размер, CCT, угол, управление, IP-рейтинг или целевая модель."],
-      ["Подтвердите документы и расчет", "Мы подготовим материалы, технические рекомендации, сроки и предложение."],
-      ["Дальнейшее сопровождение", "Поддержка образцов, партии, монтажа, пусконаладки и технических вопросов."],
-    ],
+    responseTitle: "Чем мы поможем",
+    response: ["Подбор продукции", "Поддержка расчета", "Технические документы", "Координация поставки"],
   },
 };
 
 export function ContactPageContent() {
   const { locale } = useLanguage();
-  const copy = contactCopy[locale as keyof typeof contactCopy] || contactCopy.en;
+  const pageCopy = copy[locale as keyof typeof copy] || copy.en;
 
   return (
-    <section className="py-14">
-      <div className="page-container space-y-12">
-        <LocalizedPageHeader
-          eyebrowKey="pageHeader.contactEyebrow"
-          titleKey="pageHeader.contactTitle"
-          descriptionKey="pageHeader.contactDescription"
-          actionHref="/contact#inquiry-form"
-          actionLabelKey="pageHeader.contactAction"
-        />
-
-        <section className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
-          <article className="border border-brand-line bg-[#061229] p-7 text-white shadow-soft sm:p-8">
-            <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-brand-gold">Project Contact</p>
-            <h2 className="mt-4 text-[clamp(1.8rem,3vw,3rem)] font-semibold leading-tight tracking-tighter3">
-              {copy.title}
-            </h2>
-            <p className="mt-4 text-[15px] leading-8 text-white/76">
-              {copy.description}
-            </p>
-            <div className="mt-7 grid gap-3 sm:grid-cols-3">
-              {copy.cards.map(([title, desc]) => (
-                <div key={title} className="border border-white/14 bg-white/8 p-4">
-                  <strong className="block text-[15px] text-white">{title}</strong>
-                  <span className="mt-1 block text-xs leading-5 text-white/62">{desc}</span>
-                </div>
-              ))}
-            </div>
-          </article>
-
-          <article className="border border-brand-line bg-white p-6 shadow-soft sm:p-7">
-            <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+    <section className="bg-gradient-to-b from-white to-[#eef4fb] py-10 sm:py-14">
+      <div className="page-container space-y-8">
+        <section className="overflow-hidden border border-brand-line bg-white shadow-soft">
+          <div className="grid lg:grid-cols-[0.46fr_0.54fr]">
+            <div className="flex min-h-[560px] flex-col justify-between bg-[#061229] p-6 text-white sm:p-8 lg:p-10">
               <div>
-                <p className="eyebrow">Project Support</p>
-                <h2 className="text-[clamp(1.55rem,2.3vw,2.25rem)] font-semibold leading-tight tracking-tighter3 text-brand-text">
-                  {copy.supportTitle}
-                </h2>
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-gold">
+                  {pageCopy.eyebrow}
+                </p>
+                <h1 className="mt-4 text-[clamp(2.15rem,4vw,4.2rem)] font-semibold leading-[0.98] tracking-tighter3">
+                  {pageCopy.title}
+                </h1>
+                <p className="mt-5 max-w-xl text-[15px] leading-7 text-white/76 sm:text-base">
+                  {pageCopy.description}
+                </p>
               </div>
-              <span className="hidden h-1 w-14 bg-brand-gold sm:block" />
+
+              <div className="mt-8">
+                <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-white/56">
+                  {pageCopy.quickTitle}
+                </p>
+                <div className="grid items-stretch gap-4 md:grid-cols-[minmax(0,1fr)_220px] lg:grid-cols-1 xl:grid-cols-[minmax(0,1fr)_230px]">
+                  <div className="grid gap-3">
+                    <a className="flex min-h-[94px] items-center gap-4 border border-white/16 bg-white/8 p-4 transition hover:bg-white/14" href={siteConfig.contact.whatsappLink} target="_blank" rel="noreferrer">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-brand-blue text-white">
+                        <WhatsAppIcon />
+                      </span>
+                      <span>
+                        <strong className="block text-[15px]">WhatsApp</strong>
+                        <span className="text-sm text-white/76">{siteConfig.contact.whatsapp}</span>
+                      </span>
+                    </a>
+                    <a className="flex min-h-[94px] items-center gap-4 border border-white/16 bg-white/8 p-4 transition hover:bg-white/14" href={`mailto:${siteConfig.contact.email}`}>
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-brand-blue text-white">
+                        <MailIcon />
+                      </span>
+                      <span>
+                        <strong className="block text-[15px]">Email</strong>
+                        <span className="text-sm text-white/76">{siteConfig.contact.email}</span>
+                      </span>
+                    </a>
+                    <a className="flex min-h-[94px] items-center gap-4 border border-white/16 bg-white/8 p-4 transition hover:bg-white/14" href={`tel:${siteConfig.contact.phone.replace(/\s+/g, "")}`}>
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-brand-blue text-white">
+                        <PhoneIcon />
+                      </span>
+                      <span>
+                        <strong className="block text-[15px]">Phone</strong>
+                        <span className="text-sm text-white/76">{siteConfig.contact.phone}</span>
+                      </span>
+                    </a>
+                  </div>
+
+                  <div className="flex h-full flex-col justify-between border border-white/16 bg-white/8 p-4">
+                    <div className="bg-white p-3">
+                      <img
+                        src="https://img.zomeiled.com/images/contact/zomei-wechat-qr.jpg"
+                        alt={pageCopy.qrNote}
+                        className="aspect-square w-full object-contain"
+                      />
+                    </div>
+                    <div className="pt-4">
+                      <strong className="block text-[18px] leading-6">{pageCopy.qrTitle}</strong>
+                      <span className="mt-1.5 block text-xs leading-5 text-white/68">{pageCopy.qrNote}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {copy.support.map(([title, description], index) => (
-                <div key={title} className="border border-brand-line bg-[#f8fbff] p-5 transition hover:border-brand-gold hover:bg-white">
+
+            <div id="inquiry-form" className="p-6 sm:p-8 lg:p-10">
+              <div className="mb-6 max-w-2xl">
+                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-blue">
+                  {pageCopy.formTitle}
+                </p>
+                <h2 className="mt-3 text-[clamp(1.65rem,2.8vw,2.7rem)] font-semibold leading-[1.08] tracking-tighter3 text-brand-text">
+                  {pageCopy.formHeading}
+                </h2>
+                <p className="mt-4 text-sm leading-7 text-brand-muted">{pageCopy.formNote}</p>
+              </div>
+              <InquiryForm endpoint="/api/contact" />
+            </div>
+          </div>
+        </section>
+
+        <section className="grid items-stretch gap-5 lg:grid-cols-[0.62fr_0.38fr]">
+          <div className="border border-brand-line bg-white p-6 shadow-soft sm:p-8">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-blue">
+              {pageCopy.essentialsTitle}
+            </p>
+            <div className="mt-5 grid gap-px border border-brand-line bg-brand-line md:grid-cols-3">
+              {pageCopy.essentials.map(([title, desc], index) => (
+                <article key={title} className="bg-[#f8fbff] p-5">
                   <span className="text-xs font-extrabold tracking-[0.18em] text-brand-blue">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="mt-3 text-[17px] font-semibold text-brand-text">{title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-brand-muted">{description}</p>
-                </div>
+                  <h3 className="mt-3 text-[18px] font-semibold text-brand-text">{title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-brand-muted">{desc}</p>
+                </article>
               ))}
             </div>
-          </article>
-        </section>
+          </div>
 
-        <section className="border border-brand-line bg-white p-6 shadow-soft sm:p-8">
-          <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="eyebrow">Inquiry Workflow</p>
-              <h2 className="text-[clamp(1.6rem,2.5vw,2.5rem)] font-semibold leading-tight tracking-tighter3 text-brand-text">
-                {copy.workflowTitle}
-              </h2>
+          <div className="flex h-full flex-col justify-center border border-brand-line bg-[#061229] p-6 text-white shadow-soft sm:p-8">
+            <div className="w-full">
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-gold">
+                {pageCopy.responseTitle}
+              </p>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {pageCopy.response.map((item) => (
+                <div key={item} className="flex min-h-[72px] items-center border border-white/18 bg-white/8 px-6 py-4 text-[15px] font-semibold">
+                  {item}
+                </div>
+              ))}
+              </div>
             </div>
-            <p className="max-w-2xl text-sm leading-7 text-brand-muted">
-              {copy.workflowDescription}
-            </p>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {copy.steps.map(([title, description], index) => (
-              <article key={title} className="border border-brand-line bg-[#f8fbff] p-5">
-                <span className="text-xs font-extrabold tracking-[0.18em] text-brand-blue">{String(index + 1).padStart(2, "0")}</span>
-                <h3 className="mt-3 text-[18px] font-semibold text-brand-text">{title}</h3>
-                <p className="mt-2 text-sm leading-7 text-brand-muted">{description}</p>
-              </article>
-            ))}
           </div>
         </section>
-
-        <div id="inquiry-form">
-          <InquirySection />
-        </div>
       </div>
     </section>
   );

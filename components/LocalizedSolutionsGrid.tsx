@@ -30,6 +30,30 @@ const solutionDescriptions = {
   },
 };
 
+const solutionApplications = {
+  en: {
+    roadStreet: ["Urban roads", "Municipal streets", "Public areas"],
+    solar: ["Off-grid roads", "Parks", "Remote sites"],
+    landscape: ["Parks", "Gardens", "Walkways"],
+    facade: ["Building facade", "Outline lighting", "Landmark"],
+    industrial: ["Factories", "Warehouses", "Work areas"],
+    gardenPark: ["Parks", "Leisure areas", "Public gardens"],
+    stadiumArea: ["Sports fields", "Squares", "Large areas"],
+    urbanPublic: ["City space", "Public facilities", "Transport areas"],
+  },
+  zh: {},
+  ru: {
+    roadStreet: ["Городские дороги", "Улицы", "Общественные зоны"],
+    solar: ["Автономные дороги", "Парки", "Удаленные объекты"],
+    landscape: ["Парки", "Сады", "Дорожки"],
+    facade: ["Фасад здания", "Контурная подсветка", "Ориентир"],
+    industrial: ["Фабрики", "Склады", "Рабочие зоны"],
+    gardenPark: ["Парки", "Зоны отдыха", "Общественные сады"],
+    stadiumArea: ["Спортплощадки", "Площади", "Большие территории"],
+    urbanPublic: ["Городское пространство", "Объекты инфраструктуры", "Транспортные зоны"],
+  },
+};
+
 const solutionCategories = [
   {
     key: "all",
@@ -43,7 +67,7 @@ const solutionCategories = [
   },
   {
     key: "road",
-    label: { en: "Road & Solar", zh: "道路与太阳能", ru: "Дороги и solar" },
+    label: { en: "Road & Solar", zh: "道路与太阳能", ru: "Дороги и солнечное" },
     description: {
       en: "Street, road and off-grid systems.",
       zh: "道路、市政与离网照明系统。",
@@ -94,7 +118,7 @@ const localizedUi = {
     categoryDescription: "Browse by project type and lighting scenario.",
     resultLabel: "Showing",
     resultUnit: "solutions",
-    libraryLabel: "Solution Library",
+    libraryLabel: "方案库",
     metaType: "Solution",
     metaReadTime: "Quick overview",
     applicationLabel: "Applications",
@@ -104,7 +128,7 @@ const localizedUi = {
     categoryDescription: "按项目类型和照明场景快速筛选。",
     resultLabel: "当前显示",
     resultUnit: "个方案",
-    libraryLabel: "Solution Library",
+    libraryLabel: "Библиотека решений",
     metaType: "解决方案",
     metaReadTime: "简洁浏览",
     applicationLabel: "应用场景",
@@ -192,7 +216,11 @@ export function LocalizedSolutionsGrid() {
             locale === "zh"
               ? solution.description
               : solutionDescriptions[locale as "en" | "ru"][solutionKey as keyof typeof solutionDescriptions.en] || solution.description;
-          const applications = solution.applications.slice(0, 3);
+          const applications =
+            locale === "zh"
+              ? solution.applications.slice(0, 3)
+              : solutionApplications[locale as "en" | "ru"][solutionKey as keyof typeof solutionApplications.en] ||
+                solution.applications.slice(0, 3);
 
           return (
             <Link

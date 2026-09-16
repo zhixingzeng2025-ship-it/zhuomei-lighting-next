@@ -3,8 +3,10 @@
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 import { ArrowRightIcon } from "@/components/Icons";
 import { ProjectImagePlaceholder } from "@/components/project/ProjectImagePlaceholder";
+import { ProjectBriefPage } from "@/components/project/ProjectBriefPage";
 import { guangzhouDigitalCultureValleyProject as project } from "@/data/projects/guangzhou-digital-culture-valley";
 import { getGuangzhouDigitalCultureValleyImage as getImage } from "@/data/projects/guangzhou-digital-culture-valley-images";
 import type { ProjectImageRecord } from "@/data/projects/almaty-museum-images";
@@ -516,6 +518,7 @@ function FoldedProjectProcess({ onOpen }: { onOpen: (image: ProjectImageRecord) 
 }
 
 export function GuangzhouDigitalCultureValleyProjectPage() {
+  const { locale } = useLanguage();
   const [lightbox, setLightbox] = useState<ProjectImageRecord | undefined>();
   const openLightbox = (image: ProjectImageRecord) => {
     setLightbox(image);
@@ -534,6 +537,50 @@ export function GuangzhouDigitalCultureValleyProjectPage() {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [lightbox]);
+
+  if (locale === "en" || locale === "ru") {
+    const gallery = ["P01", "P04", "P10"]
+      .map((code) => getImage(code))
+      .filter((image): image is ProjectImageRecord => Boolean(image?.src))
+      .map((image) => ({ src: image.src as string, alt: image.alt }));
+    return (
+      <ProjectBriefPage
+        locale={locale}
+        title={locale === "en" ? "Guangzhou Digital Culture Valley Lighting Upgrade" : "Освещение Guangzhou Digital Culture Valley"}
+        subtitle={
+          locale === "en"
+            ? "Facade lighting upgrade for a commercial complex, using RGBW wall washers, linear lights and DMX512 control."
+            : "Модернизация фасадного освещения коммерческого комплекса с RGBW wall washer, линейными светильниками и DMX512."
+        }
+        image={getImage("P01").src || "https://img.zomeiled.com/images/projects/guangzhou-digital-culture-valley/web/p01-final-night-hero.jpg"}
+        tags={
+          locale === "en"
+            ? ["Commercial Facade", "RGBW Wall Washer", "Design + Supply + Control"]
+            : ["Коммерческий фасад", "RGBW wall washer", "Дизайн + поставка + управление"]
+        }
+        facts={
+          locale === "en"
+            ? [
+                ["Final Effect", "A cleaner nighttime identity built by linear outline lighting and RGBW facade rhythm."],
+                ["Project Background", "A commercial complex needed stronger visibility, rhythm and operational lighting scenes."],
+                ["Products Used", "36W RGBW linear wall washer, 10W RGBW linear light and DMX512 control system."],
+                ["Technical Challenge", "Glare control, facade obstruction, brightness hierarchy, control zoning and mounting details."],
+                ["Solution", "On-site mockup, anti-glare baffle testing, node development, zone control and night commissioning."],
+                ["Delivery Result", "Daily, festival and late-night modes were created for operation and maintenance."],
+              ]
+            : [
+                ["Итоговый эффект", "Более цельный ночной образ через линейный контур и RGBW-ритм фасада."],
+                ["Фон проекта", "Коммерческому комплексу требовались узнаваемость, ритм и рабочие световые сцены."],
+                ["Использованные продукты", "36W RGBW линейный wall washer, 10W RGBW линейный светильник и DMX512 управление."],
+                ["Техническая задача", "Контроль бликов, препятствия фасада, уровни яркости, зоны управления и монтажные узлы."],
+                ["Решение", "Полевые тесты, проверка антибликовых экранов, узлы монтажа, зонирование и ночная настройка."],
+                ["Результат", "Режимы для обычных дней, праздников и поздней ночи с учетом эксплуатации."],
+              ]
+        }
+        gallery={gallery}
+      />
+    );
+  }
 
   return (
     <>
