@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { ArrowRightIcon } from "./Icons";
+import { trackConversion } from "@/components/Analytics";
 
 type FormState = {
   name: string;
@@ -78,6 +79,11 @@ export default function InquiryForm({
       }
 
       setStatus("success");
+      trackConversion("generate_lead", {
+        form_name: "project_inquiry",
+        project_type: formData.projectType || "not_specified",
+        country: formData.country || "not_specified",
+      });
       setMessage(t("inquiry.success"));
       setFormData(initialState);
       onSuccess?.();

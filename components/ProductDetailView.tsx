@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useLanguage } from "@/context/LanguageContext";
 import type { ProductItem } from "@/data/products";
 import type { ProjectItem } from "@/data/projects";

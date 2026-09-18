@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/set-static-html-lang.mjs",
     "start": "next start",
-    "preview:static": "node scripts/local-preview.mjs"
+    "preview:static": "node scripts/local-preview.mjs",
+    "seo:indexnow:prepare": "node scripts/submit-indexnow.mjs --prepare-only",
+    "seo:indexnow": "node scripts/submit-indexnow.mjs"
   },
   "dependencies": {
     "@vercel/postgres": "^0.10.0",

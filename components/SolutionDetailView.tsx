@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { ArrowRightIcon } from "@/components/Icons";
 import { useLanguage } from "@/context/LanguageContext";
 import type { SolutionItem } from "@/data/solutions";

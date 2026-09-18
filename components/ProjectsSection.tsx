@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useLanguage } from "@/context/LanguageContext";
 import { projectCategories, projectKeyForSlug, projects, type ProjectCategoryKey } from "@/data/projects";
 import { ArrowRightIcon } from "./Icons";

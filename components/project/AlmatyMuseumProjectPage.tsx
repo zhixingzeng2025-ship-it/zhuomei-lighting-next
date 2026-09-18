@@ -2,13 +2,14 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useLanguage } from "@/context/LanguageContext";
 import { almatyMuseumProject } from "@/data/projects/almaty-museum";
 import { getAlmatyImage, type ProjectImageRecord } from "@/data/projects/almaty-museum-images";
 import { ArrowRightIcon } from "@/components/Icons";
 import { ProjectImagePlaceholder } from "./ProjectImagePlaceholder";
 import { ProjectBriefPage } from "./ProjectBriefPage";
+import { ProjectEvidence, type ProjectEvidenceItem } from "./ProjectEvidence";
 
 type EventPayload = Record<string, string | number | boolean | undefined>;
 
@@ -21,6 +22,26 @@ const zhTags = ["哈萨克斯坦", "艺术博物馆", "1150W LED 切割投影", 
 const zhLabels = ["文化地标", "建筑艺术表达", "中亚项目创新"];
 const zhDesignFlow = ["建筑分析", "视觉节奏", "图案构图", "灯位定位", "投影拼接", "最终灯光场景"];
 const zhCollaborationValues = ["资料清晰", "快速技术响应", "现场问题处理", "共同交付目标"];
+const almatyEvidence: Record<"en" | "zh" | "ru", ProjectEvidenceItem[]> = {
+  en: [
+    { metric: "Projector rated power", value: "1150 W", method: "Matched against the selected luminaire technical specification.", evidence: "Product specification and project equipment record" },
+    { metric: "Available visual modes", value: "3 modes", method: "Confirmed during control programming and night commissioning.", evidence: "White light, static pattern and dynamic-scene records" },
+    { metric: "Patterns per luminaire", value: "6 scenes", method: "Checked against the configured gobo and control sequence.", evidence: "Pattern configuration and commissioning record" },
+    { metric: "Delivery scope", value: "Design to acceptance", method: "Cross-checked through drawings, installation coordination and site commissioning.", evidence: "Design markups, site photos and acceptance images" },
+  ],
+  zh: [
+    { metric: "投影灯额定功率", value: "1150W", method: "与项目选用灯具技术规格核对。", evidence: "产品规格与项目设备记录" },
+    { metric: "可用视觉模式", value: "3种模式", method: "通过控制编程和夜间调试确认。", evidence: "白光、静态图案和动态场景记录" },
+    { metric: "单灯图案场景", value: "6组", method: "与图案片配置和控制顺序核对。", evidence: "图案配置与现场调试记录" },
+    { metric: "交付范围", value: "深化至验收", method: "通过图纸、安装协调和现场调试交叉核对。", evidence: "深化图、现场照片和验收效果图" },
+  ],
+  ru: [
+    { metric: "Мощность проектора", value: "1150 Вт", method: "Сверено с технической спецификацией выбранного светильника.", evidence: "Спецификация и ведомость оборудования" },
+    { metric: "Визуальные режимы", value: "3 режима", method: "Подтверждено программированием и ночной наладкой.", evidence: "Записи белого света, статических и динамических сцен" },
+    { metric: "Сцен на светильник", value: "6 сцен", method: "Сверено с конфигурацией gobo и последовательностью управления.", evidence: "Конфигурация рисунков и журнал наладки" },
+    { metric: "Объем поставки", value: "От проекта до приемки", method: "Проверено по чертежам, монтажной координации и наладке.", evidence: "Чертежи, фото монтажа и итоговые изображения" },
+  ],
+};
 const zhComparisonText: Record<string, { feature: string; limitation: string }> = {
   "洗墙灯": {
     feature: "形成均匀立面亮化",
@@ -772,6 +793,7 @@ export function AlmatyMuseumProjectPage() {
               ]
         }
         gallery={gallery}
+        evidence={almatyEvidence[locale]}
       />
     );
   }
@@ -781,6 +803,7 @@ export function AlmatyMuseumProjectPage() {
       <ProjectHero onOpen={openLightbox} />
       <ProjectTrustPath />
       <ProjectOverview />
+      <ProjectEvidence items={almatyEvidence.zh} locale="zh" />
       <Highlights />
       <BeforeAfter onOpen={openLightbox} />
       <LightingMethodComparison onOpen={openLightbox} />

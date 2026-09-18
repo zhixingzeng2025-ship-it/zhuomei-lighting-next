@@ -3,7 +3,7 @@
 import { useLanguage } from "@/context/LanguageContext";
 import { productGroupHrefForSlug, productKeyForSlug, type ProductItem } from "@/data/products";
 import { ArrowRightIcon } from "./Icons";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 
 type ProductCardProps = {
   product: ProductItem;

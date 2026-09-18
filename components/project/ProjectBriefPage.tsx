@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { ArrowRightIcon } from "@/components/Icons";
+import { ProjectEvidence, type ProjectEvidenceItem } from "./ProjectEvidence";
 
 type ProjectBriefPageProps = {
   locale: "en" | "ru";
@@ -11,6 +12,7 @@ type ProjectBriefPageProps = {
   tags: string[];
   facts: Array<[string, string]>;
   gallery: Array<{ src: string; alt: string }>;
+  evidence?: ProjectEvidenceItem[];
 };
 
 const copy = {
@@ -36,7 +38,7 @@ const copy = {
   },
 };
 
-export function ProjectBriefPage({ locale, title, subtitle, image, tags, facts, gallery }: ProjectBriefPageProps) {
+export function ProjectBriefPage({ locale, title, subtitle, image, tags, facts, gallery, evidence = [] }: ProjectBriefPageProps) {
   const text = copy[locale];
 
   return (
@@ -80,6 +82,8 @@ export function ProjectBriefPage({ locale, title, subtitle, image, tags, facts, 
           ))}
         </div>
       </section>
+
+      {evidence.length ? <ProjectEvidence items={evidence} locale={locale} /> : null}
 
       <section className="bg-[#f5f7fa] py-10 sm:py-14">
         <div className="page-container">

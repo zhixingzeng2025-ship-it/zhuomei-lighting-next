@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { LocalizedPageHeader } from "@/components/LocalizedPageHeader";
 import { LocalizedProjectsGrid } from "@/components/LocalizedProjectsGrid";
 
@@ -22,7 +23,7 @@ export default function ProjectsPage() {
           actionLabelKey="pageHeader.projectsAction"
           image="https://img.zomeiled.com/images/projects/guangzhou-digital-culture-valley/web/social-cover.jpg"
         />
-        <LocalizedProjectsGrid />
+        <Suspense fallback={null}><LocalizedProjectsGrid /></Suspense>
       </div>
     </section>
   );

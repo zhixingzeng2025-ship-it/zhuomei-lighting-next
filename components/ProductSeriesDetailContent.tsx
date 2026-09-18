@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useLanguage } from "@/context/LanguageContext";
 import { getProductGroupItems, type ProductGroup } from "@/data/productGroups";
 import { productDetailGalleries } from "@/data/productDetailGalleries";
@@ -8,6 +8,7 @@ import { productDetailImages } from "@/data/productDetailImages";
 import type { ProductSeriesItem } from "@/data/productSeries";
 import { ArrowRightIcon, DocIcon } from "@/components/Icons";
 import { ProductGallery } from "@/components/ProductGallery";
+import { getRepresentativeProductProfile } from "@/data/representativeProducts";
 
 type ProductSeriesDetailContentProps = {
   group: ProductGroup;
@@ -73,6 +74,9 @@ const copy = {
     contact: "Contact Us",
     requestQuote: "Request Quote",
     mobileDownloads: ["Request Datasheet", "Request IES File", "CE / RoHS / IP Test Report"],
+    profileTitle: "Engineering Selection Guide",
+    selectionTitle: "How to select this model",
+    faqTitle: "Buyer Questions",
   },
   zh: {
     home: "首页",
@@ -132,6 +136,9 @@ const copy = {
     contact: "联系我们",
     requestQuote: "获取报价",
     mobileDownloads: ["申请规格书", "申请 IES 文件", "CE / RoHS / IP 检测报告"],
+    profileTitle: "工程选型说明",
+    selectionTitle: "这个型号怎样选",
+    faqTitle: "采购常见问题",
   },
   ru: {
     home: "Главная",
@@ -191,6 +198,9 @@ const copy = {
     contact: "Связаться с нами",
     requestQuote: "Запросить расчет",
     mobileDownloads: ["Запросить datasheet", "Запросить IES", "CE / RoHS / IP протокол"],
+    profileTitle: "Руководство по инженерному подбору",
+    selectionTitle: "Как выбрать эту модель",
+    faqTitle: "Вопросы покупателя",
   },
 };
 
@@ -268,6 +278,7 @@ export function ProductSeriesDetailContent({ group, item }: ProductSeriesDetailC
     : detailImage
       ? [detailImage, detailImage, detailImage, detailImage]
       : [];
+  const profile = getRepresentativeProductProfile(item.id);
 
   const lightImage = detailImage ? (
     <img src={detailImage} alt={productName} className="mx-auto h-full max-h-full w-full max-w-[82%] object-contain" />
@@ -425,6 +436,42 @@ export function ProductSeriesDetailContent({ group, item }: ProductSeriesDetailC
             ))}
           </div>
         </section>
+
+        {profile ? (
+          <section className="border-t border-brand-line py-12">
+            <SectionTitle eyebrow="Selection / FAQ" title={pageCopy.profileTitle} />
+            <p className="max-w-4xl text-lg font-semibold leading-8 text-brand-text">{profile.positioning[locale]}</p>
+            <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+              <div className="border border-[#d4e5f5] bg-[#f8fbff] p-6">
+                <h3 className="text-xl font-semibold text-brand-text">{pageCopy.selectionTitle}</h3>
+                <ol className="mt-5 space-y-4">
+                  {profile.selectionBasis.map((entry, index) => (
+                    <li key={entry.en} className="grid grid-cols-[32px_1fr] gap-3 text-sm leading-7 text-brand-muted">
+                      <span className="grid h-8 w-8 place-items-center bg-brand-blue text-xs font-bold text-white">{index + 1}</span>
+                      <span>{entry[locale]}</span>
+                    </li>
+                  ))}
+                </ol>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {profile.applications.map((entry) => (
+                    <span key={entry.en} className="border border-brand-line bg-white px-3 py-2 text-xs font-semibold text-brand-text">{entry[locale]}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="border border-[#d4e5f5] bg-white p-6">
+                <h3 className="text-xl font-semibold text-brand-text">{pageCopy.faqTitle}</h3>
+                <div className="mt-4 space-y-3">
+                  {profile.faq.map((entry) => (
+                    <details key={entry.question.en} className="border border-brand-line bg-[#f8fbff] p-4" open>
+                      <summary className="cursor-pointer font-semibold text-brand-text">{entry.question[locale]}</summary>
+                      <p className="mt-3 text-sm leading-7 text-brand-muted">{entry.answer[locale]}</p>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         {similarProducts.length > 0 ? (
           <section className="border-t border-brand-line py-12">

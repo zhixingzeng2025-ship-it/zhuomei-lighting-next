@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useLanguage } from "@/context/LanguageContext";
 import { ArrowRightIcon } from "@/components/Icons";
 import { type BlogArticle, localizeBlogArticle } from "@/data/blog";

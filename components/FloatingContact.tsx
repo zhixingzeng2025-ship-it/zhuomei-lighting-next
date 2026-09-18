@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { DocIcon, MailIcon, UpIcon, WhatsAppIcon } from "./Icons";

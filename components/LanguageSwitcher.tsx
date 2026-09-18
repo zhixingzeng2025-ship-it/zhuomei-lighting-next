@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useLanguage } from "@/context/LanguageContext";
+import { usePathname, useRouter } from "next/navigation";
+import { localizePath, useLanguage } from "@/context/LanguageContext";
 import { ChevronDownIcon } from "./Icons";
 
 const options = [
@@ -12,6 +13,8 @@ const options = [
 
 export function LanguageSwitcher() {
   const { locale, setLocale } = useLanguage();
+  const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -56,6 +59,7 @@ export function LanguageSwitcher() {
                 ].join(" ")}
                 onClick={() => {
                   setLocale(option.locale);
+                  router.push(localizePath(pathname || "/", option.locale));
                   setOpen(false);
                 }}
               >

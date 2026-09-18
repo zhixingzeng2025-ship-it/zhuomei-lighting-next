@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { BlogPageContent } from "@/components/blog/BlogPageContent";
 
 export const metadata: Metadata = {
@@ -9,5 +10,5 @@ export const metadata: Metadata = {
 export const dynamic = "force-static";
 
 export default function BlogPage() {
-  return <BlogPageContent />;
+  return <Suspense fallback={null}><BlogPageContent /></Suspense>;
 }

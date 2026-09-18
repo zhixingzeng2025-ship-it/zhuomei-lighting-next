@@ -1,17 +1,19 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { usePathname } from "next/navigation";
+import { localeFromPathname, type Locale } from "@/lib/i18n";
+
+export { localizePath, type Locale } from "@/lib/i18n";
 
 type Dictionaries = Record<string, Record<string, any>>;
-export type Locale = "en" | "zh" | "ru";
-
 const dictionaries: Record<Locale, Record<string, any>> = {
   en: {
     menu: {
       products: "Products",
       solutions: "Solutions",
       projects: "Projects",
-      support: "Материалы по освещению",
+      support: "Lighting Resources",
       about: "About Us",
       contact: "Contact",
     },
@@ -109,8 +111,8 @@ const dictionaries: Record<Locale, Record<string, any>> = {
       checklistTitle: "Project Selection Checklist",
       conclusionTitle: "Conclusion",
       relatedTitle: "Related Articles",
-      breadcrumbCategory: "Материалы по освещению",
-      metaTitle: "Материалы по освещению",
+      breadcrumbCategory: "Lighting Resources",
+      metaTitle: "Lighting Resources",
       metaDescription: "ZOMEI lighting knowledge, product guides, project insights and outdoor lighting industry resources.",
     },
     detail: {
@@ -189,7 +191,7 @@ const dictionaries: Record<Locale, Record<string, any>> = {
     footer: {
       products: "Products",
       solutions: "Solutions",
-      support: "Материалы по освещению",
+      support: "Lighting Resources",
       company: "Company",
       streetLight: "Street Light",
       solarStreetLight: "Solar Street Light",
@@ -844,9 +846,17 @@ function getByPath(source: any, path: string) {
 }
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("zh");
+  const pathname = usePathname();
+  const routeLocale = localeFromPathname(pathname || "");
+  const [locale, setLocaleState] = useState<Locale>(routeLocale || "zh");
 
   useEffect(() => {
+    if (routeLocale) {
+      setLocaleState(routeLocale);
+      document.documentElement.lang = routeLocale === "zh" ? "zh-CN" : routeLocale;
+      window.localStorage.setItem(STORAGE_KEY, routeLocale);
+      return;
+    }
     const storedLocale =
       typeof window !== "undefined"
         ? (window.localStorage.getItem(STORAGE_KEY) as Locale | null)
@@ -858,14 +868,14 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     if (typeof window !== "undefined") {
       window.localStorage.setItem(STORAGE_KEY, nextLocale);
     }
-  }, []);
+  }, [routeLocale]);
 
   const setLocale = (nextLocale: Locale) => {
     setLocaleState(nextLocale);
     if (typeof window !== "undefined") {
       window.localStorage.setItem(STORAGE_KEY, nextLocale);
     }
-    document.documentElement.lang = nextLocale;
+    document.documentElement.lang = nextLocale === "zh" ? "zh-CN" : nextLocale;
   };
 
   const t = useMemo(() => {

@@ -2,17 +2,38 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useLanguage } from "@/context/LanguageContext";
 import { ArrowRightIcon } from "@/components/Icons";
 import { ProjectImagePlaceholder } from "@/components/project/ProjectImagePlaceholder";
 import { ProjectBriefPage } from "@/components/project/ProjectBriefPage";
+import { ProjectEvidence, type ProjectEvidenceItem } from "@/components/project/ProjectEvidence";
 import { guangzhouDigitalCultureValleyProject as project } from "@/data/projects/guangzhou-digital-culture-valley";
 import { getGuangzhouDigitalCultureValleyImage as getImage } from "@/data/projects/guangzhou-digital-culture-valley-images";
 import type { ProjectImageRecord } from "@/data/projects/almaty-museum-images";
 
 const sectionClass = "py-12 sm:py-16 lg:py-20";
 const containerClass = "mx-auto w-[min(100%-1.5rem,80rem)] sm:w-[min(100%-2rem,80rem)]";
+const projectEvidence: Record<"en" | "zh" | "ru", ProjectEvidenceItem[]> = {
+  en: [
+    { metric: "36 W RGBW wall washers", value: "3,670 sets", method: "Quantity checked against the project product schedule.", evidence: "Product schedule and supply record" },
+    { metric: "10 W RGBW linear lights", value: "1,460 sets", method: "Quantity checked against the project product schedule.", evidence: "Product schedule and supply record" },
+    { metric: "Measured white-light CRI", value: "Ra 90.86", method: "Measured with an integrating sphere on the white channel at 4035 K.", evidence: "Integrating-sphere test record" },
+    { metric: "Control and operation", value: "DMX512 / 3 modes", method: "Verified through zone addressing and night-scene commissioning.", evidence: "Control topology and commissioning record" },
+  ],
+  zh: [
+    { metric: "36W RGBW 线性洗墙灯", value: "3670套", method: "与项目产品清单核对数量。", evidence: "产品清单与供货记录" },
+    { metric: "10W RGBW 线条灯", value: "1460套", method: "与项目产品清单核对数量。", evidence: "产品清单与供货记录" },
+    { metric: "白光实测显色指数", value: "Ra 90.86", method: "在白光通道 4035K 条件下通过积分球测试。", evidence: "积分球测试记录" },
+    { metric: "控制与运营", value: "DMX512 / 3种模式", method: "通过分区地址和夜间场景联调确认。", evidence: "控制拓扑与调试记录" },
+  ],
+  ru: [
+    { metric: "RGBW wall washer 36 Вт", value: "3 670 шт.", method: "Количество сверено с проектной ведомостью.", evidence: "Ведомость продукции и запись поставки" },
+    { metric: "RGBW linear light 10 Вт", value: "1 460 шт.", method: "Количество сверено с проектной ведомостью.", evidence: "Ведомость продукции и запись поставки" },
+    { metric: "Измеренный CRI белого", value: "Ra 90.86", method: "Измерено в интегрирующей сфере на белом канале 4035 K.", evidence: "Протокол измерения в интегрирующей сфере" },
+    { metric: "Управление", value: "DMX512 / 3 режима", method: "Подтверждено адресацией зон и ночной наладкой сцен.", evidence: "Топология управления и журнал наладки" },
+  ],
+};
 
 function trackEvent(name: string, payload: Record<string, string | number | boolean | undefined> = {}) {
   if (typeof window === "undefined") return;
@@ -578,6 +599,7 @@ export function GuangzhouDigitalCultureValleyProjectPage() {
               ]
         }
         gallery={gallery}
+        evidence={projectEvidence[locale]}
       />
     );
   }
@@ -587,6 +609,7 @@ export function GuangzhouDigitalCultureValleyProjectPage() {
       <Hero onOpen={openLightbox} />
       <ProjectTrustPath />
       <Facts />
+      <ProjectEvidence items={projectEvidence.zh} locale="zh" />
       <BeforeAfter onOpen={openLightbox} />
       <ProductControl onOpen={openLightbox} />
       <CompleteGallery onOpen={openLightbox} />

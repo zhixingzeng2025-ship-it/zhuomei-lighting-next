@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/LocalizedLink";
 import { useLanguage } from "@/context/LanguageContext";
 import { siteConfig } from "@/data/site";
 import { MailIcon, PhoneIcon, SearchIcon, WhatsAppIcon } from "./Icons";
